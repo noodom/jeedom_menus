@@ -1,0 +1,37 @@
+<!-- 
+    @noodom / Menu F$B33 : ajout de la gestion des boutons par fichier JSon 
+    - reprise du menu FSB33 simplifié par @salvialf en ajoutant la gestion des boutons par un paramétrage JSon 
+-->
+
+<link href="montheme/css/perso.css" rel="stylesheet" type="text/css">
+
+<div class="menu_top">
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.getJSON('montheme/json/perso.json')
+            .done(function (response) {
+                let menuList = '<ul class="monmenu">';
+                $.each(response, function (index, bouton) {
+                    menuList += '<a id="' + bouton.link + '" onClick="gotoPlan(this.id)">'
+                                    + '<li class="monmenu">'
+                                        + '<div class="imagette">'
+                                            + '<img src="' + bouton.icon + '" height=50px width=50px>'
+                                        + '</div></br>'
+                                    + '</li>'
+                                + '</a>';
+                });
+                menuList += "</ul>";
+                $('.menu_top').html(menuList);
+
+                let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+                $(planID + ' li').addClass('selected'); <!--selected = classe CSS sur élément actif-->
+            })
+    });
+
+    function gotoPlan(planID) {
+        planHeader_id = planID;
+        displayPlan();
+    }
+</script>

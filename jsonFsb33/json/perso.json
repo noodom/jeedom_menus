@@ -1,0 +1,29 @@
+[{
+        "link": "1",
+        "icon": "montheme/images/icon_home.png"
+    },
+    {
+        "link": "5",
+        "icon": "montheme/images/icon_light.png"
+    },
+    {
+        "link": "6",
+        "icon": "montheme/images/icon_thermometre.png"
+    },
+    {
+        "link": "7",
+        "icon": "montheme/images/icon_alarme.png"
+    },
+    {
+        "link": "11",
+        "icon": "montheme/images/icon_cast.png"
+    },
+    {
+        "link": "9",
+        "icon": "montheme/images/icon_plante.png"
+    },
+    {
+        "link": "10",
+        "icon": "montheme/images/icon_consomation.png"
+    }
+]
