@@ -30,8 +30,8 @@ Le menu est à ajouter dans chaque page de design.
     - Redimensionner cet équipement
 
 On aura alors l'arborescence suivante (vérifier avec le plugin jeeExplorer):
-/html
-    /montheme
-        /css/perso.css : le css du menu
-        /json/perso.json : le json de personnalisation du menu
-        /images/ : les images du menu
+- /html
+    - /montheme
+        - /css/perso.css : le css du menu
+        - /json/perso.json : le json de personnalisation du menu
+        - /images/ : les images du menu
