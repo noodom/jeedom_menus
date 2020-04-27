@@ -1,6 +1,12 @@
 <!-- 
     @noodom / Menu F$B33 : ajout de la gestion des boutons par fichier JSon 
-    - reprise du menu FSB33 simplifié par @salvialf en ajoutant la gestion des boutons par un paramétrage JSon 
+    - reprise du menu FSB33 simplifié par @salvialf en ajoutant la gestion des boutons par un paramétrage JSon
+
+    - il n'y a plus besoin de modifier le code : seul le fichier perso.json est à adapter à son menu
+    - pour valider que le fichier perso.json est correct :
+        - copier son contenu ici : https://jsonlint.com/
+        - cliquer sur 'Validate JSON'
+        - le résultat sous Result doit être vert avec le message 'Valid JSON'
 -->
 
 <link href="montheme/css/perso.css" rel="stylesheet" type="text/css">
@@ -10,24 +16,29 @@
 
 <script>
     $(document).ready(function () {
-        $.getJSON('montheme/json/perso.json')
-            .done(function (response) {
-                let menuList = '<ul class="monmenu">';
-                $.each(response, function (index, bouton) {
-                    menuList += '<a id="' + bouton.link + '" onClick="gotoPlan(this.id)">'
-                                    + '<li class="monmenu">'
-                                        + '<div class="imagette">'
-                                            + '<img src="' + bouton.icon + '" height=50px width=50px>'
-                                        + '</div></br>'
-                                    + '</li>'
-                                + '</a>';
-                });
-                menuList += "</ul>";
-                $('.menu_top').html(menuList);
+        let menuTop = $('.menu_top');
+        menuTop.append('Chargement du menu..');
 
-                let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
-                $(planID + ' li').addClass('selected'); <!--selected = classe CSS sur élément actif-->
-            })
+        $.getJSON('montheme/themes/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+            let buttons = data.buttons.map(function (button) {
+                return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+                        + '<li class="monmenu">'
+                            + '<div class="imagette"><img src="' + button.icon + '" height=50px width=50px></div></br>'
+                        + '</li>'
+                    + '</a>';
+            });
+
+            menuTop.empty();
+
+            if (buttons.length) {
+                let listButtons = buttons.join(' ');
+                let menuList = $('<ul class="monmenu" />').html(listButtons);
+                menuTop.append(menuList);
+            }
+
+            let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+            $(planID + ' li').addClass('selected'); <!-- selected = classe CSS sur élément actif -->
+        })
     });
 
     function gotoPlan(planID) {
