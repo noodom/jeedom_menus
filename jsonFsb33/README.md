@@ -20,7 +20,8 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 
 
 Le menu est à ajouter dans chaque page de design.
-2 possibilités pour ajouter le menu une page de Design :
+
+2 possibilités pour ajouter le menu dans une page de Design :
 
 ### Ajout dans un texte/html
 
