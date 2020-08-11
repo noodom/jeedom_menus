@@ -1,0 +1,129 @@
+<!-- menu Hover Show Json (@noodom)-->
+<!-- inspired by https://codepen.io/JFarrow/pen/fFrpg -->
+
+<!--
+
+- Installation du menu
+-- Recopier les répertoires /css et /json sous /html/montheme/menuHoverShow
+-- Créer un équipement htmlDisplay et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer un nouveau design de la largeur et de la hauteur de l'écran ou sera affiché le design
+-- Ajouter l'équipement htmlDisplay (ou ajouter un text/html avec le contenu de index.html) dans tous les designs qui sont en lien avec les boutons du menu (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay à gauche de l'écran, avec pour paramètre d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=Hauteur écran
+
+- Paramétrage du menu (modification du fichier /html/montheme/menuHoverShow/json/perso.json et SEULEMENT ce fichier)
+-- buttons : liste des boutons du menu du haut
+--- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un design) et "icon" (référence à un icône font-awesome) pour personnaliser les boutons du menu
+-- buttons_bottom : liste des boutons du menu du bas
+--- effectuer les mêmes modification que pour les boutons du haut
+
+-- menu_width: largeur du menu, logo + texte (250px par défaut)
+-- logo-width: largeur du logo (par défaut 60px)
+-- menu_text_width: largeur du texte (par défaut 190px)
+-- button_head_color : couleur de la ligne du haut (#428bca par défaut)
+-- button_bottom_color : couleur de la ligne du bas (#999999 par défaut)
+-- button_head_hovercolor : couleur de focus du haut (#5fa2db par défaut)
+-- button_bottom_hovercolor : couleur de focus du bas (#555555 par défaut)
+-- menu_background_color: couleur de fond du menu (#212121 par défaut)
+-- design_background_color: couleur de fond du design, partie à droite du menu (#e2e2e2 par défaut)
+
+Liste des icônes font-awesome pour l'affichage des boutons :
+- https://fontawesome.com/icons?m=free
+
+
+-->
+
+<!--link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css"/-->
+<link rel="stylesheet" href="montheme/menuHoverShow/css/perso.css" type="text/css"/>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+</style>
+
+<div class="area"></div>
+<nav class="main-menu">
+</nav>
+
+<script>
+	$(document).ready(function () {
+		let menuTop = $('.main-menu');
+		menuTop.append('Chargement du menu..');
+
+		$.getJSON('montheme/menuHoverShow/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+          // head
+		  let buttons = data.buttons.map(function (button) {
+				return '<li>'
+							+ '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+								+ '<i class="' + button.icon + '"></i>'
+								+ '<span class="nav-text">'
+									+ button.label
+								+ '</span>'
+							+ '</a>'
+						+ '</li>';
+			});
+
+			menuTop.empty();
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				let menuList = $('<ul class="menu-head"/>').html(listButtons);
+				menuTop.append(menuList);
+			}
+          
+          	// bottom
+			buttons = data.buttons_bottom.map(function (button) {
+				return '<li>'
+							+ '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+								+ '<i class="' + button.icon + '"></i>'
+								+ '<span class="nav-text">'
+									+ button.label
+								+ '</span>'
+							+ '</a>'
+						+ '</li>';
+			});
+
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				let menuList = $('<ul class="menu-bottom"/>').html(listButtons);
+				menuTop.append(menuList);
+			}
+
+			if (data.parameters) {
+				// get perso.json parameters
+				let menu_width = data.parameters.menu_width?data.parameters.menu_width:"250px";
+				let logo_width = data.parameters.logo_width?data.parameters.logo_width:"60px";
+				let menu_text_width = parseInt(menu_width.split('px').join('')) - parseInt(logo_width.split('px').join('')) + 'px';
+				let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#428bca";
+				let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#999999";
+				let button_head_hovercolor = data.parameters.button_head_hovercolor?data.parameters.button_head_hovercolor:"#5fa2db";
+				let button_bottom_hovercolor = data.parameters.button_bottom_hovercolor?data.parameters.button_bottom_hovercolor:"#555555";
+				let menu_background_color = data.parameters.menu_background_color?data.parameters.menu_background_color:"#212121";
+				let design_background_color = data.parameters.design_background_color?data.parameters.design_background_color:"#e2e2e2";
+
+				// set CSS parameters
+				// menu size
+				document.documentElement.style.setProperty('--menu-width', menu_width);
+				document.documentElement.style.setProperty('--logo-width', logo_width);
+				document.documentElement.style.setProperty('--menu-text-width', menu_text_width);
+				// buttons colors
+				document.documentElement.style.setProperty('--button-head-color', button_head_color);
+				document.documentElement.style.setProperty('--button-bottom-color', button_bottom_color);
+				document.documentElement.style.setProperty('--button-head-hovercolor', button_head_hovercolor);
+				document.documentElement.style.setProperty('--button-bottom-hovercolor', button_bottom_hovercolor);
+				// background colors
+				document.documentElement.style.setProperty('--menu-background-color', menu_background_color);
+				document.documentElement.style.setProperty('--design-background-color', design_background_color);
+			}
+
+			// TODO : add selected attribute declaration in perso.css
+          	let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+			$(planID + ' li').addClass('selected'); <!-- selected = selected button -->
+		});
+	});
+
+	function gotoPlan(planID) {
+		planHeader_id = planID;
+		displayPlan();
+	}
+</script>
+

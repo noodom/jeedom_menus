@@ -1,0 +1,150 @@
+:root {
+  --menu-width:250px;
+  --menu-text-width:190px;
+  --logo-width: 60px;
+  --menu-background-color: #212121;
+  --design-background-color: #e2e2e2;
+
+  --button-head-color: #428bca;
+  --button-bottom-color: #999999;
+  --button-head-hovercolor: #5fa2db;
+  --button-bottom-hovercolor: #555555;
+}
+
+.fa-2x {
+	font-size: 2em;
+}
+.fa {
+	position: relative;
+	display: table-cell;
+	width: var(--logo-width);
+	height: 36px;
+	text-align: center;
+	vertical-align: middle;
+	font-size:20px;
+}
+
+
+.main-menu:hover,nav.main-menu.expanded {
+	width:var(--menu-width);
+	overflow:visible;
+}
+
+.main-menu {
+	background:var(--menu-background-color);
+	border-right:1px solid #e5e5e5;
+	position:absolute;
+	top:0;
+	bottom:0;
+	height:100%;
+	left:0;
+	width:var(--logo-width);
+	overflow:hidden;
+	-webkit-transition:width .05s linear;
+	transition:width .05s linear;
+	-webkit-transform:translateZ(0) scale(1,1);
+	z-index:1000;
+}
+
+.main-menu>ul {
+	margin:7px 0;
+}
+
+.main-menu li {
+	position:relative;
+	display:block;
+	width:var(--menu-width);
+}
+
+.main-menu li>a {
+	position:relative;
+	display:table;
+	border-collapse:collapse;
+	border-spacing:0;
+	color:var(--button-head-color) !important;
+	font-family: arial !important;
+	font-size: 14px;
+	text-decoration:none;
+	-webkit-transform:translateZ(0) scale(1,1);
+	-webkit-transition:all .1s linear !important;
+	transition:all .1s linear !important;
+}
+
+.main-menu>ul.menu-head li>a {
+	color:var(--button-head-color) !important;
+}
+
+.main-menu>ul.menu-bottom li>a {
+	color:var(--button-bottom-color) !important;
+}
+
+.main-menu .nav-icon {
+	position:relative;
+	display:table-cell;
+	width:var(--logo-width);
+	height:36px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:18px;
+}
+
+.main-menu .nav-text {
+	position:relative;
+	display:table-cell;
+	vertical-align:middle;
+	width:var(--menu-text-width);
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.menu-bottom {
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+
+.no-touch .scrollable.hover {
+	overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+	overflow-y:auto;
+	overflow:visible;
+}
+
+a:hover,a:focus {
+	text-decoration:none;
+}
+
+nav {
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+}
+
+nav ul,nav li {
+	outline:0;
+	margin:0;
+	padding:0;
+}
+.main-menu ul.menu-head li:hover>a,nav.main-menu ul.menu-head li.active>a {
+	color:#fff;
+	background-color:var(--button-head-hovercolor) !important;
+}
+.main-menu ul.menu-bottom li:hover>a,nav.main-menu ul.menu-bottom li.active>a {
+	color:#fff;
+	background-color:var(--button-bottom-hovercolor) !important;
+}
+.area {
+	float: left;
+	background: var(--design-background-color) !important;
+	width: 100%;
+	height: 100%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}

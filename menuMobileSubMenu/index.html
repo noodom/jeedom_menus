@@ -1,0 +1,147 @@
+<!-- menu Mobile Sub Menu Json (@noodom)-->
+<!-- inspired by https://codepen.io/berdejitendra/pen/AgEzJ -->
+
+<!--
+
+- Installation du menu
+-- Recopier les répertoires /css et /json sous /html/montheme/menuMobileSubMenu
+-- Créer un équipement htmlDisplay et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer un nouveau design de la largeur et de la hauteur de l'écran du mobile
+-- Ajouter l'équipement htmlDisplay (ou ajouter un text/html avec le contenu de index.html) dans tous les designs qui sont en lien avec les boutons du menu (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay en bas de l'écran, avec pour paramètre d'affichage positionX=0, Largeur=largeur mobile, Hauteur=120
+
+- Paramétrage du menu (modification du fichier /html/montheme/menuMobileSubMenu/json/perso.json et SEULEMENT ce fichier)
+-- buttons : 5 boutons du haut du menu
+--- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un design) et "icon" (référence à un icône font-awesome) pour personnaliser les boutons du menu
+-- buttons_bottom : 3 boutons du bas du menu
+--- effectuer les mêmes modification que pour les boutons du haut (le bouton du milieu sert à afficher le menu du haut)
+
+-- menu_width: largeur du menu (320px par défaut) -> Mettre la largeur de l'écran du mobile
+-- button_head_color : couleur de la ligne du haut (#fff par défaut)
+-- button_bottom_color : couleur de la ligne du bas (#fff par défaut)
+-- button_head_bgcolor : couleur de fond (#fff par défaut)
+-- button_bottom_bgcolor : couleur de fond (#000 par défaut)
+-- button_head_hovercolor : couleur de focus du haut (#000 par défaut)
+-- button_bottom_hovercolor : couleur de focus du bas (#000 par défaut)
+
+Liste des icônes font-awesome pour l'affichage des boutons :
+- https://fontawesome.com/icons?m=free
+
+
+-->
+
+<link rel="stylesheet" href="montheme/menuMobileSubMenu/css/perso.css" type="text/css"/>
+
+<div id="mobile">
+  <nav id="submenu">
+  </nav>
+  <nav id="mainmenu">
+  </nav>
+</div>
+
+<script id="menuCreation-js">
+	$(document).ready(function () {
+		let menuMobile = $('#mobile');
+		menuMobile.append('<div id="msg">Chargement du menu..</div>');
+
+		$.getJSON('montheme/menuMobileSubMenu/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+          // head
+          let navSubmenu = $('#submenu');
+		  let buttons = data.buttons.map(function (button) {
+				return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
+            			+ '<div>'
+							+ '<i class="' + button.icon + '"></i>'
+							+ '<span>'
+								+ button.label
+							+ '</span>'
+						+ '</div>'
+					+ '</li>';
+			});
+
+			navSubmenu.empty();
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				let menuList = $('<ul class="ul-menu"/>').html(listButtons);
+				navSubmenu.append(menuList);
+			}
+          
+          	// bottom
+          	let i = 0;
+          	navSubmenu = $('#mainmenu');
+			buttons = data.buttons_bottom.map(function (button) {
+              	let idAttr = (i==1)? 'id="menu" class="noactive" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
+				i++;
+              	return '<li ' + idAttr + '>'
+							+ '<i class="' + button.icon + '"></i>'
+							+ '<span>'
+								+ button.label
+							+ '</span>'
+						+ '</li>';
+			});
+
+			navSubmenu.empty();
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				let menuList = $('<ul class="ul-menu"/>').html(listButtons);
+				navSubmenu.append(menuList);
+			}
+
+            if (data.parameters) {
+				// get perso.json parameters
+				let menu_width = data.parameters.menu_width?data.parameters.menu_width:"320px";
+				/*
+                let logo_width = data.parameters.logo_width?data.parameters.logo_width:"60px";
+				let menu_text_width = parseInt(menu_width.split('px').join('')) - parseInt(logo_width.split('px').join('')) + 'px';
+				*/
+              	let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#fff";
+                let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#fff";
+              	let button_head_bgcolor = data.parameters.button_head_bgcolor?data.parameters.button_head_bgcolor:"#fff";
+                let button_bottom_bgcolor = data.parameters.button_bottom_bgcolor?data.parameters.button_bottom_bgcolor:"#fff";
+				let button_head_hovercolor = data.parameters.button_head_hovercolor?data.parameters.button_head_hovercolor:"#5fa2db";
+				let button_bottom_hovercolor = data.parameters.button_bottom_hovercolor?data.parameters.button_bottom_hovercolor:"#555555";
+				/*
+				let menu_background_color = data.parameters.menu_background_color?data.parameters.menu_background_color:"#212121";
+				let design_background_color = data.parameters.design_background_color?data.parameters.design_background_color:"#e2e2e2";
+				*/
+              
+				// set CSS parameters
+				// menu size
+				document.documentElement.style.setProperty('--menu-width', menu_width);
+              	// buttons colors
+                document.documentElement.style.setProperty('--button-head-color', button_head_color);
+				document.documentElement.style.setProperty('--button-bottom-color', button_bottom_color);
+                document.documentElement.style.setProperty('--button-head-bgcolor', button_head_bgcolor);
+				document.documentElement.style.setProperty('--button-bottom-bgcolor', button_bottom_bgcolor);
+				document.documentElement.style.setProperty('--button-head-hovercolor', button_head_hovercolor);
+				document.documentElement.style.setProperty('--button-bottom-hovercolor', button_bottom_hovercolor);
+			}
+          
+          	// remove loading message
+          	$("#msg").html("")
+
+			// TODO : add selected attribute declaration in perso.css
+          	//let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+			//$(planID + ' li').addClass('selected'); <!-- selected = selected button -->
+		});
+	});
+
+	function gotoPlan(planID) {
+		planHeader_id = planID;
+		displayPlan();
+	}
+
+	function menuSelection(menuId) {
+      if ($("#" + menuId).attr("class") ==  "noactive") {
+        $("#menu").removeClass("noactive");
+        $("#submenu li").addClass("activeli");
+      }
+      else {
+        $("#menu").addClass("noactive");
+        $("#submenu li").removeClass("activeli");
+      }
+    }
+  
+  	//# sourceURL=menuCreation.js
+</script>
