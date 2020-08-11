@@ -49,4 +49,4 @@ Le menu est à ajouter dans chaque page de design.
 >    - /montheme
 >        - /css/perso.css : le css du menu
 >        - /json/perso.json : le json de personnalisation du menu
->        - /images/ : les images du menu
+>        - /img/ : les images du menu
