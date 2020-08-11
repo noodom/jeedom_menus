@@ -1,4 +1,5 @@
 # Menu Mobile Sub Menu avec fichier de configuration JSon
+![Menu HoverShow](./doc/images/menuOuvert.png)
 
 Ce menu affiche un menu en bas d'écran pour mobile.
 Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
