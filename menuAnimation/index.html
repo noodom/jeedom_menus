@@ -5,11 +5,11 @@
 
 - Installation du menu
 -- 2 possibilités :
---- 1. Chargement d'un nouveau design à chaque sélection de bouton du menu : tous les designs doivent contenir le menu et le contenu de la page correspondante
+--- 1. Chargement d'un nouveau Design à chaque sélection de bouton du menu : tous les Designs doivent contenir le menu et le contenu de la page correspondante
 --- 2. Gestion par frame :
----- Un design contient le menu et les autres designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
+---- Un Design contient le menu et les autres Designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
 
-Solution 1 : chargement d'une nouvelle page (avec menu inclut dans toutes les pages de design)
+Solution 1 : chargement d'une nouvelle page (avec menu inclus dans toutes les pages de Design)
 - Recopier les répertoires /css et /json sous /html/montheme/menuAnimation
 - Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
 -- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
@@ -20,7 +20,7 @@ Solution 1 : chargement d'une nouvelle page (avec menu inclut dans toutes les pa
 Solution 2 : chargement des pages dans une FRAME (code index.html du menu présent dans un seul Design)
 -- Recopier les répertoires /css et /json sous /html/montheme/menuAnimation
 -- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
--- Créer un seul nouveau design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+-- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
 -- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
 -- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
 -- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant (visible dans menuFrame.html) dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
@@ -31,13 +31,13 @@ Solution 2 : chargement des pages dans une FRAME (code index.html du menu prése
 
 - Paramétrage du menu (modification du fichier /html/montheme/menuAnimation/json/perso.json et SEULEMENT ce fichier)
 -- buttons : liste des boutons du haut du menu
---- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un design) et "color" (couleur du bouton) pour personnaliser les boutons du menu
+--- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un Design) et "color" (couleur du bouton) pour personnaliser les boutons du menu
 
 Pour information, les avantages de la gestion de la navigation du menu par frames (Solution 2) :
-- Le code du menu est présent dans un seul design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
-- Les designs de chaque bouton ne contiennent pas le code du menu :
+- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
+- Les Designs de chaque bouton ne contiennent pas le code du menu :
 -- On construit chaque écran lié à un bouton sans tenir compte du menu
--- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le design correspondant à un menu
+-- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le Design correspondant à un menu
 	Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
 
 -->
@@ -52,19 +52,19 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 <script id="menuCreation-js">
 	$(document).ready(function () {
 		// display loading message
-      	let menuMobile = $('#mobile');
+		let menuMobile = $('#mobile');
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
 		// load Json configuration file
-      	$.getJSON('montheme/menuAnimation/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
-          let navSubmenu = $('#nav-container-animation');
-          let buttons = data.buttons.map(function (button) {
-            	return '<a href="#" id="' + button.link + '"'
-            			+ ' class="nav-item-animation'
-                  		  	+ '" active-color="' + button.color + '"'
-                          	+ ' onClick="buttonFocus(this)"'
-            				+ '>'
-                        		+ button.label
+		$.getJSON('montheme/menuAnimation/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+		  let navSubmenu = $('#nav-container-animation');
+		  let buttons = data.buttons.map(function (button) {
+				return '<a href="#" id="' + button.link + '"'
+						+ ' class="nav-item-animation'
+						  	+ '" active-color="' + button.color + '"'
+							+ ' onClick="buttonFocus(this)"'
+							+ '>'
+								+ button.label
 						+ '</a>';
 			});
 
@@ -74,64 +74,64 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 				let listButtons = buttons.join(' ');
 				navSubmenu.append(listButtons);
 			}
-            navSubmenu.append('<span class="nav-indicator-animation" style="width: 87px; left: 335px; background-color: ' + data.buttons[0].color + ';"></span>');
-          
-          	// remove loading message
-          	$("#msg").html("")
+			navSubmenu.append('<span class="nav-indicator-animation" style="width: 87px; left: 335px; background-color: ' + data.buttons[0].color + ';"></span>');
+		  
+			// remove loading message
+			$("#msg").html("")
 
 			// set focus on first button 
-          	document.getElementsByClassName('nav-item-animation')[0].click()
-        });
+			document.getElementsByClassName('nav-item-animation')[0].click()
+		});
 	});
   
-    // create url destination
-  	function getUrlDestination(urlParam) {
-      if (isNaN(urlParam)) {
-        return urlParam;
-      } else {
-        return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-      }
-    }
-  
-  	// menu redirection
-  	function gotoPlan(id) {
-      let urlDestination = getUrlDestination(id);
-      // get frame in htmlDisplay equipment
-      let frameDestination = document.getElementById('menuFrame');
-      
-      if (frameDestination == null) {
-        // no frame : page redirection
-		planHeader_id = id;
-        displayPlan();
-      }
-      else {
-        // frame redirection
-        if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-        	frameDestination.src = urlDestination;
-      	}
-      }
+	// create url destination
+	function getUrlDestination(urlParam) {
+	  if (isNaN(urlParam)) {
+		return urlParam;
+	  } else {
+		return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+	  }
 	}
   
-  	// focus on button
-  	function buttonFocus(el) {
-        const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
-        const items = $('.nav-item-animation');
-
-      	// remove focus for all buttons
-      	items.removeClass('is-active');
-      	items.removeAttr('style');
-
-        // set focused button
-      	indicator.style.width = `${el.offsetWidth}px`;
-        indicator.style.left = `${el.offsetLeft}px`;
-        indicator.style.backgroundColor = el.getAttribute('active-color');
-
-      	el.className = "nav-item-animation is-active";
-      	el.style = "color:" + el.getAttribute('active-color') + " !important;";
-      	
-      	// display frame content
-      	gotoPlan(el.id);
-    }
+	// menu redirection
+	function gotoPlan(id) {
+	  let urlDestination = getUrlDestination(id);
+	  // get frame in htmlDisplay equipment
+	  let frameDestination = document.getElementById('menuFrame');
+	  
+	  if (frameDestination == null) {
+		// no frame : page redirection
+		planHeader_id = id;
+		displayPlan();
+	  }
+	  else {
+		// frame redirection
+		if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+			frameDestination.src = urlDestination;
+		}
+	  }
+	}
   
-  	//# sourceURL=menuCreation.js
+	// focus on button
+	function buttonFocus(el) {
+		const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
+		const items = $('.nav-item-animation');
+
+		// remove focus for all buttons
+		items.removeClass('is-active');
+		items.removeAttr('style');
+
+		// set focused button
+		indicator.style.width = `${el.offsetWidth}px`;
+		indicator.style.left = `${el.offsetLeft}px`;
+		indicator.style.backgroundColor = el.getAttribute('active-color');
+
+		el.className = "nav-item-animation is-active";
+		el.style = "color:" + el.getAttribute('active-color') + " !important;";
+		
+		// display frame content
+		gotoPlan(el.id);
+	}
+  
+	//# sourceURL=menuCreation.js
 </script>
