@@ -51,7 +51,6 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 	- buttons : liste des boutons du menu
 		- modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
 	- parameters
-		- menu_id": id du htmlDisplay du menu
 		- menu_x": position x du menu (par défaut "0px")
 		- menu_y": position y du menu (par défaut "0px")
 		- menu_width": largeur du menu (par défaut "1280px")
