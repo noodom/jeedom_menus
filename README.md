@@ -4,7 +4,7 @@
 
 Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramétrage à partir d'un fichier JSon
 
-## Menu [F$B33](./jsonFsb33Frame) avec fichier de configuration JSon et navigation par Frame
+## Menu [F$B33](./menuJsonFsb33Frame) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu jsonFsb33Frame](./menuJsonFsb33Frame/doc/images/menuJsonFsb33Frame.png)
 
