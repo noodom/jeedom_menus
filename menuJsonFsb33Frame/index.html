@@ -1,0 +1,143 @@
+<!-- 
+	@noodom / Menu menuJsonFsb33Frame : menu F$B33 avec gestion des boutons par fichier JSon et navigation par frame
+	- reprise du menu F$B33 simplifié par @salvialf
+	- ajout de la gestion des boutons par un paramétrage JSon
+	- ajout de la navigation par frame à l'aide de htmlDisplay
+
+
+- Installation du menu
+-- 2 possibilités :
+--- 1. Chargement d'un nouveau Design à chaque sélection de bouton du menu : tous les Designs doivent contenir le menu et le contenu de la page correspondante
+--- 2. Gestion par frame :
+---- Un Design contient le menu et les autres Designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
+
+Solution 1 : chargement d'une nouvelle page (avec menu à recopier dans toutes les pages de Design)
+- Recopier les répertoires /css et /json sous /html/montheme/menuJsonFsb33Frame
+- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
+-- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=80
+-- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+
+Solution 2 : chargement des pages dans une FRAME (code index.html du menu présent dans un seul Design)
+-- Recopier les répertoires /css, /img et /json sous /html/montheme/menuJsonFsb33Frame
+-- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+-- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=80 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+-- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant (visible dans menuFrame.html) dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
+	<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
+-- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+-- Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
+-- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+
+- Paramétrage du menu (modification du fichier /html/montheme/menuJsonFsb33Frame/json/perso.json et SEULEMENT ce fichier)
+-- buttons : liste des boutons du haut du menu
+--- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un Design) et "color" (couleur du bouton) pour personnaliser les boutons du menu
+- parameters
+-- menu_id": id du htmlDisplay du menu
+-- menu_x": position x du menu (par défaut "0px")
+-- menu_y": position y du menu (par défaut "0px")
+-- menu_width": largeur du menu (par défaut "1280px")
+-- menu_height": hauteur du menu (par défaut "80px")
+-- content_x": position x du contenu du menu (par défaut "0px")
+-- content_y": position y du contenu du menu (par défaut "0px")
+-- content_width": largeur du contenu du menu (par défaut "1280px")
+-- content_height": hauteur du contenu du menu (par défaut "1000px")
+
+Pour information, les avantages de la gestion de la navigation du menu par frames (Solution 2) :
+- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
+- Les Designs de chaque bouton ne contiennent pas le code du menu :
+-- On construit chaque écran lié à un bouton sans tenir compte du menu
+-- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le Design correspondant à un menu
+	Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
+
+-->
+
+<link href="montheme/menuJsonFsb33Frame/css/perso.css" rel="stylesheet" type="text/css">
+
+<div class="menu_top">
+</div>
+
+<script id="menuCreation-js">
+	$(document).ready(function () {
+		let menuTop = $('.menu_top');
+		menuTop.append('Chargement du menu..');
+
+		$.getJSON('montheme/menuJsonFsb33Frame/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+			let buttons = data.buttons.map(function (button) {
+				return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+					+ '<li class="monmenu">'
+					+ '<div class="imagette"><img src="' + button.icon + '" height=50px width=50px></div></br>'
+					+ '</li>'
+					+ '</a>';
+			});
+
+			menuTop.empty();
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				let menuList = $('<ul class="monmenu" />').html(listButtons);
+				menuTop.append(menuList);
+			}
+
+			if (data.parameters) {
+				// menu parameters
+				let htmlDisplayId = '[data-eqlogic_id="' + data.parameters.menu_id + '"]';
+				$(htmlDisplayId)[0].style.top = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+				$(htmlDisplayId)[0].style.left = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+				$(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "308px";
+				$(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "308px";
+
+				// frame parameters
+				$("#menuFrame").offsetParent().style().top = data.parameters.content_x ? data.parameters.content_x : "0px";
+				$("#menuFrame").offsetParent().style().left = data.parameters.content_y ? data.parameters.content_y : "0px";
+				$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1287px";
+				$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1008px";
+			}
+
+			let frameDestination = document.getElementById('menuFrame');
+			if (frameDestination == null) {
+				// no frame navigation : focus on button with url parameter plan_id as id
+				let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+				$(planID + ' li').addClass('selected'); // selected = classe CSS sur élément actif
+			}
+			else {
+				// frame navigation : set focus on first button 
+				$('#' + data.buttons[0].link + ' li').click();
+			}
+		});
+	});
+
+	// create url destination
+	function getUrlDestination(urlParam) {
+		if (isNaN(urlParam)) {
+			return urlParam;
+		} else {
+			return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+		}
+	}
+
+	// menu redirection
+	function gotoPlan(id) {
+		let urlDestination = getUrlDestination(id);
+		// get frame in htmlDisplay equipment
+		let frameDestination = document.getElementById('menuFrame');
+
+		if (frameDestination == null) {
+			// no frame : page redirection
+			planHeader_id = id;
+			displayPlan();
+		}
+		else {
+			// display focus
+			$('.monmenu').removeClass('selected');
+			$('#' + id + ' li').addClass('selected');
+
+			// frame redirection
+			if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+				frameDestination.src = urlDestination;
+			}
+		}
+	}
+</script>
