@@ -46,7 +46,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuAnimation/json/perso.json et SEULEMENT ce fichier)
 	- buttons : liste des boutons du menu
-		- modifier les valeurs **label** (Libellé du bouton), **link** (lien vers l'id d'un design) et **color** (couleur du bouton) pour personnaliser les boutons du menu
+		- modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
 
 >Pour information, les avantages de la gestion de la navigation du menu par frame (Solution 2) :
 >	- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
