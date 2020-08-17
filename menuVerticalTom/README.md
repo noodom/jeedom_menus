@@ -3,7 +3,7 @@
 
 ![Menu menuVerticalTom](./doc/images/menuFerme.png)
 
-Ce menu reprend le menu vertical de @Tom's
+Ce menu reprend le menu vertical de @Tom's avec :
 - ajout de la gestion des boutons par un paramétrage JSon
 - ajout de la navigation par frame à l'aide de htmlDisplay
 
