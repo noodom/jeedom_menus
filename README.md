@@ -32,3 +32,8 @@ Ce menu affiche un menu en bas d'écran pour mobile.
 Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
 
 La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
+
+## Menu [VerticalTom](./menuVerticalTom) avec fichier de configuration JSon
+![Menu VerticalTom](./menuVerticalTom/doc/images/menuOuvert.png)
+
+Ce menu affiche un menu vertical s'ouvrant de bas en haut. Il offre le choix par paramétrage de se refermer automatiquement après sélection d'un bouton. 
