@@ -10,7 +10,7 @@
 ---- Un Design contient le menu et les autres Designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
 
 Solution 1 : chargement d'une nouvelle page (avec menu inclus dans toutes les pages de Design)
-- Recopier les répertoires /css, /img et /json sous /html/montheme/menuTom
+- Recopier les répertoires /css, /img et /json sous /html/montheme/menuVerticalTom
 - Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
 -- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
 -- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
@@ -18,7 +18,7 @@ Solution 1 : chargement d'une nouvelle page (avec menu inclus dans toutes les pa
 -- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 Solution 2 : chargement des pages dans une FRAME (code index.html du menu présent dans un seul Design)
--- Recopier les répertoires /css et /json sous /html/montheme/menuTom
+-- Recopier les répertoires /css et /json sous /html/montheme/menuVerticalTom
 -- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
 -- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
 -- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
@@ -30,7 +30,7 @@ Solution 2 : chargement des pages dans une FRAME (code index.html du menu prése
 -- Créer un Design pour chaque lien des boutons du menu
 -- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
-- Paramétrage du menu (modification du fichier /html/montheme/menuTom/json/perso.json et SEULEMENT ce fichier)
+- Paramétrage du menu (modification du fichier /html/montheme/menuVerticalTom/json/perso.json et SEULEMENT ce fichier)
 -- buttons : liste des boutons du haut du menu
 --- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un Design) et "icon" (lien de l'image du menu) pour personnaliser les boutons du menu
 -- parameters
@@ -52,12 +52,12 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 -->
 
-<link rel="stylesheet" type="text/css" href="montheme/menuTom/css/perso.css">
+<link rel="stylesheet" type="text/css" href="montheme/menuVerticalTom/css/perso.css">
 
 <nav class="menu-goo">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
   <label class="menu-open-button" for="menu-open">
-	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="montheme/menuTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
+	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="montheme/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
   </label>
 </nav>
 
@@ -70,7 +70,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
       	let menuGoo = $('.menu-goo');
 
 		// load Json configuration file (perso.json)
-      	$.getJSON('montheme/menuTom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+      	$.getJSON('montheme/menuVerticalTom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
             let navSubmenu = $('#nav-container-animation');
             // get buttons parameters
           	let buttons = data.buttons.map(function (button) {
