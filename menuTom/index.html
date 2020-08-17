@@ -1,0 +1,156 @@
+<!-- menu Vertical Tom (gestion par Json et Frame) (@noodom)-->
+<!-- inspired by Tom's menu -->
+
+<!--
+
+- Installation du menu
+-- 2 possibilités :
+--- 1. Chargement d'un nouveau Design à chaque sélection de bouton du menu : tous les Designs doivent contenir le menu et le contenu de la page correspondante
+--- 2. Gestion par frame :
+---- Un Design contient le menu et les autres Designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
+
+Solution 1 : chargement d'une nouvelle page (avec menu inclus dans toutes les pages de Design)
+- Recopier les répertoires /css, /img et /json sous /html/montheme/menuTom
+- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
+-- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=largeur écran (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+-- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+
+Solution 2 : chargement des pages dans une FRAME (code index.html du menu présent dans un seul Design)
+-- Recopier les répertoires /css et /json sous /html/montheme/menuTom
+-- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+-- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+-- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+-- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=largeur écran (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+-- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
+-- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant (visible dans menuFrame.html) dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
+	<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
+-- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+-- Créer un Design pour chaque lien des boutons du menu
+-- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+
+- Paramétrage du menu (modification du fichier /html/montheme/menuTom/json/perso.json et SEULEMENT ce fichier)
+-- buttons : liste des boutons du haut du menu
+--- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un Design) et "icon" (lien de l'image du menu) pour personnaliser les boutons du menu
+-- parameters
+--- menu_x: position x du menu (par défaut "0px")
+--- menu_y: position y du menu (par défaut "280px")
+--- menu_width: largeur du menu (par défaut "100px")
+--- menu_height: hauteur du menu (par défaut "720px")
+--- content_x: position x du contenu du menu (par défaut "0px")
+--- content_y: position y du contenu du menu (par défaut "0px")
+--- content_width: largeur du contenu du menu (par défaut "1280px")
+--- content_height: hauteur du contenu du menu (par défaut "1000px")
+
+Pour information, les avantages de la gestion de la navigation du menu par frames (Solution 2) :
+- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
+- Les Designs de chaque bouton ne contiennent pas le code du menu :
+-- On construit chaque écran lié à un bouton sans tenir compte du menu
+-- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le Design correspondant à un menu
+	Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
+
+-->
+
+<link rel="stylesheet" type="text/css" href="montheme/menuTom/css/perso.css">
+
+<nav class="menu-goo">
+  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+  <label class="menu-open-button" for="menu-open">
+	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="montheme/menuTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
+  </label>
+</nav>
+
+<script id="menuCreation-js">
+	// auto reduce menu after button selection
+  	var autoReduceMenu = true;
+
+	$(document).ready(function () {
+		// display loading message
+      	let menuGoo = $('.menu-goo');
+
+		// load Json configuration file (perso.json)
+      	$.getJSON('montheme/menuTom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+            let navSubmenu = $('#nav-container-animation');
+            // get buttons parameters
+          	let buttons = data.buttons.map(function (button) {
+                  return '<a href="#" class="menu-item" id="' + button.link + '"'
+                              + ' onClick="gotoPlan(this.id)">'
+                              + '<div class="imagette">'
+                                  + '<img src="' + button.icon + '" alt="' + button.label + '" height=50px width=50px margin-bottom=8px>'
+                              + '</div>';
+                          + '</a>';
+            });
+
+			if (buttons.length) {
+				let listButtons = buttons.join(' ');
+				menuGoo.append(listButtons);
+			}
+			
+          	// get menu parameters
+          	if (data.parameters) {
+				autoReduceMenu = data.parameters.auto_reduce_menu?(data.parameters.auto_reduce_menu=="1" || data.parameters.auto_reduce_menu=="true"):true;
+			}
+
+			// set focus on first button 
+          	document.getElementsByClassName('menu-item')[0].click()
+        });
+	});
+  
+    // create url destination
+  	function getUrlDestination(urlParam) {
+      if (isNaN(urlParam)) {
+        return urlParam;
+      } else {
+        return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+      }
+    }
+  
+  	// menu redirection
+  	function gotoPlan(id) {
+      let urlDestination = getUrlDestination(id);
+      // get frame in htmlDisplay equipment
+      let frameDestination = document.getElementById('menuFrame');
+      
+      if (frameDestination == null) {
+        // no frame : page redirection
+		planHeader_id = id;
+        displayPlan();
+      }
+      else {
+        // frame redirection
+        if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+        	frameDestination.src = urlDestination;
+      	}
+      }
+      
+      // auto reduce menu
+      if (autoReduceMenu) {
+        document.getElementById('menu-open').checked = false;
+      }
+	}
+  
+  	//# sourceURL=menuCreation.js
+</script>
+
+<!-- filters -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="shadowed-goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+          <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+          <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+          <feComposite in2="shadow" in="goo" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+      <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+    </defs>
+</svg>
+
+

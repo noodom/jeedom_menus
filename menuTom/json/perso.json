@@ -1,0 +1,52 @@
+{
+    "buttons": [
+        {
+            "label": "Home",
+            "link": "50",
+            "icon": "/montheme/menuTom/img/icon_home.png"
+        },
+        {
+            "label": "Chauffage",
+            "link": "51",
+            "icon": "/montheme/menuTom/img/icon_chauffage.png"
+        },
+        {
+            "label": "Volets",
+            "link": "52",
+            "icon": "/montheme/menuTom/img/icon_volets.png"
+        },
+        {
+            "label": "Sécurité",
+            "link": "53",
+            "icon": "/montheme/menuTom/img/icon_securite.png"
+        },
+        {
+            "label": "Extérieur",
+            "link": "54",
+            "icon": "/montheme/menuTom/img/icon_exterieur.png"
+        },
+        {
+            "label": "Son & Multimédia",
+            "link": "55",
+            "icon": "/montheme/menuTom/img/icon_music.png"
+        },
+        {
+            "label": "Energie",
+            "link": "56",
+            "icon": "/montheme/menuTom/img/icon_energie.png"
+        },
+        {
+            "label": "Agenda",
+            "link": "57",
+            "icon": "/montheme/menuTom/img/icon_agenda.png"
+        },
+        {
+            "label": "Réseau",
+            "link": "58",
+            "icon": "/montheme/menuTom/img/icon_reseau.png"
+        }
+    ],
+	"parameters": {
+      	"auto_reduce_menu": "1"
+ 	}
+}
