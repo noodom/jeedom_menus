@@ -38,6 +38,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 	- Créer un seul nouveau design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
 	- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
 	- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
+	- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
 	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
 		<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
 	- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés
