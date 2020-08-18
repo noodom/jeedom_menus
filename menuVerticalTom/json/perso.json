@@ -47,6 +47,16 @@
         }
     ],
 	"parameters": {
-      	"auto_reduce_menu": "1"
+            "auto_reduce_menu": "1",
+
+            "menu_x": "0px",
+            "menu_y": "280px",
+            "menu_width": "100px",
+            "menu_height": "720px",
+
+            "content_x": "0px",
+            "content_y": "0px",
+            "content_width": "1280px",
+            "content_height": "1000px"
  	}
 }
