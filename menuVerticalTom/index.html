@@ -106,12 +106,12 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 -->
 
-<link rel="stylesheet" type="text/css" href="montheme/menuTom/css/perso.css">
+<link rel="stylesheet" type="text/css" href="montheme/menuVerticalTom/css/perso.css">
 
 <nav class="menu-goo">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
   <label class="menu-open-button" for="menu-open">
-	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="montheme/menuTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
+	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="montheme/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
   </label>
 </nav>
 
@@ -124,7 +124,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 		let menuGoo = $('.menu-goo');
 
 	// load Json configuration file (perso.json)
-		$.getJSON('montheme/menuTom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+		$.getJSON('montheme/menuVerticalTom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
 			let navSubmenu = $('#nav-container-animation');
 			// get buttons parameters
 			let buttons = data.buttons.map(function (button) {
