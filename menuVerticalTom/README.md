@@ -33,22 +33,24 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Solution 1 : **chargement d'une nouvelle page à chaque sélection de bouton** (avec le menu inclus dans toutes les pages de Design)
 	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+	- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
 	- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
 	- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
 	- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=720 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
 	- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 #### Solution 2 : **chargement des pages dans une FRAME** (code index.html du menu présent dans un seul Design)
-	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
-	- Créer un seul nouveau design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
-	- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
-	- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=720 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
-	- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
-	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
-		<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
-	- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+	- Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+	- Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le code de menuFrame.html dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
+	- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
+	- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+	- Ajouter l'équipement htmlDisplay 'Menu' dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
+		- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
+		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
+	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design
 	- Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
-	- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+		- Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
+	- Ajouter les équipements à afficher dans chacun de ces Designs (lumières, portes, fenêtres, volets, etc..)
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuVerticalTom/json/perso.json et SEULEMENT ce fichier)
 	- buttons : liste des boutons du menu
