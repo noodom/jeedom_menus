@@ -18,7 +18,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
-		- Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
+   - Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
         - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
@@ -37,15 +37,17 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 	- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 #### Solution 2 : **chargement des pages dans une FRAME** (code index.html du menu présent dans un seul Design)
-	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
-	- Créer un seul nouveau design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
-	- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
+	- Créer un équipement htmlDisplay 'Menu'  (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+	- Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le contenu de menuFrame.html dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement)
+		- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
+	- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+	- Ajouter l'équipement htmlDisplay 'Menu' dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
 	- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=80 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
-	- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
-	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
-		<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
-	- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+		- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
+		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
+	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
 	- Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
+		- Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
 	- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuJsonFsb33Frame/json/perso.json et SEULEMENT ce fichier)
