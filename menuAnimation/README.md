@@ -55,12 +55,12 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - buttons : liste des boutons du menu
         - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
 
->Pour information, les avantages de la gestion de la navigation du menu par frame (Solution 2) :
->	- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
->	- Les Designs de chaque bouton ne contiennent pas le code du menu :
->		- On construit chaque écran lié à un bouton sans se soucier du menu choisi
->		- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le design correspondant à un menu
->			Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
+Pour information, les avantages de la gestion de la navigation du menu par frame (Solution 2) :
+- [x] Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
+- [x] Les Designs de chaque bouton ne contiennent pas le code du menu :
+- [x] On construit chaque écran lié à un bouton sans se soucier du menu choisi
+- [x] On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le design correspondant à un menu
+   - Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
 
 >**Note** : il n'y a plus besoin de modifier le code (moins de risque d'erreur)
 >
