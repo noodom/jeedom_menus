@@ -44,13 +44,13 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 	- Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le code de menuFrame.html dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
 	- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
 	- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
+	- Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
+		- Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
+	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design
 	- Ajouter l'équipement htmlDisplay 'Menu' dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
 		- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
 		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
-	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design
-	- Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
-		- Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
-	- Ajouter les équipements à afficher dans chacun de ces Designs (lumières, portes, fenêtres, volets, etc..)
+	- (Indépendant du menu) Ajouter les équipements à afficher dans chacun des Designs liés aux boutons (lumières, portes, fenêtres, volets, etc..)
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuVerticalTom/json/perso.json et SEULEMENT ce fichier)
 	- buttons : liste des boutons du menu
