@@ -43,9 +43,9 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 		- Préciser ces liens dans le fichier de configuration /json/perso.json pour la navigation du menu si nécessaire
 	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés
 	- Ajouter l'équipement htmlDisplay 'Menu' dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
-			- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
-			- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
-			- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
+		- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
+		- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
+		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
 	- (Indépendant du menu) Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuAnimation/json/perso.json et SEULEMENT ce fichier)
