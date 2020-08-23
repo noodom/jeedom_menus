@@ -41,7 +41,7 @@
 
 		"button_head_color": "#fff",
 		"button_bottom_color": "#fff",
-		"button_head_bgcolor": "#fff",
+		"button_head_bgcolor": "#000",
 		"button_bottom_bgcolor": "#000",
 		"button_head_hovercolor": "#000",
 		"button_bottom_hovercolor": "#000"

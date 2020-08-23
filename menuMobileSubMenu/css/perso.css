@@ -107,7 +107,7 @@ ul.ul-menu li span
 }
 
 #submenu ul.ul-menu li div {
-	background: #0F0F0F;
+	background: var(--button-head-bgcolor) !important;
 	padding: 10px 0px;
 	-webkit-transform:rotateX(-180deg);
 	-moz-transform:rotateX(-180deg);
