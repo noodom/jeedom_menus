@@ -1,44 +1,9 @@
-<!-- menu Animation (gestion par Json et Frame) (@noodom)-->
-<!-- inspired by https://codepen.io/knyttneve/pen/LKrGBy -->
+<!-- @noodom / Menu Animation (gestion par Json et Frame)
+	- inspiré par https://codepen.io/knyttneve/pen/LKrGBy
+	- ajout de la gestion des boutons par un paramétrage JSon
+	- ajout de la navigation par frame à l'aide de htmlDisplay
 
-<!--
-
-- Installation du menu
--- 2 possibilités :
---- 1. Chargement d'un nouveau Design à chaque sélection de bouton du menu : tous les Designs doivent contenir le menu et le contenu de la page correspondante
---- 2. Gestion par frame :
----- Un Design contient le menu et les autres Designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
-
-Solution 1 : chargement d'une nouvelle page (avec menu inclus dans toutes les pages de Design)
-- Recopier les répertoires /css et /json sous /html/montheme/menuAnimation
-- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
--- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
--- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
--- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
--- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
-
-Solution 2 : chargement des pages dans une FRAME (code index.html du menu présent dans un seul Design)
--- Recopier les répertoires /css et /json sous /html/montheme/menuAnimation
--- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
--- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
--- Ajouter l'équipement htmlDisplay dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
--- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
--- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le code suivant (visible dans menuFrame.html) dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
-	<iframe id="menuFrame" src="about:blank" style="width:100%;height:100%;border:none;"/>
--- Ajouter l'équipement htmlDisplay dans le Design créé précédemment : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés
--- Créer un Design pour chaque lien des boutons du menu
--- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
-
-- Paramétrage du menu (modification du fichier /html/montheme/menuAnimation/json/perso.json et SEULEMENT ce fichier)
--- buttons : liste des boutons du haut du menu
---- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un Design) et "color" (couleur du bouton) pour personnaliser les boutons du menu
-
-Pour information, les avantages de la gestion de la navigation du menu par frames (Solution 2) :
-- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
-- Les Designs de chaque bouton ne contiennent pas le code du menu :
--- On construit chaque écran lié à un bouton sans tenir compte du menu
--- On peut changer de menu sans modifier le contenu des écrans liés aux boutons : il suffit de créer autant de Design que de menus et ensuite, on appelle le Design correspondant à un menu
-	Exemple : on crée un Design pour la navigation depuis un ordinateur, un autre menu pour une navigation depuis le mobile, un autre menu pour une navigation depuis une tablette.
+Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuAnimation/README.md
 
 -->
 

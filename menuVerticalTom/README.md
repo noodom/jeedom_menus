@@ -1,7 +1,9 @@
-# Menu jsonFsb33Frame avec fichier de configuration JSon et gestion de navigation par Frame
-![Menu jsonFsb33Frame](./doc/images/menuJsonFsb33Frame.png)
+# Menu menuVerticalTom avec fichier de configuration JSon et gestion de navigation par Frame
+![Menu menuVerticalTom](./doc/images/menuOuvert.png)
 
-Ce menu reprend le menu F$B33 simplifié par @salvialf
+![Menu menuVerticalTom](./doc/images/menuFerme.png)
+
+Ce menu reprend le menu vertical de @Tom's avec :
 - ajout de la gestion des boutons par un paramétrage JSon
 - ajout de la navigation par frame à l'aide de htmlDisplay
 
@@ -14,7 +16,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css**, **/img** et **/json** dans le répertoire **/html/montheme/menuJsonFsb33Frame** à l'aide du plugin jeeExplorer
+   - Copier les dossiers **/css**, **/img** et **/json** dans le répertoire **/html/montheme/menuVerticalTom** à l'aide du plugin jeeExplorer
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
@@ -31,34 +33,34 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Solution 1 : **chargement d'une nouvelle page à chaque sélection de bouton** (avec le menu inclus dans toutes les pages de Design)
 	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+	- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
 	- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
 	- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
-	- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=80 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+	- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=720 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
 	- Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
 #### Solution 2 : **chargement des pages dans une FRAME** (code index.html du menu présent dans un seul Design)
-	- Créer un équipement htmlDisplay 'Menu'  (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
-	- Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le contenu de menuFrame.html dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement)
+	- Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
+	- Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le code de menuFrame.html dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
 		- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
 	- Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
 	- Créer un Design pour chaque lien des boutons du menu si pas encore existants (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
 		- Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
 		- Préciser ces liens dans le fichier de configuration /json/perso.json pour la navigation du menu si nécessaire
-	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
+	- Ajouter l'équipement htmlDisplay 'Contenu' dans ce même Design
 	- Ajouter l'équipement htmlDisplay 'Menu' dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
-	- Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=80 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
 		- Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
 		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
-	- (Indépendant du menu) Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
+	- (Indépendant du menu) Ajouter les équipements à afficher dans chacun des Designs liés aux boutons (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier /html/montheme/menuJsonFsb33Frame/json/perso.json et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier /html/montheme/menuVerticalTom/json/perso.json et SEULEMENT ce fichier)
 	- buttons : liste des boutons du menu
 		- modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
 	- parameters
 		- menu_x : position x du menu (par défaut "0px")
-		- menu_y : position y du menu (par défaut "0px")
-		- menu_width : largeur du menu (par défaut "1280px")
-		- menu_height : hauteur du menu (par défaut "80px")
+		- menu_y : position y du menu (par défaut "280px")
+		- menu_width : largeur du menu (par défaut "100px")
+		- menu_height : hauteur du menu (par défaut "720px")
 		- content_x : position x du contenu du menu (par défaut "0px")
 		- content_y : position y du contenu du menu (par défaut "0px")
 		- content_width : largeur du contenu du menu (par défaut "1280px")
@@ -88,7 +90,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 >
 >- /html
 >    - /montheme
->        - /menuJsonFsb33Frame  
+>        - /menuVerticalTom  
 >            - /css/perso.css : le css du menu (Modification non nécessaire)
 >            - /img : les images du menu
 >            - /json/perso.json : le json de personnalisation du menu (A personnaliser)
