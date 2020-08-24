@@ -9,7 +9,7 @@ La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant 
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuMobileS** à l'aide du plugin jeeExplorer
+   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuMobileSubMenu** à l'aide du plugin jeeExplorer
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**) au format font-awesome
