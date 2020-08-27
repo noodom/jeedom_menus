@@ -44,15 +44,15 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
       - Attention, vérifier que chaque lien saisi corresponde bien à un design existant
 
    - parameters : positions et tailles du menu et de la frame du contenu (par défaut pour une définition de 320px * 500px)
-      - menu_x : position x du menu (par défaut "0px")
-      - menu_y : position y du menu (par défaut "400px")
-      - menu_width : largeur du menu (par défaut "320px")
-      - menu_height : hauteur du menu (par défaut "200px")
+      - **menu_x** : position x du menu (par défaut "0px")
+      - **menu_y** : position y du menu (par défaut "400px")
+      - **menu_width** : largeur du menu (par défaut "320px")
+      - **menu_height** : hauteur du menu (par défaut "200px")
 
-      - content_x : position x du contenu du contenu (par défaut "0px")
-      - content_y : position y du contenu du contenu (par défaut "0px")
-      - content_width : largeur du contenu du contenu (par défaut "320px")
-      - content_height : hauteur du contenu du contenu (par défaut "500px")        
+      - **content_x** : position x du contenu du contenu (par défaut "0px")
+      - **content_y** : position y du contenu du contenu (par défaut "0px")
+      - **content_width** : largeur du contenu du contenu (par défaut "320px")
+      - **content_height** : hauteur du contenu du contenu (par défaut "500px")        
 
 Pour information, les avantages de la gestion de la navigation du menu par frame :
 - [x] Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
@@ -74,8 +74,8 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 #### Messages d'erreurs possibles
 
-   - "Attention, il manque la création de l'équipement htmlDisplay pour la gestion par frame" : l'équipement htmlDisplay **Contenu** pour la frame de destination des liens des boutons n'a pas été créée
-   - "Attention, corrigez le lien 42 du bouton libelleBouton qui pointe vers le menu principal (boucle sans fin" : un lien saisi dans perso.json est identique au design principal contenant le menu, à corriger.
+   - "**Attention, il manque la création de l'équipement htmlDisplay pour la gestion par frame**" : l'équipement htmlDisplay **Contenu** pour la frame de destination des liens des boutons n'a pas été créée
+   - "**Attention, corrigez le lien 42 du bouton libelleBouton qui pointe vers le menu principal (boucle sans fin)**" : un lien saisi dans perso.json est identique au design principal contenant le menu, à corriger.
 
 >### Création d'un équipement du plugin Html Display pour ajout dans un Design
 >
