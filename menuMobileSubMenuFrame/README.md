@@ -30,7 +30,7 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
    - Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
         - Pour ces 2 équipements, cocher **'Activer'** et **'Visible'** puis **'Sauvegarder'**
    - Créer un Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
-   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design
+   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Contenu')
    - Ajouter l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
         - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
