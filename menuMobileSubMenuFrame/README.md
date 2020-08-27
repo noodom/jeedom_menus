@@ -5,6 +5,8 @@ Ce menu affiche un menu en bas d'écran pour mobile.
 Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
 La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
 
+[![Présentation vidéo](https://img.youtube.com/vi/z3bSMKbSDKY/0.jpg)](https://www.youtube.com/watch?v=z3bSMKbSDKY)
+
 ## Installation du menu
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
