@@ -30,24 +30,23 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
    - Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
         - Pour ces 2 équipements, cocher **'Activer'** et **'Visible'** puis **'Sauvegarder'**
    - Créer un Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
-   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés
+   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design
    - Ajouter l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
-        - Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
         - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuMobileSubMenuFrame/json/perso.json et SEULEMENT ce fichier)
 
-   - buttons : liste des boutons du haut du menu
+   - **buttons** : liste des boutons du haut du menu
       - modifier les valeurs **label** (Libellé du bouton), **link** (lien vers l'id d'un design) et **icon** (icône du bouton au format font-awesome) pour personnaliser les boutons du menu
       - Attention, vérifier que chaque lien saisi corresponde bien à un design existant   
 
-   - buttons_bottom : liste des boutons du bas du menu
+   - **buttons_bottom** : liste des boutons du bas du menu
       - modifier les valeurs **label** (Libellé du bouton), **link** (lien vers l'id d'un design) et **color** (icône du bouton au format font-awesome) pour personnaliser les boutons du menu
       - Remarque : la valeur link pour le bouton Menu du milieu n'est pas nécessaire
       - Attention, vérifier que chaque lien saisi corresponde bien à un design existant
 
-   - parameters : positions et tailles du menu et de la frame du contenu (par défaut pour une définition de 320px * 500px)
+   - **parameters** : positions et tailles du menu et de la frame du contenu (par défaut pour une définition de 320px * 500px)
       - **menu_x** : position x du menu (par défaut "0px")
       - **menu_y** : position y du menu (par défaut "400px")
       - **menu_width** : largeur du menu (par défaut "320px")
@@ -78,7 +77,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 #### Messages d'erreurs possibles
 
-   - "**Attention, il manque la création de l'équipement htmlDisplay pour la gestion par frame**" : l'équipement htmlDisplay **Contenu** pour la frame de destination des liens des boutons n'a pas été créée
+   - "**Attention, il manque la création de l'équipement htmlDisplay pour la gestion par frame**" : l'équipement htmlDisplay **Contenu** pour la frame de destination des liens des boutons n'a pas été créé, à ajouter.
    - "**Attention, corrigez le lien 42 du bouton libelleBouton qui pointe vers le menu principal (boucle sans fin)**" : un lien saisi dans perso.json est identique au design principal contenant le menu, à corriger.
 
 >### Création d'un équipement du plugin Html Display pour ajout dans un Design
