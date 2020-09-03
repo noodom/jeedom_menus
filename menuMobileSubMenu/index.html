@@ -42,14 +42,16 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 <script id="menuCreation-js">
 	$(document).ready(function () {
 		let menuMobile = $('#mobile');
+		let initialDesignId = (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+		
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
 		$.getJSON('montheme/menuMobileSubMenu/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
-          // head
-          let navSubmenu = $('#submenu');
+		  // head
+		  let navSubmenu = $('#submenu');
 		  let buttons = data.buttons.map(function (button) {
 				return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
-            			+ '<div>'
+						+ '<div>'
 							+ '<i class="' + button.icon + '"></i>'
 							+ '<span>'
 								+ button.label
@@ -65,19 +67,25 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 				let menuList = $('<ul class="ul-menu"/>').html(listButtons);
 				navSubmenu.append(menuList);
 			}
-          
-          	// bottom
-          	let i = 0;
-          	navSubmenu = $('#mainmenu');
+		  
+			// bottom
+			let i = 0;
+			navSubmenu = $('#mainmenu');
 			buttons = data.buttons_bottom.map(function (button) {
-              	let idAttr = (i==1)? 'id="menu" class="noactive" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
-				i++;
-              	return '<li ' + idAttr + '>'
-							+ '<i class="' + button.icon + '"></i>'
-							+ '<span>'
-								+ button.label
-							+ '</span>'
-						+ '</li>';
+			// double click on menu link
+			let menuLink = initialDesignId;
+			if (i==1 && button.link != undefined) {
+			  menuLink = button.link;
+			}
+		  
+			let idAttr = (i==1)? 'id="menu" class="noactive" ondblclick="gotoPlan(' + menuLink + ');" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
+			i++;
+			return '<li ' + idAttr + '>'
+						+ '<i class="' + button.icon + '"></i>'
+						+ '<span>'
+							+ button.label
+						+ '</span>'
+					+ '</li>';
 			});
 
 			navSubmenu.empty();
@@ -88,41 +96,41 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 				navSubmenu.append(menuList);
 			}
 
-            if (data.parameters) {
+			if (data.parameters) {
 				// get perso.json parameters
 				let menu_width = data.parameters.menu_width?data.parameters.menu_width:"320px";
 				/*
-                let logo_width = data.parameters.logo_width?data.parameters.logo_width:"60px";
+				let logo_width = data.parameters.logo_width?data.parameters.logo_width:"60px";
 				let menu_text_width = parseInt(menu_width.split('px').join('')) - parseInt(logo_width.split('px').join('')) + 'px';
 				*/
-              	let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#fff";
-                let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#fff";
-              	let button_head_bgcolor = data.parameters.button_head_bgcolor?data.parameters.button_head_bgcolor:"#fff";
-                let button_bottom_bgcolor = data.parameters.button_bottom_bgcolor?data.parameters.button_bottom_bgcolor:"#fff";
+				let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#fff";
+				let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#fff";
+				let button_head_bgcolor = data.parameters.button_head_bgcolor?data.parameters.button_head_bgcolor:"#fff";
+				let button_bottom_bgcolor = data.parameters.button_bottom_bgcolor?data.parameters.button_bottom_bgcolor:"#fff";
 				let button_head_hovercolor = data.parameters.button_head_hovercolor?data.parameters.button_head_hovercolor:"#5fa2db";
 				let button_bottom_hovercolor = data.parameters.button_bottom_hovercolor?data.parameters.button_bottom_hovercolor:"#555555";
 				/*
 				let menu_background_color = data.parameters.menu_background_color?data.parameters.menu_background_color:"#212121";
 				let design_background_color = data.parameters.design_background_color?data.parameters.design_background_color:"#e2e2e2";
 				*/
-              
+			  
 				// set CSS parameters
 				// menu size
 				document.documentElement.style.setProperty('--menu-width', menu_width);
-              	// buttons colors
-                document.documentElement.style.setProperty('--button-head-color', button_head_color);
+				// buttons colors
+				document.documentElement.style.setProperty('--button-head-color', button_head_color);
 				document.documentElement.style.setProperty('--button-bottom-color', button_bottom_color);
-                document.documentElement.style.setProperty('--button-head-bgcolor', button_head_bgcolor);
+				document.documentElement.style.setProperty('--button-head-bgcolor', button_head_bgcolor);
 				document.documentElement.style.setProperty('--button-bottom-bgcolor', button_bottom_bgcolor);
 				document.documentElement.style.setProperty('--button-head-hovercolor', button_head_hovercolor);
 				document.documentElement.style.setProperty('--button-bottom-hovercolor', button_bottom_hovercolor);
 			}
-          
-          	// remove loading message
-          	$("#msg").html("")
+		  
+			// remove loading message
+			$("#msg").html("")
 
 			// TODO : add selected attribute declaration in perso.css
-          	//let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+			//let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
 			//$(planID + ' li').addClass('selected'); <!-- selected = selected button -->
 		});
 	});
@@ -133,15 +141,15 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 	}
 
 	function menuSelection(menuId) {
-      if ($("#" + menuId).attr("class") ==  "noactive") {
-        $("#menu").removeClass("noactive");
-        $("#submenu li").addClass("activeli");
-      }
-      else {
-        $("#menu").addClass("noactive");
-        $("#submenu li").removeClass("activeli");
-      }
-    }
+	  if ($("#" + menuId).attr("class") ==  "noactive") {
+		$("#menu").removeClass("noactive");
+		$("#submenu li").addClass("activeli");
+	  }
+	  else {
+		$("#menu").addClass("noactive");
+		$("#submenu li").removeClass("activeli");
+	  }
+	}
   
-  	//# sourceURL=menuCreation.js
+	//# sourceURL=menuCreation.js
 </script>
