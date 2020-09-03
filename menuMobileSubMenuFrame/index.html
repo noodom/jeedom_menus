@@ -57,7 +57,13 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 					alertMsg("!!! Attention, corrigez le lien " + button.link + " du bouton " + button.label + " qui pointe vers le menu principal (boucle sans fin)");
 				}
 				else {
-					let idAttr = (i == 1) ? 'id="menu" class="noactive" onClick="menuSelection(this.id)"' : 'id="' + button.link + '" onClick="gotoPlan(this.id)"';
+					// double click on menu link
+					let menuLink = -1;
+					if (i==1 && button.link != undefined) {
+						menuLink = button.link;
+					}
+		  
+					let idAttr = (i==1)? 'id="menu" class="noactive" ondblclick="gotoPlan(' + menuLink + ');" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
 					i++;
 					return '<li ' + idAttr + '>'
 						+ '<i class="' + button.icon + '"></i>'
@@ -134,6 +140,10 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 
 	// menu redirection
 	function gotoPlan(id) {
+		if (id == -1) {
+		  return;
+		}
+
 		let urlDestination = getUrlDestination(id);
 		// get frame in htmlDisplay equipment
 		let frameDestination = document.getElementById('menuFrame');
@@ -169,5 +179,5 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 		alert(msg);
 	}
 
-  	//# sourceURL=menuCreation.js
+	//# sourceURL=menuCreation.js
 </script>
