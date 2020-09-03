@@ -1,7 +1,7 @@
 {
-    "buttons": [{
+	"buttons": [{
 			"label": "Agenda",
-			"link": "8",
+			"link": "2",
 			"icon": "fa fa-calendar"
 		}, {
 			"label": "Lumières",
@@ -20,19 +20,20 @@
 			"link": "6",
 			"icon": "fa fa-video"
 		}
-    ],
-    "buttons_bottom": [{
-            "link": "2",
-            "icon": "fa fa-home",
-			"label": "Accueil"
-        }, {
-            "icon": "fa fa-bars",
-			"label": "Menu"
-        }, {
+	],
+	"buttons_bottom": [{
+			"label": "Accueil",
+			"link": "7",
+			"icon": "fa fa-home"
+		}, {
+			"label": "Menu",
+			"link": "8",
+			"icon": "fa fa-bars"
+		}, {
 			"label": "Paramétrage",
 			"link": "9",
 			"icon": "fa fa-sitemap"
-        }
+		}
 	],
 	"parameters": {
 		"menu_x": "0px",
