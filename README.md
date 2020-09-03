@@ -25,13 +25,25 @@ Il permet une configuration par un fichier Json et une navigation par Frame.
 Ce menu affiche un menu vertical sur la gauche de l'écran d'écran. Il affiche un menu haut et un menu bas. Chaque bouton du menu lance l'affichage d'un nouvel écran de Design.
 
 ## Menu [MobileSubMenu](./menuMobileSubMenu) avec fichier de configuration JSon
-![Menu HoverShow](./menuMobileSubMenu/doc/images/menuOuvert.png)
+![Menu MobileSubMenu](./menuMobileSubMenu/doc/images/menuOuvert.png)
 
 Ce menu affiche un menu en bas d'écran pour mobile. 
 
 Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
 
 La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
+
+
+## Menu [MobileSubMenuFrame](./menuMobileSubMenuFrame) avec fichier de configuration JSon et navigation par Frame
+![Menu MobileSubMenuFrame](./menuMobileSubMenu/doc/images/menuOuvert.png)
+
+Ce menu affiche un menu en bas d'écran pour mobile. 
+
+Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
+
+La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
+
+Ce menu reprend le menu MobileSubMenu en ajoutant une navigation par Frame
 
 ## Menu [VerticalTom](./menuVerticalTom) avec fichier de configuration JSon et navigation par Frame
 ![Menu VerticalTom](./menuVerticalTom/doc/images/menuOuvert.png)
