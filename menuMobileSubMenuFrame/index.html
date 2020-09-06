@@ -19,6 +19,7 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 <script id="menuCreation-js">
 	$(document).ready(function () {
 		let menuMobile = $('#mobile');
+		let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
 		
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
@@ -125,15 +126,21 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 			}
 			else {
 			  // first frame loading
-			  if (menuLink == -1) {
-				// set focus on first button 
-				$('#' + data.buttons_bottom[0].link).click();
+			  if (link_id == "") {
+				if (menuLink == -1) {
+					// set focus on first button 
+					$('#' + data.buttons_bottom[0].link).click();
+				}
+				else {
+					// set focus on Menu button
+					gotoPlan(menuLink);
+				 }
 			  }
 			  else {
-				// set focus on Menu button
-				gotoPlan(menuLink);
+				// frame navigation : goto design id (url parameter link_id)
+				gotoPlan(link_id);			
 			  }
-			}          
+			}
 		});
 	});
 
