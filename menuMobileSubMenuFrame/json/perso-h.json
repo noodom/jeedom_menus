@@ -1,0 +1,56 @@
+{
+	"buttons": [{
+			"label": "Agenda",
+			"link": "51",
+			"icon": "fa fa-calendar"
+		}, {
+			"label": "Lumières",
+			"link": "51",
+			"icon": "fa fa-lightbulb"
+		}, {
+			"label": "Energie",
+			"link": "52",
+			"icon": "fa fa-plug"
+		}, {
+			"label": "Chauffage",
+			"link": "53",
+			"icon": "fa fa-thermometer-half"
+		}, {
+			"label": "Caméras",
+			"link": "54",
+			"icon": "fa fa-video"
+		}
+	],
+	"buttons_bottom": [{
+			"link": "55",
+			"icon": "fa fa-home",
+			"label": "Accueil"
+		}, {
+			"link": "56",
+			"icon": "fa fa-bars",
+			"label": "Menu"
+		}, {
+			"label": "Paramétrage",
+			"link": "57",
+			"icon": "fa fa-sitemap"
+		}
+	],
+	"parameters": {
+		"menu_x": "0px",
+		"menu_y": "0px",
+		"menu_width": "320px",
+		"menu_height": "104px",
+
+		"content_x": "0px",
+		"content_y": "0px",
+		"content_width": "320px",
+		"content_height": "500px",
+
+		"button_head_color": "#fff",
+		"button_bottom_color": "#fff",
+		"button_head_bgcolor": "#fff",
+		"button_bottom_bgcolor": "#000",
+		"button_head_hovercolor": "#000",
+		"button_bottom_hovercolor": "#000"
+	}
+}
