@@ -37,9 +37,9 @@
 	],
 	"parameters": {
 		"menu_x": "0px",
-		"menu_y": "400px",
+		"menu_y": "396px",
 		"menu_width": "320px",
-		"menu_height": "200px",
+		"menu_height": "104px",
 
 		"content_x": "0px",
 		"content_y": "0px",
