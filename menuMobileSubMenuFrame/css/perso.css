@@ -12,7 +12,7 @@
 
 #mobile {
 	width: var(--menu-width);
-	height: 120px;
+	height: 100px;
 	margin: 0 auto;
 	position: relative;
 	--background:#f2f2f2;
