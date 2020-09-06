@@ -7,37 +7,38 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 
 -->
 
-<link rel="stylesheet" href="montheme/menuMobileSubMenuFrame/css/perso.css" type="text/css" />
+<link rel="stylesheet" href="montheme/menuMobileSubMenuFrame/css/perso.css" type="text/css"/>
 
 <div id="mobile">
-	<nav id="submenu">
-	</nav>
-	<nav id="mainmenu">
-	</nav>
+  <nav id="submenu">
+  </nav>
+  <nav id="mainmenu">
+  </nav>
 </div>
 
 <script id="menuCreation-js">
 	$(document).ready(function () {
 		let menuMobile = $('#mobile');
+		
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
 		$.getJSON('montheme/menuMobileSubMenuFrame/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
-			let topDesignId = (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
-			// head
-			let navSubmenu = $('#submenu');
-			let buttons = data.buttons.map(function (button) {
+		  let topDesignId = (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+		  // head
+		  let navSubmenu = $('#submenu');
+		  let buttons = data.buttons.map(function (button) {
 				if (button.link === topDesignId) {
 					alertMsg("!!! Attention, corrigez le lien " + button.link + " du bouton " + button.label + " qui pointe vers le menu principal (boucle sans fin)");
 				}
 				else {
-					return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
-						+ '<div>'
-						+ '<i class="' + button.icon + '"></i>'
-						+ '<span>'
-						+ button.label
-						+ '</span>'
-						+ '</div>'
-						+ '</li>';
+				  return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
+						  + '<div>'
+							  + '<i class="' + button.icon + '"></i>'
+							  + '<span>'
+								  + button.label
+							  + '</span>'
+						  + '</div>'
+					  + '</li>';
 				}
 			});
 
@@ -48,29 +49,29 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 				let menuList = $('<ul class="ul-menu"/>').html(listButtons);
 				navSubmenu.append(menuList);
 			}
-
+		  
 			// bottom
 			let i = 0;
+			let menuLink = -1;
 			navSubmenu = $('#mainmenu');
 			buttons = data.buttons_bottom.map(function (button) {
 				if (button.link === topDesignId) {
 					alertMsg("!!! Attention, corrigez le lien " + button.link + " du bouton " + button.label + " qui pointe vers le menu principal (boucle sans fin)");
 				}
 				else {
-					// double click on menu link
-					let menuLink = -1;
-					if (i==1 && button.link != undefined) {
-						menuLink = button.link;
-					}
+				  // double click on menu link
+				  if (i==1 && button.link != undefined && button.link != "") {
+					menuLink = button.link;
+				  }
 		  
-					let idAttr = (i==1)? 'id="menu" class="noactive" ondblclick="gotoPlan(' + menuLink + ');" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
-					i++;
-					return '<li ' + idAttr + '>'
-						+ '<i class="' + button.icon + '"></i>'
-						+ '<span>'
-						+ button.label
-						+ '</span>'
-						+ '</li>';
+				  let idAttr = (i==1)? 'id="menu" class="noactive" ondblclick="gotoPlan(' + menuLink + ');" onClick="menuSelection(this.id)"':'id="' + button.link + '" onClick="gotoPlan(this.id)"';
+				  i++;
+				  return '<li ' + idAttr + '>'
+							  + '<i class="' + button.icon + '"></i>'
+							  + '<span>'
+								  + button.label
+							  + '</span>'
+						  + '</li>';
 				}
 			});
 
@@ -84,13 +85,13 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 
 			if (data.parameters) {
 				// get perso.json parameters
-				let button_head_color = data.parameters.button_head_color ? data.parameters.button_head_color : "#fff";
-				let button_bottom_color = data.parameters.button_bottom_color ? data.parameters.button_bottom_color : "#fff";
-				let button_head_bgcolor = data.parameters.button_head_bgcolor ? data.parameters.button_head_bgcolor : "#fff";
-				let button_bottom_bgcolor = data.parameters.button_bottom_bgcolor ? data.parameters.button_bottom_bgcolor : "#fff";
-				let button_head_hovercolor = data.parameters.button_head_hovercolor ? data.parameters.button_head_hovercolor : "#5fa2db";
-				let button_bottom_hovercolor = data.parameters.button_bottom_hovercolor ? data.parameters.button_bottom_hovercolor : "#555555";
-
+				let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#fff";
+				let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#fff";
+				let button_head_bgcolor = data.parameters.button_head_bgcolor?data.parameters.button_head_bgcolor:"#fff";
+				let button_bottom_bgcolor = data.parameters.button_bottom_bgcolor?data.parameters.button_bottom_bgcolor:"#fff";
+				let button_head_hovercolor = data.parameters.button_head_hovercolor?data.parameters.button_head_hovercolor:"#5fa2db";
+				let button_bottom_hovercolor = data.parameters.button_bottom_hovercolor?data.parameters.button_bottom_hovercolor:"#555555";
+			  
 				// set CSS parameters
 				// menu parameters
 				let htmlDisplayId = '[data-eqlogic_id="#id#"]';
@@ -104,7 +105,7 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 				$("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
 				$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "320px";
 				$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "500px";
-
+			  
 				// buttons colors
 				document.documentElement.style.setProperty('--button-head-color', button_head_color);
 				document.documentElement.style.setProperty('--button-bottom-color', button_bottom_color);
@@ -113,7 +114,7 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 				document.documentElement.style.setProperty('--button-head-hovercolor', button_head_hovercolor);
 				document.documentElement.style.setProperty('--button-bottom-hovercolor', button_bottom_hovercolor);
 			}
-
+		  
 			// remove loading message
 			$("#msg").html("")
 
@@ -123,9 +124,16 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 				alertMsg("Attention, il manque la création de l'équipement htmlDisplay pour la gestion par frame");
 			}
 			else {
-				// frame navigation : set focus on first button 
+			  // first frame loading
+			  if (menuLink == -1) {
+				// set focus on first button 
 				$('#' + data.buttons_bottom[0].link).click();
-			}
+			  }
+			  else {
+				// set focus on Menu button
+				gotoPlan(menuLink);
+			  }
+			}          
 		});
 	});
 
@@ -140,6 +148,7 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 
 	// menu redirection
 	function gotoPlan(id) {
+	  
 		if (id == -1) {
 		  return;
 		}
@@ -152,10 +161,10 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 			// display focus
 			//$('.monmenu').removeClass('selected');
 			//$('#' + id + ' li').addClass('selected');
-
+		  
 			// reduce menu
 			menuSelection(id);
-
+		  
 			// frame redirection
 			if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
 				frameDestination.src = urlDestination;
@@ -164,20 +173,20 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 	}
 
 	function menuSelection(menuId) {
-		if ($("#" + menuId).attr("class") == "noactive") {
-			$("#menu").removeClass("noactive");
-			$("#submenu li").addClass("activeli");
-		}
-		else {
-			$("#menu").addClass("noactive");
-			$("#submenu li").removeClass("activeli");
-		}
+	  if ($("#" + menuId).attr("class") == "noactive") {
+		$("#menu").removeClass("noactive");
+		$("#submenu li").addClass("activeli");
+	  }
+	  else {
+		$("#menu").addClass("noactive");
+		$("#submenu li").removeClass("activeli");
+	  }
 	}
-
+  
 	function alertMsg(msg) {
-		console.log(msg);
+		console.error(msg);
 		alert(msg);
 	}
-
+  
 	//# sourceURL=menuCreation.js
 </script>
