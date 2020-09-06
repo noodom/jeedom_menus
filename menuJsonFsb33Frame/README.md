@@ -10,6 +10,11 @@ La personnalisation est effectuée depuis un fichier de configuration JSON (/jso
 La navigation est effectuée en naviguant sur les designs correspondant à chaque bouton. 
 Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas devoir recharger le menu à chaque changement d'écran.
 
+>**Note** : il est possible de forcer directement le contenu d'un design
+>
+> Il suffit d'ajouter l'id du design souhaité dans le paramètre link_id, par exemple le menu (installé dans le design 73) affichera par défaut le contenu du design 58 :
+> http://monJeedom/index.php?v=d&p=plan&plan_id=73&link_id=58&fullscreen=1
+
 ## Installation du menu
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
