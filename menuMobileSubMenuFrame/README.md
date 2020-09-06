@@ -6,6 +6,7 @@ Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à 
 La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
 
 Au chargement, le contenu affiché est celui du bouton de gauche du Menu si aucun lien n'est configuré pour le bouton Menu.
+
 En définissant un lien pour le bouton Menu, c'est ce contenu qui sera affiché par défaut au démarrage (Dans cette configuration, un double clic sur le bouton Menu affiche ce contenu à tout moment).
 
 Cliquez ici pour la vidéo de présentation :
