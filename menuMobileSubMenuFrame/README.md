@@ -52,9 +52,9 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
 
    - **parameters** : positions et tailles du menu et de la frame du contenu (par défaut pour une définition de 320px * 500px)
       - **menu_x** : position x du menu (par défaut "0px")
-      - **menu_y** : position y du menu (par défaut "400px")
+      - **menu_y** : position y du menu (par défaut "396px")
       - **menu_width** : largeur du menu (par défaut "320px")
-      - **menu_height** : hauteur du menu (par défaut "200px")
+      - **menu_height** : hauteur du menu (par défaut "104px")
 
       - **content_x** : position x du contenu du contenu (par défaut "0px")
       - **content_y** : position y du contenu du contenu (par défaut "0px")
@@ -100,6 +100,12 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >       	- /css/perso.css : le css du menu
 >        	- /json/perso.json : le json de personnalisation du menu
 >        	- /img/ : les images du menu
+
+>**Note** : Pour utiliser le menu avec un affichage en haut de l'écran, il faut remplacer les fichiers suivants pendant l'installation :
+>
+>- remplacer index.html par index-up.html
+>- remplacer perso.css par perso-up.css
+>- remplacer perso.json par perso-up.json
 
 Liste des icônes font-awesome pour l'affichage des boutons :
 - https://fontawesome.com/icons?m=free
