@@ -16,6 +16,7 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuJs
 <script id="menuCreation-js">
 	$(document).ready(function () {
 		let menuTop = $('.menu_top');
+		let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
 		menuTop.append('Chargement du menu..');
 
 		$.getJSON('montheme/menuJsonFsb33Frame/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
@@ -57,8 +58,14 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuJs
 				$(planID + ' li').addClass('selected'); // selected = classe CSS sur élément actif
 			}
 			else {
-				// frame navigation : set focus on first button 
-				$('#' + data.buttons[0].link + ' li').click();
+				if (link_id == "") {
+					// frame navigation : set focus on first button 
+					$('#' + data.buttons[0].link + ' li').click();
+				}
+				else {
+					// frame navigation : goto design id (url parameter link_id)
+					gotoPlan(link_id);
+				}
 			}
 		});
 	});
