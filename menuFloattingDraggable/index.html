@@ -1,0 +1,253 @@
+<!-- menu Floating Draggable (gestion par Json et Frame) (@noodom)
+
+	- Copier anime.js sous /html/montheme/menuFloatingDraggable/js/ 
+	- Créer un design VIDE
+	- Créer un htmlDisplay avec le contenu de menuFrame.html
+	- Ajouter ce htmlDisplay comme équipement du design créé (clic droit / ajouter équipement)
+	- Ajouter un text/html au design créé avec le contenu de index.html (clic droit / ajouter text/html)
+-->
+
+<link rel="stylesheet" href="montheme/menuFloatingDraggable/css/perso.css" type="text/css" />
+
+<div id="menu" class="menu-center menu">
+	<div id="myMenu"></div>
+</div>
+<div id="menu" class="menu-center menu-title">
+
+</div>
+
+<script src="montheme/menuFloatingDraggable/js/anime.js"></script>
+<script id="rendered-js">
+	var timeOut;
+
+	// auto reduce menu after button selection
+	var autoReduceMenu = true;
+
+	class Item {
+		constructor(icon, link, backgroundColor) {
+			this.$element = $(document.createElement("div"));
+			this.icon = icon;
+			this.$element.addClass("menu-item");
+			if ('undefined' !== typeof link) {
+				this.$element.css("background-color", backgroundColor);
+			}
+			var i = document.createElement("i");
+			$(i).addClass(icon);
+			this.$element.append(i);
+			this.prev = null;
+			this.next = null;
+			this.isMoving = false;
+			var element = this;
+
+			if (typeof link !== 'undefined' && link !== null) {
+				this.$element.on("click", function () {
+					clearTimeout(timeOut);
+					gotoPlan(link);
+				});
+			}
+			this.$element.on("mousemove", function () {
+				clearTimeout(timeOut);
+				timeOut = setTimeout(function () {
+					if (element.next && element.isMoving) {
+						element.next.moveTo(element);
+					}
+				}, 10);
+			});
+		}
+
+		moveTo(item) {
+			anime({
+				targets: this.$element[0],
+				left: item.$element.css("left"),
+				top: item.$element.css("top"),
+				duration: 700,
+				elasticity: 500
+			});
+
+			if (this.next) {
+				this.next.moveTo(item);
+			}
+		}
+
+		updatePosition() {
+			anime({
+				targets: this.$element[0],
+				left: this.prev.$element.css("left"),
+				top: this.prev.$element.css("top"),
+				duration: 80
+			});
+
+			if (this.next) {
+				this.next.updatePosition();
+			}
+		}
+	}
+
+	class Menu {
+		constructor(menu) {
+			this.$element = $(menu);
+			this.size = 0;
+			this.first = null;
+			this.last = null;
+			this.timeOut = null;
+			this.hasMoved = false;
+			this.status = "closed";
+		};
+
+		add(item) {
+			var menu = this;
+			if (this.first == null) {
+				this.first = item;
+				this.last = item;
+				this.first.$element.on("mouseup", function () {
+					if (menu.first.isMoving) {
+						menu.first.isMoving = false;
+					} else {
+						menu.click();
+					}
+				});
+				item.$element.draggable({
+					start: function () {
+						menu.close();
+						item.isMoving = true;
+					}
+				}, {
+					drag: function () {
+						if (item.next) {
+							item.next.updatePosition();
+						}
+					}
+				}, {
+					stop: function () {
+						item.isMoving = false;
+						item.next.moveTo(item);
+					}
+				});
+			} else {
+				this.last.next = item;
+				item.prev = this.last;
+				this.last = item;
+			}
+			this.$element.after(item.$element);
+		};
+
+		open() {
+			this.status = "open";
+			var current = (this.first != null) ? this.first.next : null;
+			var iterator = 1;
+			var head = this.first;
+			var sens = (head != null && head.$element.css("left") < head.$element.css("right")) ? 1 : -1;
+			while (current != null) {
+				anime({
+					targets: current.$element[0],
+					left: parseInt(head.$element.css("left"), 10) + sens * (iterator * 50),
+					top: head.$element.css("top"),
+					duration: 500
+				});
+
+				iterator++;
+				current = current.next;
+			}
+		};
+
+		close() {
+			this.status = "closed";
+			var current = this.first.next;
+			var head = this.first;
+			var iterator = 1;
+			while (current != null) {
+				anime({
+					targets: current.$element[0],
+					left: head.$element.css("left"),
+					top: head.$element.css("top"),
+					duration: 500
+				});
+
+				iterator++;
+				current = current.next;
+			}
+		};
+
+		click() {
+			if (this.status == "closed") {
+				this.open();
+			} else {
+				this.close();
+			}
+		};
+	}
+
+	var menu = new Menu("#myMenu");
+	var firstButton = true;
+
+	$.getJSON('montheme/menuFloatingDraggable/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+		data.buttons.map(function (button) {
+			item = new Item(button.icon, (firstButton) ? null : button.link, button.color);
+			firstButton = false;
+			menu.add(item);
+		});
+
+		// get menu parameters
+		if (data.parameters) {
+			autoReduceMenu = data.parameters.auto_reduce_menu ? (data.parameters.auto_reduce_menu == "1" || data.parameters.auto_reduce_menu == "true") : true;
+
+			// menu parameters
+			let menu = $('.menu-center');
+			menu.css('left', data.parameters.menu_x ? data.parameters.menu_x : "0px");
+			menu.css('top', data.parameters.menu_y ? data.parameters.menu_y : "0px");
+
+			// frame parameters
+			$("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+			$("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+			$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+			$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+		}
+
+		// load first button link
+		menu.first.next.$element.click();
+	});
+
+
+	$(document).delay(50).queue(function (next) {
+		menu.open();
+		next();
+		$(document).delay(1000).queue(function (next) {
+			menu.close();
+			next();
+		});
+	});
+
+	// create url destination
+	function getUrlDestination(urlParam) {
+		if (isNaN(urlParam)) {
+			return urlParam;
+		} else {
+			return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+		}
+	}
+
+	// menu redirection
+	function gotoPlan(id) {
+		let urlDestination = getUrlDestination(id);
+		// get frame in htmlDisplay equipment
+		let frameDestination = document.getElementById('menuFrame');
+
+		if (frameDestination == null) {
+			// no frame : page redirection
+			planHeader_id = id;
+			displayPlan();
+		} else {
+			// frame redirection
+			if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+				frameDestination.src = urlDestination;
+			}
+		}
+
+		// auto reduce menu
+		if (autoReduceMenu) {
+			menu.click();
+		}
+	}
+
+	//# sourceURL=pen.js
+</script>

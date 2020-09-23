@@ -1,0 +1,36 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+
+.menu-center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.menu-center {
+    width: 40px;
+    height: 40px;
+}
+
+.menu-title {
+    width: 300px;
+    height: 10px;
+    top: 60px;
+}
+
+.menu-item {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+}
