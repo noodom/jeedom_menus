@@ -22,7 +22,7 @@ Il permet une configuration par un fichier Json et une navigation par Frame.
 
 ![Menu Floating Draggable](./menuFloattingDraggable/doc/images/menuFloattingDraggableOn.png)
 
-Ce menu affiche un bouton principal déplaçable à la souris et affichant les autres boutons sur sélection.Le logo et la couleur de fond sont personnalisables pour chacun.
+Ce menu affiche un bouton principal déplaçable à la souris et affichant les autres boutons sur sélection. Le logo et la couleur de fond sont personnalisables pour chacun.
 
 Il permet une configuration par un fichier Json et une navigation par Frame.
 
