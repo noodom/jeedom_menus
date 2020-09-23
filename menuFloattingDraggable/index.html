@@ -1,10 +1,21 @@
 <!-- menu Floating Draggable (gestion par Json et Frame) (@noodom)
 
-	- Copier anime.js sous /html/montheme/menuFloatingDraggable/js/ 
+	- Copier les répertoires /css, /js et /json sous /html/montheme/menuFloatingDraggable
 	- Créer un design VIDE
 	- Créer un htmlDisplay avec le contenu de menuFrame.html
 	- Ajouter ce htmlDisplay comme équipement du design créé (clic droit / ajouter équipement)
 	- Ajouter un text/html au design créé avec le contenu de index.html (clic droit / ajouter text/html)
+	- Adapter le fichier /html/montheme/menuFloatingDraggable/json/perso.json en fonction du paramétrage souhaité :
+		- Pour chaque bouton du menu, préciser les valeurs de label (nom du bouton), link (lien du design correspondant), icon (icône au format fontawesome), color (couleur de fond)
+		- Pour les paramètres généraux du menu, préciser :
+			- auto_reduce_menu : 1= réduction du menu après sélection d'un bouton, 0=le menu reste ouvert après sélection d'un bouton
+			- menu_x : position du menu depuis la gauche du design
+			- menu_y : position du menu depuis le haut du design
+			- content_x : position du contenu du design correspondant au bouton depuis la gauche du design
+			- content_y : position du contenu du design correspondant au bouton depuis le haut du design
+			- content_width : largeur du contenu du design correspondant au bouton
+			- content_heught : hauteur du contenu du design correspondant au bouton
+
 -->
 
 <link rel="stylesheet" href="montheme/menuFloatingDraggable/css/perso.css" type="text/css" />
