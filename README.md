@@ -32,6 +32,14 @@ Il permet une configuration par un fichier Json et une navigation par Frame.
 
 Ce menu affiche un menu vertical sur la gauche de l'écran d'écran. Il affiche un menu haut et un menu bas. Chaque bouton du menu lance l'affichage d'un nouvel écran de Design.
 
+## Menu [InTheAir](./menuInTheAir) avec fichier de configuration JSon et navigation par Frame
+
+![Menu InTheAir](./menuInTheAir/doc/images/menuOuvert.png)
+
+Ce menu affiche un simple menu en suspension.
+
+Il permet une configuration par un fichier Json et une navigation par Frame.
+
 ## Menu [MobileSubMenu](./menuMobileSubMenu) avec fichier de configuration JSon
 ![Menu MobileSubMenu](./menuMobileSubMenu/doc/images/menuOuvert.png)
 
