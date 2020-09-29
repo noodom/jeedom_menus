@@ -43,8 +43,11 @@ Elle est gérée à l'aide d'une frame, permettant de ne pas devoir recharger le
 	- buttons : liste des boutons du menu
 		- modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (image du bouton) pour personnaliser les boutons du menu
 	- parameters
+		- menu_id : id de l'équipement htmlDisplay du menu (bouton "Configuration avancée" de l'équipement, onglet "Informations", valeur de "ID")
 		- menu_x : position x du menu (par défaut "0px")
 		- menu_y : position y du menu (par défaut "0px")
+		- menu_width : largeur du menu (par défaut "322px", ne pas modifier)
+		- menu_height : hauteur du menu (par défaut "350px", ne pas modifier)
 		- content_x : position x du contenu du menu (par défaut "0px")
 		- content_y : position y du contenu du menu (par défaut "0px")
 		- content_width : largeur du contenu du menu (par défaut "1280px")
