@@ -1,0 +1,157 @@
+.dropholder {
+    width: 322px;
+    height: 60px;
+    margin: 20px auto;
+    padding: 0 0 0 20px;
+    border-radius: 10px;
+    font: 18px arial;
+    color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #9b0db9;
+    animation: move 3s ease-in-out infinite;
+    position: relative;
+}
+
+.dropholder:hover,
+.dropholder:hover:after {
+    animation-play-state: paused;
+}
+
+.dropholder:after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0);
+    display: block;
+    top: 100px;
+    left: 37px;
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    animation: moveShadow 3s ease-in-out infinite;
+}
+
+.accueil {
+    float: left;
+    line-height: 35px;
+    margin-block-start: 1em;
+}
+
+.dropdownMenu>p {
+    font-size: 16px;
+}
+
+.dropdownMenu,
+.dropholder {
+    background: linear-gradient(#da4df8, #9b0db9);
+}
+
+.dropdownMenu {
+    margin-left: 20px;
+    float: left;
+    width: 208px;
+    padding: 0 0 0 20px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    height: 58px;
+    border-left: 1px solid #da4df8;
+    position: relative;
+}
+
+.dropdownMenu:hover {
+    background: linear-gradient(#da4df8, #b11cd0);
+}
+
+.dropdownMenu:after {
+    content: "v";
+    font-size: 18px;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    display: block;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 228px;
+    cursor: pointer;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: rotatey(180deg) rotateX(5deg) translatey(100px);
+    backface-visibility: hidden;
+    background: linear-gradient(#4dc2f8, #0d82b9);
+    border: 2px solid #0d82b9;
+    border-radius: 10px;
+    transition: all 0.8s;
+    z-index: 5;
+    overflow: hidden;
+    padding: 3px;
+}
+
+.menu li {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    color: #e8f8ff;
+    transition: all 0.3s;
+    list-style: none;
+}
+
+.menu li:hover {
+    background: #61ccfd;
+    padding-left: 20px;
+}
+
+.menu li:last-child {
+    border: none;
+}
+
+.showMenu {
+    opacity: 1;
+    transform: rotateX(0deg) translatey(0px);
+}
+
+.element>i {
+    float: left;
+    padding-top: 3px;
+    padding-right: 14px;
+}
+
+.accueil>i {
+    position: relative;
+    top: 2px;
+    padding-right: 5px;
+}
+
+i {
+    opacity: 0.8;
+}
+
+@keyframes move {
+
+    0%,
+    100% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveShadow {
+
+    0%,
+    100% {
+        transform: translateY(10px);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
