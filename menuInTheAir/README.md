@@ -12,6 +12,10 @@ La personnalisation est effectuée depuis un fichier de configuration JSON (/jso
 La navigation est effectuée en naviguant sur les designs correspondant à chaque bouton. 
 Elle est gérée à l'aide d'une frame, permettant de ne pas devoir recharger le menu à chaque changement d'écran.
 
+Cliquez ici pour la vidéo de présentation :
+
+[![Présentation vidéo](https://img.youtube.com/vi/rliQwqflTWw/0.jpg)](https://www.youtube.com/watch?v=rliQwqflTWw)
+
 ## Installation du menu
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
