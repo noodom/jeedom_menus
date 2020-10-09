@@ -10,7 +10,7 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
-   - Récupérer les images nécessaires du menu F$B33 et les copier sous **html/montheme/images**
+   - Récupérer les images nécessaires du menu F$B33 et les copier sous **html/montheme/img**
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
         - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
