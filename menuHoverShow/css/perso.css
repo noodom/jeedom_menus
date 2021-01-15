@@ -1,7 +1,9 @@
 :root {
   --menu-width:250px;
   --menu-text-width:190px;
-  --logo-width: 60px;
+  --logo-width:60px;
+  --logo-height:36px;
+  --logo-size:20px;
   --menu-background-color: #212121;
   --design-background-color: #e2e2e2;
 
@@ -11,17 +13,19 @@
   --button-bottom-hovercolor: #555555;
 }
 
+
 .fa-2x {
 	font-size: 2em;
 }
+
 .fa {
 	position: relative;
 	display: table-cell;
 	width: var(--logo-width);
-	height: 36px;
+	height: var(--logo-height);
 	text-align: center;
 	vertical-align: middle;
-	font-size:20px;
+	font-size: var(--logo-size);
 }
 
 
@@ -82,7 +86,7 @@
 	position:relative;
 	display:table-cell;
 	width:var(--logo-width);
-	height:36px;
+	height:var(--logo-height);
 	text-align:center;
 	vertical-align:middle;
 	font-size:18px;
