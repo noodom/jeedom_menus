@@ -29,21 +29,22 @@
 			"label": "Paramétrage",
 			"link": "9",
 			"icon": "fa fa-2x fa-sitemap"
-		}, {
-            "link": "2",
-            "icon": "fa fa-power-off fa-2x",
+		},{
+        		"link": "2",
+            		"icon": "fa fa-power-off fa-2x",
 			"label": "Se déconnecter"
-        }
+        	}
 	],
 	"parameters": {
       	"menu_width": "250px",
       	"logo_width": "60px",
-      	"menu_background_color": "#212121",
-      	"design_background_color": "#e2e2e2",
-
-		"button_head_color": "#428bca",
-		"button_bottom_color": "#999999",
-		"button_head_hovercolor": "#5fa2db",
-		"button_bottom_hovercolor": "#555555"
+        "logo_height": "36px",
+        "logo_size": "20px",      
+      	"menu_background_color": "#505050",
+      	"design_background_color": "#505050",
+	"button_head_color": "#428bca",
+	"button_bottom_color": "#999999",
+	"button_head_hovercolor": "#5fa2db",
+	"button_bottom_hovercolor": "#555555"
 	}
 }
