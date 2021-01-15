@@ -92,6 +92,8 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 				// get perso.json parameters
 				let menu_width = data.parameters.menu_width?data.parameters.menu_width:"250px";
 				let logo_width = data.parameters.logo_width?data.parameters.logo_width:"60px";
+				let logo_height = data.parameters.logo_height?data.parameters.logo_height:"36px"; 
+ 				let logo_size = data.parameters.logo_size?data.parameters.logo_size:"20px";              
 				let menu_text_width = parseInt(menu_width.split('px').join('')) - parseInt(logo_width.split('px').join('')) + 'px';
 				let button_head_color = data.parameters.button_head_color?data.parameters.button_head_color:"#428bca";
 				let button_bottom_color = data.parameters.button_bottom_color?data.parameters.button_bottom_color:"#999999";
@@ -104,6 +106,8 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 				// menu size
 				document.documentElement.style.setProperty('--menu-width', menu_width);
 				document.documentElement.style.setProperty('--logo-width', logo_width);
+              			document.documentElement.style.setProperty('--logo-height', logo_height);
+              			document.documentElement.style.setProperty('--logo-size', logo_size);              
 				document.documentElement.style.setProperty('--menu-text-width', menu_text_width);
 				// buttons colors
 				document.documentElement.style.setProperty('--button-head-color', button_head_color);
