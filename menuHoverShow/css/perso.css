@@ -18,7 +18,7 @@
 	font-size: 2em;
 }
 
-.fa {
+.fa-menu {
 	position: relative;
 	display: table-cell;
 	width: var(--logo-width);
