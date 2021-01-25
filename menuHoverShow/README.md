@@ -12,7 +12,7 @@ Il affiche un menu haut et un menu bas. Chaque bouton dumenu lance l'affichage d
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**) au format font-awesome
-        - fa-menu-2x est facultatif : il double la taille de l'icône du bouton (le supprimer pour réduire la taille de l'icône)
+        - **fa-menu-2x** est facultatif : il double la taille de l'icône du bouton (le supprimer pour réduire la taille de l'icône)
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
         - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
