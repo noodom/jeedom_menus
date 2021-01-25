@@ -13,9 +13,8 @@
   --button-bottom-hovercolor: #555555;
 }
 
-
-.fa-2x {
-	font-size: 2em;
+.fa-menu-2x {
+	font-size: 2em !important;
 }
 
 .fa-menu {
