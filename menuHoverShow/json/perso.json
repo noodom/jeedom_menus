@@ -2,36 +2,36 @@
     "buttons": [{
 			"label": "Accueil",
 			"link": "2",
-			"icon": "fa fa-2x fa-home"
+			"icon": "fa fa-2x fa-menu fa-home"
 		}, {
 			"label": "Lumières",
 			"link": "3",
-			"icon": "fa fa-2x fa-lightbulb"
+			"icon": "fa fa-2x fa-menu fa-lightbulb"
 		}, {
 			"label": "Energie",
 			"link": "4",
-			"icon": "fa fa-2x fa-plug"
+			"icon": "fa fa-2x fa-menu fa-plug"
 		}, {
 			"label": "Chauffage",
 			"link": "5",
-			"icon": "fa fa-2x fa-thermometer-half"
+			"icon": "fa fa-2x fa-menu fa-thermometer-half"
 		}, {
 			"label": "Caméras",
 			"link": "6",
-			"icon": "fa fa-2x fa-video"
+			"icon": "fa fa-2x fa-menu fa-video"
 		}, {
 			"label": "Agenda",
 			"link": "8",
-			"icon": "fa fa-2x fa-calendar"
+			"icon": "fa fa-2x fa-menu fa-calendar"
 		}
     ],
     "buttons_bottom": [{
 			"label": "Paramétrage",
 			"link": "9",
-			"icon": "fa fa-2x fa-sitemap"
+			"icon": "fa fa-2x fa-menu fa-sitemap"
 		},{
         		"link": "2",
-            		"icon": "fa fa-power-off fa-2x",
+            		"icon": "fa fa-2x fa-menu fa-power-off",
 			"label": "Se déconnecter"
         	}
 	],
