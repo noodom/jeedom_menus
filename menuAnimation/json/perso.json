@@ -28,5 +28,10 @@
 			"link": "56",
       		"color": "black"
 		}
-    ]
+    ],
+    "parameters": {
+      	"button_border_width": "20px",
+      	"button_border_height": "20px",
+        "menu_border_width": "20px"
+    }
 }
