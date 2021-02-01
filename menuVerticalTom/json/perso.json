@@ -47,6 +47,7 @@
         }
     ],
 	"parameters": {
+            "init_close_menu": "1",
             "auto_reduce_menu": "1",
 
             "menu_x": "0px",
