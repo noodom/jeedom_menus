@@ -17,6 +17,8 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuVe
 </nav>
 
 <script id="menuCreation-js">
+  	// close menu at initialisation
+  	var initCloseMenu = true;
 	// auto reduce menu after button selection
 	var autoReduceMenu = true;
 
@@ -44,6 +46,8 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuVe
 			
 			// get menu parameters
 			if (data.parameters) {
+              			// close menu at initialisation
+              			initCloseMenu = data.parameters.init_close_menu?(data.parameters.init_close_menu=="1" || data.parameters.init_close_menu=="true"):true;
 				// reduce menu after selection
 				autoReduceMenu = data.parameters.auto_reduce_menu?(data.parameters.auto_reduce_menu=="1" || data.parameters.auto_reduce_menu=="true"):true;
 
@@ -61,6 +65,8 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuVe
 				$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
 			}
 
+			// open/close menu at init
+			document.getElementById('menu-open').checked = !initCloseMenu;
 			// set focus on first button 
 			document.getElementsByClassName('menu-item')[0].click()
 		});
