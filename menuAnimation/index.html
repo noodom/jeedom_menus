@@ -64,6 +64,17 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuAn
 			 	gotoPlan(link_id);
 		       }
 		  }
+
+		  // get menu parameters
+		  if (data.parameters) {           
+		  	let button_border_height = data.parameters.button_border_height?data.parameters.button_border_height:"10px";
+		  	let button_border_width = data.parameters.button_border_width?data.parameters.button_border_width:"10px";
+		  	let menu_border_width = data.parameters.menu_border_width?data.parameters.menu_border_width:"20px";
+
+		  	document.documentElement.style.setProperty('--button-border-height', button_border_height);
+		  	document.documentElement.style.setProperty('--button-border-width', button_border_width);
+		  	document.documentElement.style.setProperty('--menu-border-width', menu_border_width);                
+		  }          
 		});
 	});
   
