@@ -3,7 +3,7 @@
 
 Ce menu reprend le style neumorphique, les boutons du menu ayant  une couleur personnalisable pour le bouton courant et les autres boutons.
 
-La personnalisation est effectuée depuis un fichier de configuration JSON (/json/perso.json).
+La personnalisation est effectuée depuis un fichier de configuration JSON (**/json/perso.json**).
 
 La navigation est effectuée en naviguant sur les designs correspondant à chaque bouton. 
 Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas devoir recharger le menu à chaque changement d'écran.
@@ -42,14 +42,10 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Paramétrage du menu (modification du fichier /html/montheme/menuNooNeumorphism/json/perso.json et SEULEMENT ce fichier)
 
-   - buttons : liste des boutons du menu
+   - **buttons** : liste des boutons du menu
 
-	- Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (icône du bouton) pour personnaliser les boutons du menu
+   - **parameters** : liste des paramètres du menu
 
-   - parameters : liste des paramètres du menu
-
-        - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (icône du bouton) pour personnaliser les boutons du menu
-       
 	********** Paramètres des boutons ***************
 	   
 	label : libellé du bouton
@@ -58,7 +54,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 		
 	icon : icône fontawesome pour l'affichage du bouton correspondant (ex : "fa fa-2x fa-home", liste à récupérer ici : https://fontawesome.com/icons?d=gallery&p=2&m=free)
 
-       ********** Paramètres du menu ***************
+	********** Paramètres du menu ***************
        
 	label : libellé du champ à afficher dans le menu
 
