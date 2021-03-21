@@ -43,31 +43,48 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 #### Paramétrage du menu (modification du fichier /html/montheme/menuNooNeumorphism/json/perso.json et SEULEMENT ce fichier)
 
    - buttons : liste des boutons du menu
-        - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (icône du bouton) pour personnaliser les boutons du menu
+
+	- Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (icône du bouton) pour personnaliser les boutons du menu
+
    - parameters : liste des paramètres du menu
+
         - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (icône du bouton) pour personnaliser les boutons du menu
        
-	   ********** Paramètres des boutons ***************
-		label : libellé du bouton
-		link : identifiant du design destinataire du lien du menu (ex : 51 pour un design d'url http://www.monjeedom.com/index.php?v=d&p=plan&plan_id=51)
-		icon : icône fontawesome pour l'affichage du bouton correspondant (ex : "fa fa-2x fa-home", liste à récupérer ici : https://fontawesome.com/icons?d=gallery&p=2&m=free)
+	********** Paramètres des boutons ***************
+	   
+	label : libellé du bouton
+		
+	link : identifiant du design destinataire du lien du menu (ex : 51 pour un design d'url http://www.monjeedom.com/index.php?v=d&p=plan&plan_id=51)
+		
+	icon : icône fontawesome pour l'affichage du bouton correspondant (ex : "fa fa-2x fa-home", liste à récupérer ici : https://fontawesome.com/icons?d=gallery&p=2&m=free)
 
-       ********** Paramètres du menu ***************	
-        label : libellé du champ à afficher dans le menu
+       ********** Paramètres du menu ***************
+       
+	label : libellé du champ à afficher dans le menu
 
-        menu_x : position x du menu (par défaut "0px")
-        menu_y : position y du menu (par défaut "0px")
-        menu_width : largeur du menu (par défaut "1280px")
-        menu_height : hauteur du menu (par défaut "80px")
-        content_x : position x du contenu du menu (par défaut "0px")
-        content_y : position y du contenu du menu (par défaut "0px")
-        content_width : largeur du contenu du menu (par défaut "1280px")
-        content_height : hauteur du contenu du menu (par défaut "1000px")
+	menu_x : position x du menu (par défaut "0px")
+
+	menu_y : position y du menu (par défaut "0px")
+        
+	menu_width : largeur du menu (par défaut "1280px")
+        
+	menu_height : hauteur du menu (par défaut "80px")
+        
+	content_x : position x du contenu du menu (par défaut "0px")
+        
+	content_y : position y du contenu du menu (par défaut "0px")
+        
+	content_width : largeur du contenu du menu (par défaut "1280px")
+        
+	content_height : hauteur du contenu du menu (par défaut "1000px")
 
         cursor_color : affiche l'onglet 'Couleurs basiques' (par défaut '#96c927')
-        cursor_default_color : couleur des éléments non sélectionnés du menu (par défaut 'dimgray')
-        cursor_width : largeur des boutons du menu (par défaut '1.5rem')
-        cursor_height : hauteur des boutons du menu (par défaut '0.5rem')
+        
+	cursor_default_color : couleur des éléments non sélectionnés du menu (par défaut 'dimgray')
+        
+	cursor_width : largeur des boutons du menu (par défaut '1.5rem')
+        
+	cursor_height : hauteur des boutons du menu (par défaut '0.5rem')
 		
 Pour information, les avantages de la gestion de la navigation du menu par frame :
 - [x] Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
