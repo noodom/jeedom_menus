@@ -2,8 +2,8 @@
 
 Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramétrage à partir d'un fichier JSon
 
-Pour information, il est conseillé d'utiliser l'évolution de ce menu qui ajoute la navigation par frame à l'aide de htmlDisplay :
-https://github.com/noodom/jeedom_menus/tree/master/menuJsonFsb33Frame
+>**Note** : Pour information, il est conseillé d'utiliser l'évolution de ce menu qui ajoute la navigation par frame à l'aide de htmlDisplay :
+> https://github.com/noodom/jeedom_menus/tree/master/menuJsonFsb33Frame
 
 ## Installation du menu
 
