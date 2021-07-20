@@ -1,129 +1,149 @@
 <!-- ################ menu nooNeumorphism ################ 
 
-Menu reprenant le style neumorphique; avec navigation par frame et configuration par fichier json
+      Menu reprenant le style neumorphique; avec navigation par frame et configuration par fichier json
 
-Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuNooNeumorphism/README.md
+      Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuNooNeumorphism/README.md
 
-       ########### By @noodom ;) 
-       ########### Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url
-       ########### Code disponible ici : https://github.com/noodom/jeedom_menus/tree/master/menuNooNeumorphism
-       ########### Basé sur https://codepen.io/wouterXD/pen/PowjvBb ############# -->
+      ########### By @noodom ;) 
+      ########### Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url
+      ########### Code disponible ici : https://github.com/noodom/jeedom_menus/tree/master/menuNooNeumorphism
+      ########### Basé sur https://codepen.io/wouterXD/pen/PowjvBb ############# -->
 
 <div id="cssDiv">
 </div>
 
 <script>
-  var cssPath = "montheme/menuNeumorphism/css/perso.css";
-  var forceRefreshCss = false;
-  var link = document.createElement("link");
-  link.setAttribute("rel", "stylesheet");
-  link.setAttribute("type", "text/css");
-  var hrefAttribute = cssPath + ((forceRefreshCss==true)?('?v=' + Date.now()):'');
-  link.setAttribute("href", hrefAttribute);
-  document.getElementById('cssDiv').appendChild(link);
+  var jsonPath = 'montheme/menuNooNeumorphism/json/perso.json';
+  var cssPath = "montheme/menuNooNeumorphism/css/perso";
+  var labelFirst = true;
+  var menuHorizontal = true;
 </script>
 
 <nav id="menuNeumorphism">
-  	<!-- Génération dynamique du menu depuis le json de configuration -->
+  <!-- Génération dynamique du menu depuis le json de configuration -->
 </nav>
 
 <script id="menuCreation-js">
-	$(document).ready(function () {
-      
-		// display loading message
-      	var menuNeumorphism = $('#menuNeumorphism');
-		let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
-      	menuNeumorphism.append('<div id="msg">Chargement du menu..</div>');
+  $(document).ready(function () {
 
-		// load Json configuration file
-      	$.getJSON('montheme/menuNeumorphism/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
-          let navSubmenu = $('#navul');
-          let buttons = data.buttons.map(function (button) {
-            	return '<li data-placement="bottom" id="' + button.link + '" title="' + button.label + '"'
-                          	+ ' onClick="gotoPlan(' + button.link + ')"' + '>'
-            				+ '<i class="' + button.icon + '"></i>'
-            				+ '</li>';
-			});
+    // display loading message
+    var menuNeumorphism = $('#menuNeumorphism');
+    let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+    menuNeumorphism.append('<div id="msg">Chargement du menu..</div>');
 
-			menuNeumorphism.empty();
+    // load Json configuration file
+    $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+      let navSubmenu = $('#navul');
+      let buttons = data.buttons.map(function (button) {
+        return '<li data-placement="bottom" id="' + button.link + '" title="' + button.label + '"'
+          + ' onClick="gotoPlan(' + button.link + ')"' + '>'
+          + '<i class="' + button.icon + '"></i>'
+          + '</li>';
+      });
 
-            let listButtons = '<li class="logo">';
-          	if (data.parameters) {
-              listButtons += data.parameters.label?data.parameters.label:"Noodom";
-            }
-          	listButtons += '</li>';
+      menuNeumorphism.empty();
 
-          	if (buttons.length) {
-				listButtons += buttons.join(' ');
-            }
-			let menuList = $('<ul class="navul" />').html(listButtons);
-			menuNeumorphism.append(menuList);
-          
-			if (link_id == "") {
-               // set focus on first button 
-               $('.navul li')[1].click()
-            }
-          	else {
-              // goto linkId
-              gotoPlan(link_id);
-          	}
-
-			// get menu parameters
-			if (data.parameters) {           
-				cursorColor = data.parameters.cursor_color?data.parameters.cursor_color:"#96c927";
-				cursorDefaultColor = data.parameters.cursor_default_color?data.parameters.cursor_default_color:"dimgray";
-				cursorWidth = data.parameters.cursor_width?data.parameters.cursor_width:"1.5rem"; 
-				cursorHeight = data.parameters.cursor_height?data.parameters.cursor_height:"0.5rem"; 
-
-				let htmlDisplayId = '[data-eqlogic_id="#id#"]';
-				$(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-				$(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
-				$(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
-				$(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "80px";
-
-				$("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
-				$("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
-				$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-				$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";              
-
-                document.documentElement.style.setProperty('--cursor-color', cursorColor);
-                document.documentElement.style.setProperty('--cursor-default-color', cursorDefaultColor);
-                document.documentElement.style.setProperty('--cursor-width', cursorWidth);
-                document.documentElement.style.setProperty('--cursor-height', cursorHeight);
-
-			} 
-        });
-	});
-  
-    // create url destination
-  	function getUrlDestination(urlParam) {
-      if (isNaN(urlParam)) {
-        return urlParam;
-      } else {
-        return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+      let listButtons = '<li class="logo">';
+      if (data.parameters) {
+        listButtons += data.parameters.label ? data.parameters.label : "Noodom";
+        labelFirst = data.parameters.label_first ? (data.parameters.label_first == "1") : true;
       }
-    }
-  
-  	// menu redirection
-  	function gotoPlan(id) {
-      let urlDestination = getUrlDestination(id);
-      // get frame in htmlDisplay equipment
-      let frameDestination = document.getElementById('menuFrame');
-      
-      if (frameDestination == null) {
-        // Error : no content frame
-		console.log("ERREUR : Frame de contenu non créée");
+      listButtons += '</li>';
+
+      if (buttons.length) {
+        if (labelFirst) {
+          listButtons += buttons.join(' ');
+        }
+        else {
+          listButtons = buttons.join(' ') + listButtons;
+        }
+      }
+      let menuList = $('<ul class="navul" />').html(listButtons);
+      menuNeumorphism.append(menuList);
+
+      if (link_id == "") {
+        // set focus on first button 
+        $('.navul li')[1].click()
       }
       else {
-        // display focus
-        $('.navul li').removeClass('active');
-        $('#' + id).addClass('active');
-        // fill content frame
-        if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-          	frameDestination.src = urlDestination;
-      	}
+        // goto linkId
+        gotoPlan(link_id);
       }
-	}
-  
-  	//# sourceURL=menuCreation.js
+
+      // get menu parameters
+      if (data.parameters) {
+        cursorColor = data.parameters.cursor_color ? data.parameters.cursor_color : "#96c927";
+        cursorDefaultColor = data.parameters.cursor_default_color ? data.parameters.cursor_default_color : "dimgray";
+        cursorWidth = data.parameters.cursor_width ? data.parameters.cursor_width : "1.5rem";
+        cursorHeight = data.parameters.cursor_height ? data.parameters.cursor_height : "0.5rem";
+
+        let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+        $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+        $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+        let menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
+        let menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "80px";
+        $(htmlDisplayId)[0].style.width = menuWidth;
+        $(htmlDisplayId)[0].style.height = menuHeight;
+        menuHorizontal = parseFloat(menuWidth.replace("px", "")) > parseFloat(menuHeight.replace("px", ""));
+
+        $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+        $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+        $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+        $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+
+        if (menuHorizontal) {
+          document.documentElement.style.setProperty('--menu-height', menuHeight);
+        }
+        else {
+          document.documentElement.style.setProperty('--menu-width', menuWidth);
+        }
+        document.documentElement.style.setProperty('--cursor-color', cursorColor);
+        document.documentElement.style.setProperty('--cursor-default-color', cursorDefaultColor);
+        document.documentElement.style.setProperty('--cursor-width', cursorWidth);
+        document.documentElement.style.setProperty('--cursor-height', cursorHeight);
+      }
+
+      // CSS loading
+      cssPath += (menuHorizontal ? "" : "-v") + (labelFirst ? "" : "2") + ".css";
+      let forceRefreshCss = true;
+      let link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.setAttribute("type", "text/css");
+      let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
+      link.setAttribute("href", hrefAttribute);
+      document.getElementById('cssDiv').appendChild(link);
+    });
+  });
+
+  // create url destination
+  function getUrlDestination(urlParam) {
+    if (isNaN(urlParam)) {
+      return urlParam;
+    } else {
+      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+    }
+  }
+
+  // menu redirection
+  function gotoPlan(id) {
+    let urlDestination = getUrlDestination(id);
+    // get frame in htmlDisplay equipment
+    let frameDestination = document.getElementById('menuFrame');
+
+    if (frameDestination == null) {
+      // Error : no content frame
+      console.log("ERREUR : Frame de contenu non créée");
+    }
+    else {
+      // display focus
+      $('.navul li').removeClass('active');
+      $('#' + id).addClass('active');
+      // fill content frame
+      if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+        frameDestination.src = urlDestination;
+      }
+    }
+  }
+
+  //# sourceURL=menuCreation.js
 </script>
