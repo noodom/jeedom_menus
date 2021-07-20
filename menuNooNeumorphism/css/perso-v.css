@@ -1,0 +1,65 @@
+:root {
+    --cursor-color: #96c927;
+    --cursor-width: 1.5rem;
+    --cursor-height: 0.5rem;
+    --menu-width: 100px;
+}
+
+#menuNeumorphism {
+    z-index: 100;
+  	height: 100%;
+}
+
+.navul {
+  	width: var(--menu-width);
+  	height: 100%;
+    background-color: #efeeee;
+    box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+  	flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 3rem;
+    list-style-type: none;
+}
+
+.navul li.logo {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+	padding-top: 10px;
+  	margin-bottom: auto;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    color: var(--cursor-default-color);
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px white;
+}
+
+.navul li:not(.logo) {
+    margin: 1rem 0;
+    padding: var(--cursor-height) var(--cursor-width);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.1), -4px -4px 6px white;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    color: var(--cursor-default-color);
+}
+
+.navul li:not(.logo):hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), -4px -4px 10px white;
+}
+
+.navul li:not(.logo):hover {
+    color: var(--cursor-color);
+}
+
+.active {
+    outline: none !important;
+    transform: scale(0.95) !important;
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), -4px -4px 10px white, 4px 4px 10px 0 rgba(0, 0, 0, 0.1) inset, -4px -4px 10px white inset !important;
+    color: var(--cursor-color) !important;
+}
