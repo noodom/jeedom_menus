@@ -49,7 +49,9 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 	********** Paramètres des boutons ***************
 	   
 	label : libellé du bouton
-		
+
+	label_first : 1 pour positionner  le label avant les boutons du menu, 0 pour positionner les boutons du menu avant le label
+	
 	link : identifiant du design destinataire du lien du menu (ex : 51 pour un design d'url http://www.monjeedom.com/index.php?v=d&p=plan&plan_id=51)
 		
 	icon : icône fontawesome pour l'affichage du bouton correspondant (ex : "fa fa-2x fa-home", liste à récupérer ici : https://fontawesome.com/icons?d=gallery&p=2&m=free)
@@ -74,14 +76,19 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         
 	content_height : hauteur du contenu du menu (par défaut "1000px")
 
-        cursor_color : affiche l'onglet 'Couleurs basiques' (par défaut '#96c927')
+	cursor_color : affiche l'onglet 'Couleurs basiques' (par défaut '#96c927')
         
 	cursor_default_color : couleur des éléments non sélectionnés du menu (par défaut 'dimgray')
         
 	cursor_width : largeur des boutons du menu (par défaut '1.5rem')
         
 	cursor_height : hauteur des boutons du menu (par défaut '0.5rem')
-		
+
+>**Note** :
+>
+>si la largeur du menu est supérieure à la hauteur du menu, le menu sera alors horizontal
+>si la hauteur du menu est supérieure à la largeur du menu, le menu sera alors vertical
+
 Pour information, les avantages de la gestion de la navigation du menu par frame :
 - [x] Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
 - [x] Les Designs de chaque bouton ne contiennent pas le code du menu :
