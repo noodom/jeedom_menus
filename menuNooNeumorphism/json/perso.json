@@ -43,6 +43,7 @@
    ],
    "parameters":{
       	"label": "Noodom",
+     	"label_first": "1",
      
         "menu_x":"0px",
         "menu_y":"0px",
@@ -54,7 +55,7 @@
         "content_width":"1280px",
         "content_height":"1000px",
      
-		"cursor_color":"#96c927",
+     	"cursor_color":"#96c927",
      	"cursor_default_color":"dimgray",
      	"cursor_width":"1.5rem",
      	"cursor_height":"0.5rem"
