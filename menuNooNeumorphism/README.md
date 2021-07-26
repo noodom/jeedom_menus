@@ -116,3 +116,40 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >        - /menuNooNeumorphism
 >            - /css/perso.css : le css du menu (Modification non nécessaire)
 >            - /json/perso.json : le json de personnalisation du menu (A personnaliser)
+
+Exemples de paramétrages :
+
+
+- menu horizontal, boutons du menu à droite :
+
+```
+"label_first": "1",
+"menu_width":"1280px",
+"menu_height":"80px",
+```
+
+- menu horizontal, boutons du menu à gauche :
+
+```
+"label_first": "0",
+"menu_width":"1280px",
+"menu_height":"80px",
+```
+
+- menu vertical, boutons du menu à droite :
+
+```
+"label_first": "1",
+"menu_width":"100px",
+"menu_height":"1000px",
+```
+
+- menu vertical, boutons du menu à gauche :
+
+```
+"label_first": "0",
+"menu_width":"100px",
+"menu_height":"1000px",
+```
+
+![Menu nooNeumorphism](./doc/images/menuNooMorphismOrientations.png)
