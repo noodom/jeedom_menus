@@ -137,10 +137,15 @@
     else {
       // display focus
       $('.navul li').removeClass('active');
-      $('#' + id).addClass('active');
+      if (!isNaN) {
+            $('#' + id).addClass('active');
+      }
       // fill content frame
       if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
         frameDestination.src = urlDestination;
+      }
+      else {
+        frameDestination.src = id;
       }
     }
   }
