@@ -33,7 +33,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Solution 1 : **chargement d'une nouvelle page à chaque sélection de bouton** (avec le menu inclus dans toutes les pages de Design)
 	- Créer un équipement htmlDisplay (depuis le plugin htmlDisplay) et copier le contenu de index.html dans l'onglet Dashboard
-	- Pour ces 2 équipements, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
+	- Pour cet équipement, cocher 'Activer' et 'Visible' puis 'Sauvegarder'
 	- Créer les Designs de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..) pour chaque lien du menu
 	- Ajouter l'équipement htmlDisplay dans chacun de ces Designs (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
 	- Positionner le htmlDisplay avec pour paramètres d'affichage positionX=0, positionY=280, Largeur=100, Hauteur=720 (facultatif : recalculé depuis les paramètres du fichier de configuration Json)
