@@ -114,13 +114,13 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >   - Sélectionner l'équipement HTML Display créé précédemment
 >   - Redimensionner cet équipement
 
->**Note** : On aura au final l'arborescence suivante (A vérifier avec le plugin jeeExplorer) :
+>**Note** : On aura au final l'arborescence suivante (A vérifier avec l'éditeur de fichiers) :
 >
 >- /html
 >    - /data
 >       - /menusNoodom
 >          - /menuNooNeumorphism
->            - /css/perso.css : le css du menu (Modification non nécessaire)
+>            - /css/perso.css, perso2.css, perso-v.css, perso2-v.css : les css du menu (Modification non nécessaire)
 >            - /json/perso.js : le json de personnalisation du menu (A personnaliser)
 
 Exemples de paramétrages :
