@@ -3,7 +3,7 @@
 
 Ce menu reprend le style neumorphique, les boutons du menu ayant  une couleur personnalisable pour le bouton courant et les autres boutons.
 
-La personnalisation est effectuée depuis un fichier de configuration JSON (**/json/perso.json**).
+La personnalisation est effectuée depuis un fichier de configuration JSON (**html/data/menusNoodom/menuNooNeumorphism/js/perso.js**).
 
 La navigation est effectuée en naviguant sur les designs correspondant à chaque bouton. 
 Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas devoir recharger le menu à chaque changement d'écran.
@@ -12,35 +12,40 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuNooNeumorphism** à l'aide du plugin jeeExplorer
+   - Copier les dossiers **/data/menusNoodom/menuNooNeumorphism/css** et **/data/menusNoodom/menuNooNeumorphism/js** dans le répertoire **/html/data/menusNoodom/menuNooNeumorphism** à l'aide de l'éediteur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
 
-   - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
+   - Editer le fichier **/js/perso.js** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et son icône fontawesome (**icon**)
-		- Définir les positions et tailles des frames du menu et du contenu (détaillé ci-dessous)
-   - Vérifier que le fichier **/json/perso.json** modifié est correct :
-        - Copier son contenu ici : https://jsonlint.com/
+        - Définir les positions et tailles des frames du menu et du contenu (détaillé ci-dessous)
+   - (Optionnel) Vérifier que le fichier **/json/perso.js** modifié est correct :
+        - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
-	- Gestion par frame : Un design contient le menu et les autres designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
-	
-	**chargement des pages dans une FRAME** (code index.html du menu présent dans un seul Design)
+#### Création du menu
 
-   - Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
-   - Créer un équipement htmlDisplay 'Contenu' (depuis le plugin htmlDisplay) et copier le code de **menuFrame.html** dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement)
+>**Note** :
+>
+>  Gestion par frame : 
+>  - Un design contient le menu et les autres designs ne contiennent que le contenu des pages correspondantes à chaque bouton du menu (plus besoin d'inclure le menu sur chaque page)
+> - **chargement des pages dans une FRAME** : code index.html du menu présent dans un seul Design
+
+   - Créer un équipement htmlDisplay **'Contenu'** (depuis le plugin htmlDisplay) et copier le code de **menuFrame.html** dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement)
+   - Créer un équipement htmlDisplay **'Menu'** (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
         - Pour ces 2 équipements, cocher **'Activer'** et **'Visible'** puis **'Sauvegarder'**
    - Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
    - Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
         - Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
-        - Préciser ces liens dans le fichier de configuration /json/perso.json pour la navigation du menu si nécessaire
-   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design : sa position et sa taille seront définis par les paramètres dans le fichier **/json/perso.json**
-   - Ajouter l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
-        -  Sa position et sa taille seront définies par les paramètres dans le fichier **/json/perso.json**
+        - Préciser ces liens dans le fichier de configuration **/js/perso.js** pour la navigation du menu si nécessaire
+   - Ajouter EN PREMIER l'équipement htmlDisplay **'Contenu'** dans ce même Design  (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Contenu')
+        - Sa position et sa taille seront définies par les paramètres dans le fichier **/json/perso.js**
+   - Ajouter EN SECOND l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
+        -  Sa position et sa taille seront définies par les paramètres dans le fichier **/json/perso.js**
         - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
    - (Indépendant du menu) Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier /html/montheme/menuNooNeumorphism/json/perso.json et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier /data/menusNoodom/menuNooNeumorphism/js/perso.js et SEULEMENT ce fichier)
 
    - **buttons** : liste des boutons du menu
 
@@ -98,7 +103,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 >**Note** : il n'y a plus besoin de modifier le code (moins de risque d'erreur)
 >
->Seul le fichier perso.json est à adapter à son menu
+>Seul le fichier perso.js est à adapter à son menu
 
 >### Création d'un équipement du plugin Html Display pour ajout dans un Design
 >
@@ -112,10 +117,11 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >**Note** : On aura au final l'arborescence suivante (A vérifier avec le plugin jeeExplorer) :
 >
 >- /html
->    - /montheme
->        - /menuNooNeumorphism
+>    - /data
+>       - /menusNoodom
+>          - /menuNooNeumorphism
 >            - /css/perso.css : le css du menu (Modification non nécessaire)
->            - /json/perso.json : le json de personnalisation du menu (A personnaliser)
+>            - /json/perso.js : le json de personnalisation du menu (A personnaliser)
 
 Exemples de paramétrages :
 
