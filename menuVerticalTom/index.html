@@ -7,27 +7,29 @@
 - Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 -->
 
-<link rel="stylesheet" type="text/css" href="data/menusNoodom/menuVerticalTom/css/perso.css">
-<script type="text/javascript" src="data/menusNoodom/menuVerticalTom/js/perso.js"></script>
+<link href="data/menusNoodom/menuVerticalTom/css/perso.css" rel="stylesheet" type="text/css">
 
 <nav class="menu-goo">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
   <label class="menu-open-button" for="menu-open">
-	<div id="menu-open-button-open" class="icon_design_actif imagette"><img src="data/menusNoodom/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
+    <div id="menu-open-button-open" class="icon_design_actif imagette"><img
+        src="data/menusNoodom/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
   </label>
 </nav>
 
 <script id="menuVerticalTom-js">
-  	// close menu at initialisation
-  	var initCloseMenu = true;
-	// auto reduce menu after button selection
-	var autoReduceMenu = true;
+  // close menu at initialisation
+  var initCloseMenu = true;
+  // auto reduce menu after button selection
+  var autoReduceMenu = true;
 
-	$(document).ready(function () {
-      // display loading message
-      let menuGoo = $('.menu-goo');
+  $(document).ready(function () {
+    let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
+    // display loading message
+    let menuGoo = $('.menu-goo');
 
-      // load Json configuration file (perso.json)
+    // load Json configuration file (perso.json)
+    $.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
       let navSubmenu = $('#nav-container-animation');
       // get buttons parameters
       let buttons = data.buttons.map(function (button) {
@@ -47,9 +49,9 @@
       // get menu parameters
       if (data.parameters) {
         // close menu at initialisation
-        initCloseMenu = data.parameters.init_close_menu?(data.parameters.init_close_menu=="1" || data.parameters.init_close_menu=="true"):true;
+        initCloseMenu = data.parameters.init_close_menu ? (data.parameters.init_close_menu == "1" || data.parameters.init_close_menu == "true") : true;
         // reduce menu after selection
-        autoReduceMenu = data.parameters.auto_reduce_menu?(data.parameters.auto_reduce_menu=="1" || data.parameters.auto_reduce_menu=="true"):true;
+        autoReduceMenu = data.parameters.auto_reduce_menu ? (data.parameters.auto_reduce_menu == "1" || data.parameters.auto_reduce_menu == "true") : true;
 
         // menu parameters
         let htmlDisplayId = '[data-eqlogic_id="#id#"]';
@@ -69,60 +71,61 @@
       document.getElementById('menu-open').checked = !initCloseMenu;
       // set focus on first button 
       document.getElementsByClassName('menu-item')[0].click()
-	});
-  
-	// create url destination
-	function getUrlDestination(urlParam) {
-	  if (isNaN(urlParam)) {
-		return urlParam;
-	  } else {
-		return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-	  }
-	}
-  
-	// menu redirection
-	function gotoPlan(id) {
-	  let urlDestination = getUrlDestination(id);
-	  // get frame in htmlDisplay equipment
-	  let frameDestination = document.getElementById('menuFrame');
-	  
-	  if (frameDestination == null) {
-		// no frame : page redirection
-		planHeader_id = id;
-		displayPlan();
-	  }
-	  else {
-		// frame redirection
-		if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-			frameDestination.src = urlDestination;
-		}
-	  }
-	  
-	  // auto reduce menu
-	  if (autoReduceMenu) {
-		document.getElementById('menu-open').checked = false;
-	  }
-	}
-  
+    });
+  });
+
+  // create url destination
+  function getUrlDestination(urlParam) {
+    if (isNaN(urlParam)) {
+      return urlParam;
+    } else {
+      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+    }
+  }
+
+  // menu redirection
+  function gotoPlan(id) {
+    let urlDestination = getUrlDestination(id);
+    // get frame in htmlDisplay equipment
+    let frameDestination = document.getElementById('menuFrame');
+
+    if (frameDestination == null) {
+      // no frame : page redirection
+      planHeader_id = id;
+      displayPlan();
+    }
+    else {
+      // frame redirection
+      if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+        frameDestination.src = urlDestination;
+      }
+    }
+
+    // auto reduce menu
+    if (autoReduceMenu) {
+      document.getElementById('menu-open').checked = false;
+    }
+  }
+
 	//# sourceURL=menuVerticalTom.js
 </script>
 
 <!-- filters -->
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-	<defs>
-	  <filter id="shadowed-goo">
-		  <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-		  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-		  <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-		  <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-		  <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-		  <feComposite in2="shadow" in="goo" result="goo" />
-		  <feComposite in2="goo" in="SourceGraphic" result="mix" />
-	  </filter>
-	  <filter id="goo">
-		  <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-		  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-		  <feComposite in2="goo" in="SourceGraphic" result="mix" />
-	  </filter>
-	</defs>
+  <defs>
+    <filter id="shadowed-goo">
+      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+      <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+      <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+      <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+      <feComposite in2="shadow" in="goo" result="goo" />
+      <feComposite in2="goo" in="SourceGraphic" result="mix" />
+    </filter>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+      <feComposite in2="goo" in="SourceGraphic" result="mix" />
+    </filter>
+  </defs>
 </svg>
