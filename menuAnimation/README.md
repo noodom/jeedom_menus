@@ -3,7 +3,7 @@
 
 Ce menu affiche les boutons du menu avec une couleur personnalisable pour chacun.
 
-La personnalisation est effectuée depuis un fichier de configuration JSON (**/html/data/menusNoodom/menuAnimation/js/perso.js**).
+La personnalisation est effectuée depuis un fichier de configuration JSON (**/html/data/menusNoodom/menuAnimation/json/perso.json**).
 
 La navigation est effectuée en naviguant sur les designs correspondant à chaque bouton. 
 Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas devoir recharger le menu à chaque changement d'écran.
@@ -14,9 +14,9 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
    - Copier les dossiers **/html/data/menusNoodom/menuAnimation/css** et **/html/data/menusNoodom/menuAnimation/jn** dans le répertoire **/html/data/menusNoodom/menuAnimation** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
 
-   - Editer le fichier **/html/data/menusNoodom/menuAnimation/js/perso.js** à l'aide de l'éditeur de fichier :
+   - Editer le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et sa couleur (**color**)
-   - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuAnimation/js/perso.js** modifié est correct :
+   - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** modifié est correct :
         - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
@@ -29,7 +29,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - Créer un seul nouveau Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
    - Créer un Design pour chaque lien des boutons du menu (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
         - Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
-        - Préciser ces liens dans le fichier de configuration **/js/perso.js** pour la navigation du menu si nécessaire
+        - Préciser ces liens dans le fichier de configuration **/json/perso.json** pour la navigation du menu si nécessaire
    - Ajouter EN PREMIER l'équipement htmlDisplay **'Contenu'** dans ce même Design : adapter sa taille en fonction de l'endroit et de la taille souhaités pour l'affichage du contenu des menus sélectionnés
    - Ajouter EN SECOND l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
         - Positionner le htmlDisplay en haut de l'écran, avec pour paramètres d'affichage positionX=0, positionY=0, Largeur=largeur écran, Hauteur=120
@@ -37,7 +37,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
    - (Indépendant du menu) Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuAnimation/js/perso.js** et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** et SEULEMENT ce fichier)
 
    - buttons : liste des boutons du menu
         - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
@@ -51,7 +51,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 >**Note** : il n'y a plus besoin de modifier le code (moins de risque d'erreur)
 >
->Seul le fichier **/js/perso.js** est à adapter à son menu
+>Seul le fichier **/json/perso.json** est à adapter à son menu
 
 >### Création d'un équipement du plugin Html Display pour ajout dans un Design
 >
@@ -69,4 +69,4 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >        - /menusNoodom
 >            - /menuAnimation  
 >                - /css/perso.css : le css du menu (Modification non nécessaire)
->                - /js/perso.js : le json de personnalisation du menu (A personnaliser)
+>                - /json/perso.json : le json de personnalisation du menu (A personnaliser)
