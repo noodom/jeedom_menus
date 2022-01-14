@@ -7,134 +7,136 @@
 - Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 -->
 
-<link rel="stylesheet" href="data/menusNoodom/menuAnimation/css/perso.css" type="text/css" />
-<script type="text/javascript" src="data/menusNoodom/menuAnimation/js/perso.js"></script>
+<link href="data/menusNoodom/menuAnimation/css/perso.css" rel="stylesheet" type="text/css">
 
 <div id="mobile">
-    <nav id="nav-container-animation">
-    </nav>
+  <nav id="nav-container-animation">
+  </nav>
 </div>
 
 <script id="menuAnimation-js">
-    $(document).ready(function () {
-        // display loading message
-        let menuMobile = $('#mobile');
-        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
-        menuMobile.append('<div id="msg">Chargement du menu..</div>');
+  $(document).ready(function () {
+    let jsonPath = 'data/menusNoodom/menuAnimation/json/perso.json';
+    // display loading message
+    let menuMobile = $('#mobile');
+    let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+    menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
-        // load Json configuration file
-        let navSubmenu = $('#nav-container-animation');
-        let buttons = data.buttons.map(function (button) {
-            return '<a href="#" id="' + button.link + '"'
-                + ' class="nav-item-animation'
-                + '" active-color="' + button.color + '"'
-                + ' onClick="buttonFocus(this)"'
-                + '>'
-                + button.label
-                + '</a>';
-        });
+    // load Json configuration file
+    $.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
+      let navSubmenu = $('#nav-container-animation');
+      let buttons = data.buttons.map(function (button) {
+        return '<a href="#" id="' + button.link + '"'
+          + ' class="nav-item-animation'
+          + '" active-color="' + button.color + '"'
+          + ' onClick="buttonFocus(this)"'
+          + '>'
+          + button.label
+          + '</a>';
+      });
 
-        navSubmenu.empty();
+      navSubmenu.empty();
 
-        if (buttons.length) {
-            let listButtons = buttons.join(' ');
-            navSubmenu.append(listButtons);
-        }
-        navSubmenu.append('<span class="nav-indicator-animation" style="width: 87px; left: 335px; background-color: ' + data.buttons[0].color + ';"></span>');
+      if (buttons.length) {
+        let listButtons = buttons.join(' ');
+        navSubmenu.append(listButtons);
+      }
+      navSubmenu.append('<span class="nav-indicator-animation" style="width: 87px; left: 335px; background-color: ' + data.buttons[0].color + ';"></span>');
 
-        // remove loading message
-        $("#msg").html("")
+      // remove loading message
+      $("#msg").html("")
 
-        if (link_id == "") {
-            // set focus on first button 
-            document.getElementsByClassName('nav-item-animation')[0].click();
+      if (link_id == "") {
+        // set focus on first button 
+        document.getElementsByClassName('nav-item-animation')[0].click();
+      }
+      else {
+        let linkEl = document.getElementById(link_id);
+        if (linkEl !== null) {
+          // link design in menu
+          // set focus on existing link button
+          linkEl.click();
         }
         else {
-            let linkEl = document.getElementById(link_id);
-            if (linkEl !== null) {
-                // link design in menu
-                // set focus on existing link button
-                linkEl.click();
-            }
-            else {
-                // link design not in menu
-                // remove focus for all buttons
-                resetFocus();
-                // display design from link button
-                gotoPlan(link_id);
-            }
+          // link design not in menu
+          // remove focus for all buttons
+          resetFocus();
+          // display design from link button
+          gotoPlan(link_id);
         }
+      }
 
-        // get menu parameters
-        if (data.parameters) {
-            let button_border_height = data.parameters.button_border_height ? data.parameters.button_border_height : "10px";
-            let button_border_width = data.parameters.button_border_width ? data.parameters.button_border_width : "10px";
-            let menu_border_width = data.parameters.menu_border_width ? data.parameters.menu_border_width : "20px";
+      // get menu parameters
+      if (data.parameters) {
+        let button_border_height = data.parameters.button_border_height ? data.parameters.button_border_height : "10px";
+        let button_border_width = data.parameters.button_border_width ? data.parameters.button_border_width : "10px";
+        let menu_border_width = data.parameters.menu_border_width ? data.parameters.menu_border_width : "20px";
 
-            document.documentElement.style.setProperty('--button-border-height', button_border_height);
-            document.documentElement.style.setProperty('--button-border-width', button_border_width);
-            document.documentElement.style.setProperty('--menu-border-width', menu_border_width);
-        }
+        document.documentElement.style.setProperty('--button-border-height', button_border_height);
+        document.documentElement.style.setProperty('--button-border-width', button_border_width);
+        document.documentElement.style.setProperty('--menu-border-width', menu_border_width);
+      }
     });
+  });
 
-    // create url destination
-    function getUrlDestination(urlParam) {
-        if (isNaN(urlParam)) {
-            return urlParam;
-        } else {
-            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-        }
+  // create url destination
+  function getUrlDestination(urlParam) {
+    if (isNaN(urlParam)) {
+      return urlParam;
+    } else {
+      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
     }
+  }
 
-    // menu redirection
-    function gotoPlan(id) {
-        let urlDestination = getUrlDestination(id);
-        // get frame in htmlDisplay equipment
-        let frameDestination = document.getElementById('menuFrame');
+  // menu redirection
+  function gotoPlan(id) {
+    let urlDestination = getUrlDestination(id);
+    // get frame in htmlDisplay equipment
+    let frameDestination = document.getElementById('menuFrame');
 
-        if (frameDestination == null) {
-            // no frame : page redirection
-            planHeader_id = id;
-            displayPlan();
-        }
-        else {
-            // frame redirection
-            if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-                frameDestination.src = urlDestination;
-            }
-        }
+    if (frameDestination == null) {
+      // no frame : page redirection
+      planHeader_id = id;
+      displayPlan();
     }
-
-    // focus on button
-    function buttonFocus(el) {
-        const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
-        const items = $('.nav-item-animation');
-
-        // remove focus for all buttons
-        resetFocus();
-
-        // set focused button
-        el.className = "nav-item-animation is-active";
-        el.style = "color:" + el.getAttribute('active-color') + " !important;";
-
-        indicator.style.width = `${el.offsetWidth}px`;
-        indicator.style.left = `${el.offsetLeft}px`;
-        indicator.style.backgroundColor = el.getAttribute('active-color');
-
-        // display frame content
-        gotoPlan(el.id);
+    else {
+      // frame redirection
+      if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+        frameDestination.src = urlDestination;
+      }
     }
+  }
 
-    // reset buttons focus
-    function resetFocus() {
-        const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
-        const items = $('.nav-item-animation');
+  // focus on button
+  function buttonFocus(el) {
+    const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
+    const items = $('.nav-item-animation');
 
-        // remove focus for all buttons
-        items.removeClass('is-active');
-        items.removeAttr('style');
-        indicator.style = "";
-    }
+    // remove focus for all buttons
+    resetFocus();
+
+    // set focused button
+    el.className = "nav-item-animation is-active";
+    el.style = "color:" + el.getAttribute('active-color') + " !important;";
+
+    indicator.style.width = `${el.offsetWidth}px`;
+    indicator.style.left = `${el.offsetLeft}px`;
+    indicator.style.backgroundColor = el.getAttribute('active-color');
+
+    // display frame content
+    gotoPlan(el.id);
+  }
+
+  // reset buttons focus
+  function resetFocus() {
+    const indicator = document.getElementsByClassName('nav-indicator-animation')[0];//$('.nav-indicator-animation');
+    const items = $('.nav-item-animation');
+
+    // remove focus for all buttons
+    items.removeClass('is-active');
+    items.removeAttr('style');
+    indicator.style = "";
+  }
 
 	//# sourceURL=menuAnimation.js
 </script>
