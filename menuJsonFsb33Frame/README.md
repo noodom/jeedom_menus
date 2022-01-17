@@ -44,7 +44,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 		- Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
    - (Indépendant du menu) Ajouter les équipements à afficher dans chaque Design du menu (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier **/html/montheme/menuJsonFsb33Frame/json/perso.json** et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuJsonFsb33Frame/json/perso.json** et SEULEMENT ce fichier)
    - buttons : liste des boutons du menu
    - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
    	- parameters
