@@ -16,7 +16,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css**, **/img** et **/json** dans le répertoire **/html/montheme/menuVerticalTom** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
+   - Copier les dossiers **/css**, **/img** et **/json** dans le répertoire **/html/data/menusNoodom/menuVerticalTom** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
 
    - Editer le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
@@ -40,7 +40,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
       - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
    - (Indépendant du menu) Ajouter les équipements à afficher dans chacun des Designs liés aux boutons (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier **/html/montheme/menuVerticalTom/json/perso.json** et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** et SEULEMENT ce fichier)
    - buttons : liste des boutons du menu
       - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
    - parameters
