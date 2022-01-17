@@ -16,7 +16,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css**, **/img** et **/json** dans le répertoire **/html/data/menusNoodom/menuVerticalTom** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
+   - Copier les dossiers **/data/menusNoodom/menuVerticalTom/css**, **/data/menusNoodom/menuVerticalTom/img** et **/json** dans le répertoire **/html/data/menusNoodom/menuVerticalTom** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
 
    - Editer le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
