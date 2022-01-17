@@ -2,31 +2,31 @@
     "buttons": [{
 			"label": "Agenda",
 			"link": "50",
-      		"color": "orange"
+			"color": "orange"
 		}, {
 			"label": "Lumières",
 			"link": "51",
-      		"color": "yellow"
+			"color": "yellow"
 		}, {
 			"label": "Energie",
 			"link": "52",
-      		"color": "pink"
+			"color": "pink"
 		}, {
 			"label": "Chauffage",
 			"link": "53",
-      		"color": "red"
+			"color": "red"
 		}, {
 			"label": "Caméras",
 			"link": "54",
-      		"color": "rebeccapurple"
+			"color": "rebeccapurple"
 		}, {
 			"label": "Multimédia",
 			"link": "55",
-      		"color": "#ff0000"
+			"color": "#ff0000"
 		}, {
 			"label": "Caméras 3",
 			"link": "56",
-      		"color": "black"
+			"color": "black"
 		}
     ],
     "parameters": {
