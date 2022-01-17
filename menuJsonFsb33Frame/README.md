@@ -20,6 +20,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
    - Copier les dossiers **/html/data/menusNoodom/menuJsonFsb33Frame/css**, **/html/data/menusNoodom/menuJsonFsb33Frame/img** et **/html/data/menusNoodom/menuJsonFsb33Frame/json** dans le répertoire **html/data/menusNoodom/menuJsonFsb33Frame** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
+   - Copier le fichier **/data/menusNoodom/.htaccess** dans le répertoire **/html/data/menusNoodom** en ssh
 
    - Editer le fichier **/json/perso.json** de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
