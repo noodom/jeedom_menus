@@ -12,7 +12,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/html/data/menusNoodom/menuAnimation/css** et **/html/data/menusNoodom/menuAnimation/jn** dans le répertoire **/html/data/menusNoodom/menuAnimation** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
+   - Copier les dossiers **/html/data/menusNoodom/menuAnimation/css** et **/html/data/menusNoodom/menuAnimation/json** dans le répertoire **/html/data/menusNoodom/menuAnimation** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
 
    - Editer le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et sa couleur (**color**)
