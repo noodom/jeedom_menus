@@ -47,7 +47,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuJsonFsb33Frame/json/perso.json** et SEULEMENT ce fichier)
    - buttons : liste des boutons du menu
-   - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
+   - modifier les valeurs **link** (lien vers l'id d'un design) et **icon** (image du bouton) pour personnaliser les boutons du menu
    	- parameters
 		- menu_x : position x du menu (par défaut "0px")
 		- menu_y : position y du menu (par défaut "0px")
