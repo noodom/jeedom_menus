@@ -33,17 +33,17 @@
         {
             "label": "Energie",
             "link": "56",
-            "icon": "/montheme/menuVerticalTom/img/icon_energie.png"
+            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_energie.png"
         },
         {
             "label": "Agenda",
             "link": "57",
-            "icon": "/montheme/menuVerticalTom/img/icon_agenda.png"
+            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_agenda.png"
         },
         {
             "label": "Réseau",
             "link": "58",
-            "icon": "/montheme/menuVerticalTom/img/icon_reseau.png"
+            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_reseau.png"
         }
     ],
 	"parameters": {
