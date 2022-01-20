@@ -108,7 +108,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >
 >- remplacer index.html par index-up.html
 >- remplacer perso.css par perso-up.css
->- remplacer perso.json par perso-up.json
+>- remplacer perso.json par perso-h.json
 
 Liste des icônes font-awesome pour l'affichage des boutons :
 - https://fontawesome.com/icons?m=free
