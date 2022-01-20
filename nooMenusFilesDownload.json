@@ -1,0 +1,83 @@
+{
+    "name": "nooMenusFilesDownload",
+    "isActive": "1",
+    "group": "Gestion Design",
+    "mode": "provoke",
+    "schedule": "",
+    "trigger": [
+        ""
+    ],
+    "timeout": "0",
+    "isVisible": "0",
+    "display": {
+        "name": "",
+        "icon": ""
+    },
+    "order": "9999",
+    "description": "- Télécharge le fichier \/data\/menusNoodom\/.htAccess nécessaire au bon fonctionnement des menus\n- Télécharge les fichiers nécessaires pour un menu noodom donné",
+    "configuration": {
+        "timeDependency": 0,
+        "has_return": 0,
+        "logmode": "default",
+        "allowMultiInstance": "0",
+        "syncmode": "0",
+        "timeline::enable": "0",
+        "timeline::folder": ""
+    },
+    "state": "stop",
+    "elements": [
+        {
+            "name": null,
+            "type": "comment",
+            "options": [],
+            "order": "0",
+            "subElements": [
+                {
+                    "name": null,
+                    "type": "comment",
+                    "subtype": "comment",
+                    "options": {
+                        "collapse": "0"
+                    },
+                    "order": "0",
+                    "expressions": [
+                        {
+                            "type": "comment",
+                            "subtype": null,
+                            "expression": "Scénario de recopie des fichiers nécessaires à la construction d'un menu noodom :\n- Télécharge le fichier \/data\/menusNoodom\/.htAccess nécessaire au bon fonctionnement des menus\n- Télécharge les fichiers nécessaire pour un menu noodom donné\n\n1. Préciser le menu qu'on souhaite recopier à la ligne suivante dans le bloc code ci-dessous en choisissant parmi la liste des menus suivants : menuAnimation, menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame\n          $menuName = 'menuMobileSubMenuFrame'; \n2. Exécuter le scénario => Les fichiers nécessaires au menu seront alors copiés sous \/data\/menusNoodom",
+                            "options": [],
+                            "order": "0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": null,
+            "type": "code",
+            "options": [],
+            "order": "0",
+            "subElements": [
+                {
+                    "name": null,
+                    "type": "code",
+                    "subtype": "action",
+                    "options": {
+                        "collapse": "0",
+                        "enable": "1"
+                    },
+                    "order": "0",
+                    "expressions": [
+                        {
+                            "type": "code",
+                            "subtype": null,
+                            "expression": "\/\/ Noodom menus installation\n\/\/ - Download file \/data\/menusNoodom\/.htAccess\n\/\/ - Download menu files\n  \n\/\/ Menu name\n\/\/ Choose your following menu with $menuName\n\/\/ => menuJsonFsb33Frame, menuAnimation, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame\n\n\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\n$menuName = 'menuJsonFsb33Frame'; \n\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\n\n\/\/ Menus folder\n$menusFolder = 'menusNoodom';\n\/\/ Origin folder\n$originDir = 'https:\/\/raw.githubusercontent.com\/noodom\/jeedom_menus\/master\/' . $menuName . '\/data\/' . $menusFolder; \n\/\/ Destination folder\n$destinationDir = '\/var\/www\/html\/data\/' . $menusFolder;\n\/\/ Zip menu file\n$menuZipFile = $originDir . '\/' . $menuName . '.zip'; \n\n\/\/ Create menus folder \/menusNoodom\nif (!is_file($destinationDir) && !is_dir($destinationDir)) {\n  $scenario->setLog('Destination dir creation (menus folder) : ' . $destinationDir);\n  mkdir($destinationDir);\n}\n\n\/\/ Get .htaccess file\nif (is_dir($destinationDir) . '\/.') {\n  $scenario->setLog('** Get .htaccess file');\n  $originUrl = $originDir . '\/.htaccess';\n\n  $filename = basename($originUrl); \n  $save = $destinationDir . '\/' . $filename;\n  $scenario->setLog('- Origin filename : ' . $originUrl);\n  $scenario->setLog('- Destination filename : ' . $save);\n  if (file_put_contents($save,file_get_contents($originUrl))) {\n    $scenario->setLog('- .htaccess downloaded !');\n  }\n}\n\n\/\/ Get menu files\n$destinationMenu = $destinationDir . '\/' .$menuName;\nif (is_dir($destinationMenu . '\/.')) {\n  \/\/ Delete existing menu folder\n  $scenario->setLog('** Delete existing menu folder : ' . $destinationMenu);\n  rrmdir($destinationMenu);\n}\n\nif (is_dir($destinationDir)) {\n  $scenario->setLog('** Get files for menu ' . $menuName);\n  $scenario->setLog('- Get menu zip file : ' . $menuZipFile);\n  $destination = $destinationDir . '\/temp.zip';\n  $scenario->setLog('- Destination menu zip file : ' . $destination);\n  if (!copy($menuZipFile, $destination)) {\n    $scenario->setLog('\/!\\ Menu zip file download failed !');\n  }\n  else {\n    $zip = new ZipArchive();\n    if ($zip->open($destination) === TRUE) {\n      $scenario->setLog('- Extract files from menu : ' . $menuName);\n      $zip->extractTo($destinationDir . '\/');\n      $zip->close();\n      unlink($destination);\n    }\n  }\n}",
+                            "options": [],
+                            "order": "0"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
