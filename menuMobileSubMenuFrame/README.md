@@ -36,8 +36,8 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
    - Créer un équipement htmlDisplay 'Menu' (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
         - Pour ces 2 équipements, cocher **'Activer'** et **'Visible'** puis **'Sauvegarder'**
    - Créer un Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
-   - Ajouter l'équipement htmlDisplay **'Contenu'** dans ce même Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Contenu')
-   - Ajouter l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
+   - Ajouter EN PREMIER l'équipement htmlDisplay **'Contenu'** dans ce même Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Contenu')
+   - Ajouter EN SECOND l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
         - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
 
@@ -72,7 +72,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 
 >**Note** : il n'y a plus besoin de modifier le code (moins de risque d'erreur)
 >
->Seul le fichier perso.json est à adapter à son menu
+>Seul le fichier  **/html/data/menusNoodom/menuMobileSubMenuFrame/json/perso.json** est à adapter à son menu
 
 #### Points à valider suite à l'installation
 
