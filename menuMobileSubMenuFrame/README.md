@@ -17,10 +17,12 @@ Cliquez ici pour la vidéo de présentation :
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuMobileSubMenuFrame** à l'aide du plugin jeeExplorer
-
-   - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
-        - Suivre les indication détaillées sur le paramétrage du paragraphe **Paramétrage du menu**
+   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json)
+        - Installer le scénario à partir du template
+        - Au niveau du bloc code de ce scénario, préciser le menu menuMobileSubMenuFrame
+        - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
+   - Editer le fichier **/html/data/menusNoodom/menuMobileSubMenuFrame/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
+        - Suivre les indications détaillées sur le paramétrage du paragraphe **Paramétrage du menu**
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
         - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
@@ -95,11 +97,12 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >**Note** : On aura alors l'arborescence suivante (A vérifier avec le plugin jeeExplorer) :
 >
 >- /html
->    - /montheme
->    	- /menuMobileSubMenuJsonFrame
->       	- /css/perso.css : le css du menu
->        	- /json/perso.json : le json de personnalisation du menu
->        	- /img/ : les images du menu
+>  - /data
+>    - /menusNoodom
+>      - /menuMobileSubMenuJsonFrame
+>        - /css/perso.css, perso-up.css : le css du menu
+>          - /json/perso.json, perso-h.json : les fichiers json de personnalisation du menu
+>          - /img/ : les images du menu
 
 >**Note** : Pour utiliser le menu avec un affichage en haut de l'écran, il faut remplacer les fichiers suivants pendant l'installation :
 >
