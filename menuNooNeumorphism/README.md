@@ -12,9 +12,10 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/data/menusNoodom/menuNooNeumorphism/css** et **/data/menusNoodom/menuNooNeumorphism/json** dans le répertoire **/html/data/menusNoodom/menuNooNeumorphism** à l'aide de l'éediteur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2)
-   - Copier le fichier **/data/menusNoodom/.htaccess** dans le répertoire **/html/data/menusNoodom** en ssh
-
+   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json)
+        - Installer le scénario à partir du template
+        - Préciser la valeur menuNooNeumorphism pour le tag menuName en début de scénario
+        - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
    - Editer le fichier **/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et son icône fontawesome (**icon**)
         - Définir les positions et tailles des frames du menu et du contenu (détaillé ci-dessous)
