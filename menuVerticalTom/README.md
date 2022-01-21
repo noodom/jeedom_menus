@@ -20,7 +20,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Installer le scénario à partir du template
         - Préciser la valeur menuVerticalTom pour le tag menuName en début de scénario
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
-   - Editer le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** à l'aide de l'éditeur de fichier :
+   - Editer le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
    - Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
    - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** modifié est correct :
