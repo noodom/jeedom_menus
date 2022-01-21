@@ -19,7 +19,7 @@ Cliquez ici pour la vidéo de présentation :
 
    - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json)
         - Installer le scénario à partir du template
-        - Au niveau du bloc code de ce scénario, préciser le menu menuMobileSubMenuFrame
+        - Préciser la valeur menuMobileSubMenuFrame pour le tag menuName en début de scénario
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
    - Editer le fichier **/html/data/menusNoodom/menuMobileSubMenuFrame/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Suivre les indications détaillées sur le paramétrage du paragraphe **Paramétrage du menu**
