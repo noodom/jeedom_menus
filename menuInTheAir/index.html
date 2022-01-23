@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="montheme/menuInTheAir/css/perso.css">
+<link rel="stylesheet" href="data/menusNoodom/menuInTheAir/css/perso.css">
 
 <div class="dropholder">
 	<p class="accueil">Menu</p>
@@ -9,9 +9,11 @@
 	</ul>
 </div>
 
-<script id="rendered-js">
+<script id="menuInTheAir-js">
 	$(document).ready(function () {
-		$.getJSON('montheme/menuInTheAir/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+		let jsonPath = 'data/menusNoodom/menuInTheAir/json/perso.json';
+		// load Json configuration file (perso.json)
+		$.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
 			let buttons = data.buttons.map(function (button) {
 				return '<li id="' + button.link + '" class="element"><i class="opa ' + button
 					.icon + '"></i> ' + button.label + '</li>';
@@ -86,5 +88,5 @@
 			}
 		}
 	}
-	//# sourceURL=pen.js
+	//# sourceURL=menuInTheAir.js
 </script>
