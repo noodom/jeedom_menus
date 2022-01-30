@@ -2,7 +2,7 @@
 ![Menu HoverShow](./doc/images/menuOuvert.png)
 
 Ce menu affiche un menu vertical sur la gauche de l'écran d'écran.
-Il affiche un menu haut et un menu bas. Chaque bouton dumenu lance l'affichage d'un nouvel écran de Design.
+Il affiche un menu haut et un menu bas. Chaque bouton du menu lance l'affichage d'un nouvel écran de Design.
 
 ## Installation du menu
 
