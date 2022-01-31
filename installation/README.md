@@ -16,18 +16,18 @@ Il faut alors suivre les étapes suivantes :
   - Sélectionner "`Ajouter`" pour créer un nouveau scénario, lui donner un nom
   - Sélectionner le bouton `Template`
 
-  ![template button](./installation/doc/images/templateButton.png)
+  ![template button](./doc/images/templateButton.png)
 
   - Sélectionner "`Charger un template"` et sélectionner le fichier json du template de scénario
 
-  ![load template](./installation/doc/images/templateLoad.png)
+  ![load template](./doc/images/templateLoad.png)
 
 3. Appliquer le template chargé au scénario en cours de création
 
   - Sélectionner le template présent dans la liste des templates
   - Sélectionner le bouton "`Appliquer`" pour charger le template dans le scénario en cours de création
 
-  ![apply template](./installation/doc/images/templateApply.png)
+  ![apply template](./doc/images/templateApply.png)
 
 4. Exécution du scénario
   - Le nouveau scénario créé contient le contenu du template chargé
