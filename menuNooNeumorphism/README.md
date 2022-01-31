@@ -20,7 +20,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et son icône fontawesome (**icon**)
         - Définir les positions et tailles des frames du menu et du contenu (détaillé ci-dessous)
    - (Optionnel) Vérifier que le fichier **/json/perso.json** modifié est correct :
-        - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
+        - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
