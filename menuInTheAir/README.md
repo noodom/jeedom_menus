@@ -20,7 +20,7 @@ Cliquez ici pour la vidéo de présentation :
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json)
+   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json) ( Tuto détaillé [ici](../installation/README.md) )
         - Installer le scénario à partir du template
         - Préciser la valeur menuNooNeumorphism pour le tag menuName en début de scénario
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
