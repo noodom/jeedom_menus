@@ -2,13 +2,13 @@
 	- inspired by https://codepen.io/berdejitendra/pen/AgEzJ
 	- ajout de la gestion des boutons par un paramétrage JSon
 	- ajout de la navigation par frame à l'aide de htmlDisplay
-  - position du menu en haut de l'écran (utiliser index.html pour un menu en bas de page)
 
-Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMobileSubMenuFrame/README.md
+- Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMobileSubMenuFrame/README.md
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 
 -->
 
-<link rel="stylesheet" href="montheme/menuMobileSubMenuFrame/css/perso-up.css" type="text/css"/>
+<link rel="stylesheet" href="data/menusNoodom/menuMobileSubMenuFrame/css/perso-up.css" type="text/css"/>
 
 <div id="mobile">
   <nav id="submenu">
@@ -17,14 +17,17 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
   </nav>
 </div>
 
-<script id="menuCreation-js">
+<script id="menuMobileSubMenuFrame-js">
 	$(document).ready(function () {
+		let jsonPath = 'data/menusNoodom/menuMobileSubMenuFrame/json/perso-h.json';
 		let menuMobile = $('#mobile');
 		let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
 		
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
-		$.getJSON('montheme/menuMobileSubMenuFrame/json/perso-up.json' + '?v=' + (new Date()).getTime(), function (data) {
+        // load Json configuration file
+		console.log("get json " + jsonPath);
+		$.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
 		  let topDesignId = (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
 		  // head
 		  let navSubmenu = $('#submenu');
@@ -200,5 +203,5 @@ Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMo
 		alert(msg);
 	}
   
-	//# sourceURL=menuCreation.js
+	//# sourceURL=menuMobileSubMenuFrame.js
 </script>
