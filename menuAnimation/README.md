@@ -19,7 +19,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - Editer le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et sa couleur (**color**)
    - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** modifié est correct :
-        - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
+        - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
@@ -44,7 +44,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - buttons : liste des boutons du menu
         - Modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
 
-Pour information, les avantages de la gestion de la navigation du menu par frame (Solution 2) :
+Pour information, les avantages de la gestion de la navigation du menu par frame :
 - [x] Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
 - [x] Les Designs de chaque bouton ne contiennent pas le code du menu :
 - [x] On construit chaque écran lié à un bouton sans se soucier du menu choisi
