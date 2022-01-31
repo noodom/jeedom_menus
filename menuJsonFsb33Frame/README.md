@@ -27,7 +27,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
    - Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
    - (Optionnel) Vérifier que le fichier **/json/perso.json** modifié est correct :
-        - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
+        - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
@@ -59,7 +59,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 		- content_width : largeur du contenu du menu (par défaut "1280px")
 		- content_height : hauteur du contenu du menu (par défaut "1000px")
 
->Pour information, les avantages de la gestion de la navigation du menu par frame (Solution 2) :
+>Pour information, les avantages de la gestion de la navigation du menu par frame :
 >	- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
 >	- Les Designs de chaque bouton ne contiennent pas le code du menu :
 >		- On construit chaque écran lié à un bouton sans se soucier du menu choisi
