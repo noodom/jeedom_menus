@@ -24,7 +24,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
    - Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
    - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuVerticalTom/json/perso.json** modifié est correct :
-        - Copier son contenu (en supprimant la première et dernière ligne du fichier et en supprimant les quotes en début et fin de lignes) ici : https://jsonlint.com/
+        - Copier son contenu ici : https://jsonlint.com/
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
