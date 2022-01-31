@@ -12,7 +12,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json)
+   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json) ( Tuto détaillé [ici](../installation/README.md) )
         - Installer le scénario à partir du template
         - Préciser la valeur menuAnimation pour le tag menuName en début de scénario
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
