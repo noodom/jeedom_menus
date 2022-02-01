@@ -39,7 +39,7 @@ Il faut alors suivre les étapes suivantes :
 
 => Les fichiers nécessaires à l'exécution du menu sont présents dans le répertoire **/html/data/menusNoodom/menuName**
 
->**Note** : En cas de problème d'import du template, ci-dessous une capture du scénario final avec le code à insérer dans le blo-code
+>**Note** : En cas de problème d'import du template, ci-dessous une capture du scénario final avec le code à insérer dans le bloc-code
 >
 >Attention à bien renseigner le nom du menu souhaité dans le tag **menuName**
 
