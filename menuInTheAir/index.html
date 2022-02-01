@@ -1,92 +1,96 @@
 <link rel="stylesheet" href="data/menusNoodom/menuInTheAir/css/perso.css">
 
 <div class="dropholder">
-	<p class="accueil">Menu</p>
-	<div class="dropdownMenu">
-		<p class="accueil"><i id="current" class="fa fa-home"></i>Accueil</p>
-	</div>
-	<ul class="menu">
-	</ul>
+    <p class="accueil">Menu</p>
+    <div class="dropdownMenu">
+        <p class="accueil"><i id="current" class="fa fa-home"></i>Accueil</p>
+    </div>
+    <ul class="menu">
+    </ul>
 </div>
 
 <script id="menuInTheAir-js">
-	$(document).ready(function () {
-		let jsonPath = 'data/menusNoodom/menuInTheAir/json/perso.json';
-		// load Json configuration file (perso.json)
-		$.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
-			let buttons = data.buttons.map(function (button) {
-				return '<li id="' + button.link + '" class="element"><i class="opa ' + button
-					.icon + '"></i> ' + button.label + '</li>';
-			});
+    $(document).ready(function () {
+        let jsonPath = 'data/menusNoodom/menuInTheAir/json/perso.json';
+        // load Json configuration file (perso.json)
+        // load Json configuration file (perso.json)
+        // uses cache
+        //$.getJSON(jsonPath, function (data) {
+        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+        $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+            let buttons = data.buttons.map(function (button) {
+                return '<li id="' + button.link + '" class="element"><i class="opa ' + button
+                    .icon + '"></i> ' + button.label + '</li>';
+            });
 
-			let menuTop = $('.menu');
-			menuTop.empty();
+            let menuTop = $('.menu');
+            menuTop.empty();
 
-			if (buttons.length) {
-				let listButtons = buttons.join(' ');
-				menuTop.append(listButtons);
-			}
+            if (buttons.length) {
+                let listButtons = buttons.join(' ');
+                menuTop.append(listButtons);
+            }
 
-			if (data.parameters) {
-				// menu parameters
-				let htmlDisplayId = '[data-eqlogic_id="' + data.parameters.menu_id + '"]';
-				$(htmlDisplayId)[0].style.top = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-				$(htmlDisplayId)[0].style.left = data.parameters.menu_y ? data.parameters.menu_y : "0px";
-				$(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "322px";
-				$(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "350px";
+            if (data.parameters) {
+                // menu parameters
+                let htmlDisplayId = '[data-eqlogic_id="' + data.parameters.menu_id + '"]';
+                $(htmlDisplayId)[0].style.top = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                $(htmlDisplayId)[0].style.left = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+                $(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "322px";
+                $(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "350px";
 
-				// frame parameters
-				$("#menuFrame").offsetParent().style().top = data.parameters.content_x ? data.parameters.content_x : "0px";
-				$("#menuFrame").offsetParent().style().left = data.parameters.content_y ? data.parameters.content_y : "0px";
-				$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-				$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
-			}
+                // frame parameters
+                $("#menuFrame").offsetParent().style().top = data.parameters.content_x ? data.parameters.content_x : "0px";
+                $("#menuFrame").offsetParent().style().left = data.parameters.content_y ? data.parameters.content_y : "0px";
+                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+            }
 
-			let frameDestination = document.getElementById('menuFrame');
-			if (frameDestination == null) {
-				// no frame navigation : alert user
-				alert("Vous devez déclarer un équipement htmlDisplay pour le contenu des liens du menu");
-			} else {
-				// frame navigation : set focus on first button 
-				gotoPlan($(".menu > li").first()[0].id);
-			}
-		});
+            let frameDestination = document.getElementById('menuFrame');
+            if (frameDestination == null) {
+                // no frame navigation : alert user
+                alert("Vous devez déclarer un équipement htmlDisplay pour le contenu des liens du menu");
+            } else {
+                // frame navigation : set focus on first button 
+                gotoPlan($(".menu > li").first()[0].id);
+            }
+        });
 
-		$(".dropdownMenu").click(function () {
-			$(".menu").toggleClass("showMenu");
-			$(".menu > li").click(function () {
-				$(".dropdownMenu > p").html($(this).html());
-				$(".menu").removeClass("showMenu");
-				gotoPlan(this.id);
-			});
-		});
-	});
+        $(".dropdownMenu").click(function () {
+            $(".menu").toggleClass("showMenu");
+            $(".menu > li").click(function () {
+                $(".dropdownMenu > p").html($(this).html());
+                $(".menu").removeClass("showMenu");
+                gotoPlan(this.id);
+            });
+        });
+    });
 
-	// create url destination
-	function getUrlDestination(urlParam) {
-		if (isNaN(urlParam)) {
-			return urlParam;
-		} else {
-			return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-		}
-	}
+    // create url destination
+    function getUrlDestination(urlParam) {
+        if (isNaN(urlParam)) {
+            return urlParam;
+        } else {
+            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+        }
+    }
 
-	// menu redirection
-	function gotoPlan(id) {
-		let urlDestination = getUrlDestination(id);
-		// get frame in htmlDisplay equipment
-		let frameDestination = document.getElementById('menuFrame');
+    // menu redirection
+    function gotoPlan(id) {
+        let urlDestination = getUrlDestination(id);
+        // get frame in htmlDisplay equipment
+        let frameDestination = document.getElementById('menuFrame');
 
-		if (frameDestination !== null) {
-			// display focus
-			$('.monmenu').removeClass('selected');
-			$('#' + id + ' li').addClass('selected');
+        if (frameDestination !== null) {
+            // display focus
+            $('.monmenu').removeClass('selected');
+            $('#' + id + ' li').addClass('selected');
 
-			// frame redirection
-			if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-				frameDestination.src = urlDestination;
-			}
-		}
-	}
+            // frame redirection
+            if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+                frameDestination.src = urlDestination;
+            }
+        }
+    }
 	//# sourceURL=menuInTheAir.js
 </script>
