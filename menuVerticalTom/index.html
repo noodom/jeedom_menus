@@ -10,122 +10,126 @@
 <link href="data/menusNoodom/menuVerticalTom/css/perso.css" rel="stylesheet" type="text/css">
 
 <nav class="menu-goo">
-  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-  <label class="menu-open-button" for="menu-open">
-    <div id="menu-open-button-open" class="icon_design_actif imagette"><img
-        src="data/menusNoodom/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
-  </label>
+    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+    <label class="menu-open-button" for="menu-open">
+        <div id="menu-open-button-open" class="icon_design_actif imagette"><img
+                src="data/menusNoodom/menuVerticalTom/img/icon.png" height=50px width=50px margin-bottom=8px></div>
+    </label>
 </nav>
 
 <script id="menuVerticalTom-js">
-  // close menu at initialisation
-  var initCloseMenu = true;
-  // auto reduce menu after button selection
-  var autoReduceMenu = true;
+    // close menu at initialisation
+    var initCloseMenu = true;
+    // auto reduce menu after button selection
+    var autoReduceMenu = true;
 
-  $(document).ready(function () {
-    let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
-    // display loading message
-    let menuGoo = $('.menu-goo');
+    $(document).ready(function () {
+        let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
+        // display loading message
+        let menuGoo = $('.menu-goo');
 
-    // load Json configuration file (perso.json)
-    $.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
-      let navSubmenu = $('#nav-container-animation');
-      // get buttons parameters
-      let buttons = data.buttons.map(function (button) {
-        return '<a href="#" class="menu-item" id="' + button.link + '"'
-          + ' onClick="gotoPlan(this.id)">'
-          + '<div class="imagette">'
-          + '<img src="' + button.icon + '" alt="' + button.label + '" height=50px width=50px margin-bottom=8px>'
-          + '</div>';
-        + '</a>';
-      });
+        // load Json configuration file (perso.json)
+        // uses cache
+        //$.getJSON(jsonPath, function (data) {
+        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+        $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+            let navSubmenu = $('#nav-container-animation');
+            // get buttons parameters
+            let buttons = data.buttons.map(function (button) {
+                return '<a href="#" class="menu-item" id="' + button.link + '"'
+                    + ' onClick="gotoPlan(this.id)">'
+                    + '<div class="imagette">'
+                    + '<img src="' + button.icon + '" alt="' + button.label + '" height=50px width=50px margin-bottom=8px>'
+                    + '</div>';
+                + '</a>';
+            });
 
-      if (buttons.length) {
-        let listButtons = buttons.join(' ');
-        menuGoo.append(listButtons);
-      }
+            if (buttons.length) {
+                let listButtons = buttons.join(' ');
+                menuGoo.append(listButtons);
+            }
 
-      // get menu parameters
-      if (data.parameters) {
-        // close menu at initialisation
-        initCloseMenu = data.parameters.init_close_menu ? (data.parameters.init_close_menu == "1" || data.parameters.init_close_menu == "true") : true;
-        // reduce menu after selection
-        autoReduceMenu = data.parameters.auto_reduce_menu ? (data.parameters.auto_reduce_menu == "1" || data.parameters.auto_reduce_menu == "true") : true;
+            // get menu parameters
+            if (data.parameters) {
+                // close menu at initialisation
+                initCloseMenu = data.parameters.init_close_menu ? (data.parameters.init_close_menu == "1" || data.parameters.init_close_menu == "true") : true;
+                // reduce menu after selection
+                autoReduceMenu = data.parameters.auto_reduce_menu ? (data.parameters.auto_reduce_menu == "1" || data.parameters.auto_reduce_menu == "true") : true;
 
-        // menu parameters
-        let htmlDisplayId = '[data-eqlogic_id="#id#"]';
-        $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-        $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "280px";
-        $(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "100px";
-        $(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "720px";
+                // menu parameters
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "280px";
+                $(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "100px";
+                $(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "720px";
 
-        // frame parameters
-        $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
-        $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
-        $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-        $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
-      }
+                // frame parameters
+                $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+                $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+            }
 
-      // open/close menu at init
-      document.getElementById('menu-open').checked = !initCloseMenu;
-      // set focus on first button 
-      document.getElementsByClassName('menu-item')[0].click()
+            // open/close menu at init
+            document.getElementById('menu-open').checked = !initCloseMenu;
+            // set focus on first button 
+            document.getElementsByClassName('menu-item')[0].click()
+        });
     });
-  });
 
-  // create url destination
-  function getUrlDestination(urlParam) {
-    if (isNaN(urlParam)) {
-      return urlParam;
-    } else {
-      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-    }
-  }
-
-  // menu redirection
-  function gotoPlan(id) {
-    let urlDestination = getUrlDestination(id);
-    // get frame in htmlDisplay equipment
-    let frameDestination = document.getElementById('menuFrame');
-
-    if (frameDestination == null) {
-      // no frame : page redirection
-      planHeader_id = id;
-      displayPlan();
-    }
-    else {
-      // frame redirection
-      if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
-        frameDestination.src = urlDestination;
-      }
+    // create url destination
+    function getUrlDestination(urlParam) {
+        if (isNaN(urlParam)) {
+            return urlParam;
+        } else {
+            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+        }
     }
 
-    // auto reduce menu
-    if (autoReduceMenu) {
-      document.getElementById('menu-open').checked = false;
+    // menu redirection
+    function gotoPlan(id) {
+        let urlDestination = getUrlDestination(id);
+        // get frame in htmlDisplay equipment
+        let frameDestination = document.getElementById('menuFrame');
+
+        if (frameDestination == null) {
+            // no frame : page redirection
+            planHeader_id = id;
+            displayPlan();
+        }
+        else {
+            // frame redirection
+            if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+                frameDestination.src = urlDestination;
+            }
+        }
+
+        // auto reduce menu
+        if (autoReduceMenu) {
+            document.getElementById('menu-open').checked = false;
+        }
     }
-  }
 
 	//# sourceURL=menuVerticalTom.js
 </script>
 
 <!-- filters -->
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <defs>
-    <filter id="shadowed-goo">
-      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-      <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-      <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-      <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-      <feComposite in2="shadow" in="goo" result="goo" />
-      <feComposite in2="goo" in="SourceGraphic" result="mix" />
-    </filter>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-      <feComposite in2="goo" in="SourceGraphic" result="mix" />
-    </filter>
-  </defs>
+    <defs>
+        <filter id="shadowed-goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2"
+                result="shadow" />
+            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+            <feComposite in2="shadow" in="goo" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+        </filter>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+        </filter>
+    </defs>
 </svg>
