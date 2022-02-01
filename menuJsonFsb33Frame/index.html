@@ -23,7 +23,7 @@
     // uses cache
     //$.getJSON(jsonPath, function (data) {
     // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
-    $.getJSON(jsonPath + '?v=' + (new Date()).getMinutes(), function (data) {
+    $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
       let buttons = data.buttons.map(function (button) {
         return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
           + '<li class="monmenu">'
