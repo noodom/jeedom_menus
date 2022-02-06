@@ -59,7 +59,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 	label_first : 1 pour positionner  le label avant les boutons du menu, 0 pour positionner les boutons du menu avant le label
 	
-     reload_active_button : 1 pour forcer le rechargement du contenu d'un bouton déjà sélectionné, 0 pour ne pas recharger le contenu
+	reload_active_button : 1 pour forcer le rechargement du contenu d'un bouton déjà sélectionné, 0 pour ne pas recharger le contenu
 
 	link : identifiant du design destinataire du lien du menu (ex : 51 pour un design d'url http://www.monjeedom.com/index.php?v=d&p=plan&plan_id=51)
 		
