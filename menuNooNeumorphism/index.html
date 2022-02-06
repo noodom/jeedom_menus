@@ -11,8 +11,12 @@
 </div>
 
 <script>
-    var cssPath = "data/menusNoodom/menuNooNeumorphism/css/perso";
+    // Emplacement des fichiers de configuration (perso.css et perso.json)
+    var menuName = "menuNooNeumorphism";
+    
+    var cssPath = 'data/menusNoodom/' + menuName + '/css/perso';
     var labelFirst = true;
+    var reloadActiveButton = false;
     var menuHorizontal = true;
 </script>
 
@@ -22,7 +26,7 @@
 
 <script id="menuNooNeumorphism-js">
     $(document).ready(function () {
-        let jsonPath = 'data/menusNoodom/menuNooNeumorphism/json/perso.json';
+        let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
         // display loading message
         var menuNeumorphism = $('#menuNeumorphism');
         let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
@@ -47,6 +51,7 @@
             if (data.parameters) {
                 listButtons += data.parameters.label ? data.parameters.label : "Noodom";
                 labelFirst = data.parameters.label_first ? (data.parameters.label_first == "1") : true;
+                reloadActiveButton = data.parameters.reload_active_button ? (data.parameters.reload_active_button == "1") : false;
             }
             listButtons += '</li>';
 
@@ -141,7 +146,7 @@
                 $('#' + id).addClass('active');
             }
             // fill content frame
-            if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+            if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
                 frameDestination.src = urlDestination;
             }
         }
