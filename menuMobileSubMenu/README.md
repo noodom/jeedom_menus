@@ -9,7 +9,7 @@ La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant 
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuMobileSubMenu** à l'aide du plugin jeeExplorer
+   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/data/menusNoodom/menuMobileSubMenu** à l'aide du plugin jeeExplorer
 
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**) au format font-awesome
@@ -48,11 +48,12 @@ Le menu est à ajouter dans chaque page de design.
 >**Note** : On aura alors l'arborescence suivante (A vérifier avec le plugin jeeExplorer) :
 >
 >- /html
->    - /montheme
->    	- /menuMobileSubMenu
->       	- /css/perso.css : le css du menu
->        	- /json/perso.json : le json de personnalisation du menu
->        	- /img/ : les images du menu
+>  - /data
+>    - /menusNoodom
+>      - /menuMobileSubMenu
+>        - /css/perso.css : le css du menu
+>         - /json/perso.json : le json de personnalisation du menu
+>         - /img/ : les images du menu
 
 Liste des icônes font-awesome pour l'affichage des boutons :
 - https://fontawesome.com/icons?m=free

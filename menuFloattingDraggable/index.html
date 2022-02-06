@@ -1,24 +1,13 @@
-<!-- menu Floating Draggable (gestion par Json et Frame) (@noodom)
+<!-- @noodom / Menu Floating Draggable (gestion par Json et Frame)
 
-	- Copier les répertoires /css, /js et /json sous /html/montheme/menuFloatingDraggable
-	- Créer un design VIDE
-	- Créer un htmlDisplay avec le contenu de menuFrame.html
-	- Ajouter ce htmlDisplay comme équipement du design créé (clic droit / ajouter équipement)
-	- Ajouter un text/html au design créé avec le contenu de index.html (clic droit / ajouter text/html)
-	- Adapter le fichier /html/montheme/menuFloatingDraggable/json/perso.json en fonction du paramétrage souhaité :
-		- Pour chaque bouton du menu, préciser les valeurs de label (nom du bouton), link (lien du design correspondant), icon (icône au format fontawesome), color (couleur de fond)
-		- Pour les paramètres généraux du menu, préciser :
-			- auto_reduce_menu : 1= réduction du menu après sélection d'un bouton, 0=le menu reste ouvert après sélection d'un bouton
-			- menu_x : position du menu depuis la gauche du design
-			- menu_y : position du menu depuis le haut du design
-			- content_x : position du contenu du design correspondant au bouton depuis la gauche du design
-			- content_y : position du contenu du design correspondant au bouton depuis le haut du design
-			- content_width : largeur du contenu du design correspondant au bouton
-			- content_heught : hauteur du contenu du design correspondant au bouton
+	Ce menu affiche un bouton principal déplaçable à la souris et affichant les autres boutons sur sélection. Le logo et la couleur de fond sont personnalisables pour chacun.
 
+
+- Installation du menu : https://github.com/noodom/jeedom_menus/tree/master/menuFloatingDraggable
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 -->
 
-<link rel="stylesheet" href="montheme/menuFloatingDraggable/css/perso.css" type="text/css" />
+<link rel="stylesheet" href="data/menusNoodom/menuFloatingDraggable/css/perso.css" type="text/css" />
 
 <div id="menu" class="menu-center menu">
 	<div id="myMenu"></div>
@@ -26,9 +15,8 @@
 <div id="menu" class="menu-center menu-title">
 
 </div>
-
-<script src="montheme/menuFloatingDraggable/js/anime.js"></script>
-<script id="rendered-js">
+<script src="data/menusNoodom/menuFloatingDraggable/js/anime.js"></script>
+<script id="menuFloatingDraggable-js">
 	var timeOut;
 
 	// auto reduce menu after button selection
@@ -191,7 +179,13 @@
 	var menu = new Menu("#myMenu");
 	var firstButton = true;
 
-	$.getJSON('montheme/menuFloatingDraggable/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+    let jsonPath = 'data/menusNoodom/menuFloatingDraggable/json/perso.json';
+
+    // load Json configuration file (perso.json)
+	// uses cache
+	//$.getJSON(jsonPath, function (data) {
+	// force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+	$.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
 		data.buttons.map(function (button) {
 			item = new Item(button.icon, (firstButton) ? null : button.link, button.color);
 			firstButton = false;
@@ -260,5 +254,5 @@
 		}
 	}
 
-	//# sourceURL=pen.js
+	//# sourceURL=menuFloatingDraggable.js
 </script>

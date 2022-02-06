@@ -1,16 +1,16 @@
 <!-- menu Mobile Sub Menu Json (@noodom)-->
-<!-- inspired by https://codepen.io/berdejitendra/pen/AgEzJ -->
+<!-- inspiré par https://codepen.io/berdejitendra/pen/AgEzJ -->
 
 <!--
 
 - Installation du menu
--- Recopier les répertoires /css et /json sous /html/montheme/menuMobileSubMenu
+-- Recopier les répertoires /css et /json sous /html/data/menusNoodom/menuMobileSubMenu
 -- Créer un équipement htmlDisplay et copier le contenu de index.html dans l'onglet Dashboard
 -- Créer un nouveau design de la largeur et de la hauteur de l'écran du mobile
 -- Ajouter l'équipement htmlDisplay (ou ajouter un text/html avec le contenu de index.html) dans tous les designs qui sont en lien avec les boutons du menu (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay créé)
 -- Positionner le htmlDisplay en bas de l'écran, avec pour paramètre d'affichage positionX=0, Largeur=largeur mobile, Hauteur=120
 
-- Paramétrage du menu (modification du fichier /html/montheme/menuMobileSubMenu/json/perso.json et SEULEMENT ce fichier)
+- Paramétrage du menu (modification du fichier /html/data/menusNoodom/menuMobileSubMenu/json/perso.json et SEULEMENT ce fichier)
 -- buttons : 5 boutons du haut du menu
 --- modifier les valeurs "label" (Nom du bouton), "link" (lien vers l'id d'un design) et "icon" (référence à un icône font-awesome) pour personnaliser les boutons du menu
 -- buttons_bottom : 3 boutons du bas du menu
@@ -27,10 +27,12 @@
 Liste des icônes font-awesome pour l'affichage des boutons :
 - https://fontawesome.com/icons?m=free
 
+- Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuMobileSubMenu/README.md
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 
 -->
 
-<link rel="stylesheet" href="montheme/menuMobileSubMenu/css/perso.css" type="text/css"/>
+<link rel="stylesheet" href="data/menusNoodom/menuMobileSubMenu/css/perso.css" type="text/css"/>
 
 <div id="mobile">
   <nav id="submenu">
@@ -39,14 +41,14 @@ Liste des icônes font-awesome pour l'affichage des boutons :
   </nav>
 </div>
 
-<script id="menuCreation-js">
+<script id="menuMobileSubMenu-js">
 	$(document).ready(function () {
 		let menuMobile = $('#mobile');
 		let initialDesignId = (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
 		
 		menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
-		$.getJSON('montheme/menuMobileSubMenu/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+		$.getJSON('data/menusNoodom/menuMobileSubMenu/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
 		  // head
 		  let navSubmenu = $('#submenu');
 		  let buttons = data.buttons.map(function (button) {
@@ -151,5 +153,5 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 	  }
 	}
   
-	//# sourceURL=menuCreation.js
+	//# sourceURL=menuMobileSubMenu.js
 </script>

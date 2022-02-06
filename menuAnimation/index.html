@@ -22,7 +22,7 @@
     let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
     menuMobile.append('<div id="msg">Chargement du menu..</div>');
 
-    // load Json configuration file
+    // load Json configuration file (perso.json)
     $.getJSON('core/php/downloadFile.php?pathfile=' + jsonPath, function (data) {
       let navSubmenu = $('#nav-container-animation');
       let buttons = data.buttons.map(function (button) {

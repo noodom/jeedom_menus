@@ -8,9 +8,11 @@ Il affiche un menu haut et un menu bas. Chaque bouton du menu lance l'affichage 
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Copier les dossiers **/css** et **/json** dans le répertoire **/html/montheme/menuHoverShow** à l'aide du plugin jeeExplorer
-
-   - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
+   - Récupérer le template de scénario [nooMenusFilesDownload](../installation/nooMenusFilesDownload.json) ( Tuto détaillé [ici](../installation/README.md) )
+        - Installer le scénario à partir du template
+        - Préciser la valeur menuHoverShow pour le tag menuName en début de scénario
+        - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
+   - Editer le fichier **/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**) au format font-awesome
         - **fa-menu-2x** est facultatif : il double la taille de l'icône du bouton (le supprimer pour réduire la taille de l'icône)
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
@@ -48,11 +50,12 @@ Le menu est à ajouter dans chaque page de Design.
 >**Note** : On aura alors l'arborescence suivante (A vérifier avec le plugin jeeExplorer) :
 >
 >- /html
->    - /montheme
->    	- /menuMobileButton
->       	- /css/perso.css : le css du menu
->        	- /json/perso.json : le json de personnalisation du menu
->        	- /img/ : les images du menu
+>    - /data
+>        - /menusNoodom
+>           - /menuHoverShow
+>              - /css/perso.css : le css du menu
+>        	   - /json/perso.json : le json de personnalisation du menu
+>        	   - /img/ : les images du menu
 
 Liste des icônes font-awesome pour l'affichage des boutons :
 - https://fontawesome.com/icons?m=free

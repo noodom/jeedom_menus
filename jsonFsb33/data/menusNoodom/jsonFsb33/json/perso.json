@@ -1,0 +1,32 @@
+{
+    "buttons": [
+        {
+            "link": "50",
+            "icon": "data/menusNoodom/img/icon_home.png"
+        },
+        {
+            "link": "51",
+            "icon": "data/menusNoodom/img/icon_light.png"
+        },
+        {
+            "link": "52",
+            "icon": "data/menusNoodom/img/icon_chauffage.png"
+        },
+        {
+            "link": "53",
+            "icon": "data/menusNoodom/img/icon_carte.png"
+        },
+        {
+            "link": "54",
+            "icon": "data/menusNoodom/img/icon_camera.png"
+        },
+        {
+            "link": "55",
+          "icon": "data/menusNoodom/img/icon_volets.png"
+        },
+        {
+            "link": "56",
+            "icon": "data/menusNoodom/img/icon_consommation.png"
+        }
+    ]
+}

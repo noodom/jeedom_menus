@@ -9,7 +9,7 @@
         - le résultat sous Result doit être vert avec le message 'Valid JSON'
 -->
 
-<link href="montheme/css/perso.css" rel="stylesheet" type="text/css">
+<link href="data/menusNoodom/css/perso.css" rel="stylesheet" type="text/css">
 
 <div class="menu_top">
 </div>
@@ -19,7 +19,7 @@
         let menuTop = $('.menu_top');
         menuTop.append('Chargement du menu..');
 
-        $.getJSON('montheme/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
+        $.getJSON('data/menusNoodom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
             let buttons = data.buttons.map(function (button) {
                 return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
                         + '<li class="monmenu">'

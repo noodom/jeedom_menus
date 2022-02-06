@@ -41,7 +41,7 @@ Principe : Un design contient le menu et les autres designs ne contiennent que l
         - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
         - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
 
-#### Paramétrage du menu (modification du fichier /html/montheme/menuMobileSubMenuFrame/json/perso.json et SEULEMENT ce fichier)
+#### Paramétrage du menu (modification du fichier /html/data/menusNoodom/menuMobileSubMenuFrame/json/perso.json et SEULEMENT ce fichier)
 
    - **buttons** : liste des boutons du haut du menu
       - modifier les valeurs **label** (Libellé du bouton), **link** (lien vers l'id d'un design) et **icon** (icône du bouton au format font-awesome) pour personnaliser les boutons du menu
