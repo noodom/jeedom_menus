@@ -11,6 +11,8 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 
    - Copier les dossiers **/css** et **/json** dans le répertoire **/html/data/menusNoodom** à l'aide du plugin jeeExplorer
 
+   - Copier le fichier **.htaccess** dans le répertoire **/html/data/menusNoodom** en ligne de commande par ssh
+
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
    - Récupérer les images nécessaires du menu F$B33 et les copier sous **html/data/menusNoodom/img**
@@ -51,6 +53,7 @@ Le menu est à ajouter dans chaque page de design.
 >- /html
 >    - /data
 >      - /menusNoodom
+>        - .htaccess
 >        - /css/perso.css : le css du menu
 >        - /json/perso.json : le json de personnalisation du menu
 >        - /img/ : les images du menu
