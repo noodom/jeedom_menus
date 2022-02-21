@@ -11,6 +11,8 @@ La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant 
 
    - Copier les dossiers **/css** et **/json** dans le répertoire **/html/data/menusNoodom/menuMobileSubMenu** à l'aide du plugin jeeExplorer
 
+   - Copier le fichier **.htaccess** dans le répertoire **/html/data/menusNoodom** en ligne de commande par ssh
+
    - Editer le fichier **/json/perso.json** à l'aide du plugin jeeXplorer :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**) au format font-awesome
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
