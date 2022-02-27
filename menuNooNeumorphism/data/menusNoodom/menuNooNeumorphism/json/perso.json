@@ -44,6 +44,7 @@
    "parameters": {
       "label": "Noodom",
       "label_first": "1",
+      "dark_mode" : "light",
       "reload_active_button": "0",
 
       "menu_x": "0px",
