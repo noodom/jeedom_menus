@@ -59,6 +59,8 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 	label_first : 1 pour positionner  le label avant les boutons du menu, 0 pour positionner les boutons du menu avant le label
 	
+	dark_mode : thème du menu ("jeedom" : reprend le thème courant de Jeedom, "dark" : thème dark, "light" : thème light, par défaut)
+	
 	reload_active_button : 1 pour forcer le rechargement du contenu d'un bouton déjà sélectionné, 0 pour ne pas recharger le contenu
 
 	link : identifiant du design destinataire du lien du menu (ex : 51 pour un design d'url http://www.monjeedom.com/index.php?v=d&p=plan&plan_id=51)
@@ -124,7 +126,7 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >    - /data
 >       - /menusNoodom
 >          - /menuNooNeumorphism
->            - /css/perso.css, perso2.css, perso-v.css, perso2-v.css : les css du menu (Modification non nécessaire)
+>            - /css/perso.css, perso2.css, perso-v.css, perso2-v.css, /css/perso-dark.css, perso2-dark.css, perso-v-dark.css, perso2-v-dark.css : les css du menu (Modification non nécessaire)
 >            - /json/perso.json : le json de personnalisation du menu (A personnaliser)
 
 Exemples de paramétrages :
