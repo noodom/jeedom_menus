@@ -16,6 +16,7 @@
     
     var cssPath = 'data/menusNoodom/' + menuName + '/css/perso';
     var labelFirst = true;
+  	var darkMode = false;
     var reloadActiveButton = false;
     var menuHorizontal = true;
 </script>
@@ -51,6 +52,16 @@
             if (data.parameters) {
                 listButtons += data.parameters.label ? data.parameters.label : "Noodom";
                 labelFirst = data.parameters.label_first ? (data.parameters.label_first == "1") : true;
+              	if (data.parameters.dark_mode) {
+                  switch (data.parameters.dark_mode) {
+                    case 'jeedom':
+                      darkMode = $('body').attr('data-theme') === 'core2019_Dark';
+                      break;
+                    case 'dark':
+                      darkMode = true;
+                      break;
+                  }
+                }
                 reloadActiveButton = data.parameters.reload_active_button ? (data.parameters.reload_active_button == "1") : false;
             }
             listButtons += '</li>';
@@ -109,7 +120,7 @@
             }
 
             // CSS loading
-            cssPath += (menuHorizontal ? "" : "-v") + (labelFirst ? "" : "2") + ".css";
+            cssPath += (menuHorizontal ? "" : "-v") + (labelFirst ? "" : "2")  + (darkMode ? "-dark" : "") + ".css";
             let forceRefreshCss = true;
             let link = document.createElement("link");
             link.setAttribute("rel", "stylesheet");
