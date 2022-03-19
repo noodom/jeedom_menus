@@ -79,7 +79,8 @@
 
             if (link_id == "") {
                 // set focus on first button 
-                $('.navul li')[1].click()
+                let firstButton = (labelFirst)?1:0;
+              	$('.navul li')[firstButton].click()
             }
             else {
                 // goto linkId
