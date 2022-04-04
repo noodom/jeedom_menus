@@ -61,6 +61,15 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
       - content_width : largeur du contenu du menu (par défaut "1280px")
       - content_height : hauteur du contenu du menu (par défaut "1000px")
 
+      - (optionnel) cursor_color : couleur du menu focussé (par défaut : en fonction du css choisi, voir début du css, ex : "#0066cc")
+      - (optionnel) cursor_color_shadow : couleur du contour du curseur(par défaut : en fonction du css choisi, voir début du css, ex : "white")
+      - (optionnel) cursor_default_color : couleur du menu non foccussé (par défaut : en fonction du css choisi, voir début du css, ex : "#ffcc00")
+      - (optionnel) background_active_link : image de fond du menu focussé selon menu (par défaut : en fonction du css choisi, voir début du css, ex : "white")
+      - (optionnel) background_default_link : image de fond du menu non focussé selon menu (par défaut : en fonction du css choisi, voir début du css, ex : "blue")
+      - (optionnel) image_path_inactive : image de fond des menus inactifs (par défaut "url(/data/menusNoodom/menuNavButton/img/inactiveMetalBackground.png);")
+      - (optionnel) image_path_active : image de fond des menus actifs (par défaut "url(/data/menusNoodom/menuNavButton/img/activeMetalBackground.png);")
+
+
 >Pour information, les avantages de la gestion de la navigation du menu par frame :
 >	- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
 >	- Les Designs de chaque bouton ne contiennent pas le code du menu :
