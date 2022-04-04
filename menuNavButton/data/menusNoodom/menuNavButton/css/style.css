@@ -1,0 +1,92 @@
+:root {
+    --cursor-color: #96c927;
+    --cursor-color-shadow: white;
+    --cursor-default-color: lightgray;
+    --background-default-link: #151515;
+    --menu-height:100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#menuNavButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--menu-height) !important;
+    border-radius: 0px;
+    background: transparency;
+
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+#menuNavButton ul {
+    list-style: none;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 0px;
+    width: 100%;
+}
+
+#menuNavButton li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    height: calc(var(--menu-height) - 10px) !important;
+    width: 95px;
+    background: var(--background-default-link) !important;
+
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1),
+        0 -3px 0 rgba(255, 255, 255, 1),
+        -4px 0 0 rgba(80, 80, 80, 1);
+    transition: all 0.2s;
+}
+
+#menuNavButton li:nth-of-type(1) {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+#menuNavButton li:last-of-type {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+#menuNavButton li:hover {
+    cursor: pointer;
+    text-shadow: 0 0 35px var(--cursor-color-shadow) !important;
+}
+
+#menuNavButton a {
+    display: inline-block;
+    color: var(--cursor-default-color) !important;
+    text-decoration: none;
+    font-size: 45px;
+    transition: all 0.1s;
+}
+
+#menuNavButton li.active {
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    border-bottom: 1px solid #252525;
+    background: linear-gradient(#555, #2C2C2C) !important;
+    box-shadow: 0 -3px 0 rgba(255, 255, 255, 1),
+        1px 1px 10px black inset,
+        0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+#menuNavButton .active-text {
+    margin-top: 10px;
+    color: var(--cursor-color) !important;
+    text-shadow: 0 0 65px var(--cursor-color-shadow) !important;
+}
