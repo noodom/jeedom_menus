@@ -14,6 +14,12 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 
 Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramétrage JSon et une navigation par Frame
 
+## 💥 Menu [Nav Button](./menuNavButton) avec fichier de configuration JSon et navigation par Frame
+
+![Menu jsonFsb33Frame](./menuNavButton/doc/images/style-menu.png)
+
+Ce menu permet de créer différents types de menus en sélectionnant un des css à disposition et en le personnalisation à l'aide du paramétrage JSon et une navigation par Frame
+
 ## 💥 Menu [Animation](./menuAnimation) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu Animation](./menuAnimation/doc/images/menuAnimation.png)
