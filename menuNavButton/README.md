@@ -23,7 +23,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
    - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json) ( Tuto détaillé [ici](../installation/README.md) )
         - Installer le scénario à partir du template
-        - Préciser la valeur menuVerticalTom pour le tag menuName en début de scénario
+        - Préciser la valeur menuNavButton pour le tag menuName en début de scénario
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
    - Editer le fichier **/html/data/menusNoodom/menuNavButton/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Pour chaque bouton du menu, lui donner un nom(**label**), mettre le lien vers un design (**link**) et le lien vers son image de type fontawesome (**icon**)
@@ -51,6 +51,7 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - buttons : liste des boutons du menu
       - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
    - parameters
+      - css_file : choix du fichier css présent dans **/html/data/menuNoodom/menuNavButton/css** (par défaut "style.css")
       - menu_x : position x du menu (par défaut "0px")
       - menu_y : position y du menu (par défaut "280px")
       - menu_width : largeur du menu (par défaut "100px")
