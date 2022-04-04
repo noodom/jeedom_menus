@@ -42,7 +42,7 @@
         }
     ],
     "parameters": {
-      	"css_file":"style-black.css",
+      	"css_file":"style.css",
 
         "menu_x":"0px",
         "menu_y":"0px",
