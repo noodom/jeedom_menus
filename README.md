@@ -26,6 +26,14 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 
 Ce menu permet de créer différents types de menus en sélectionnant un des css à disposition et en le personnalisation à l'aide du paramétrage JSon et une navigation par Frame
 
+## 💥 Menu [3D Anim](./menuNoo3DAnimAnimation) avec fichier de configuration JSon et navigation par Frame
+
+![Menu noo3DAnim](./menuNoo3DAnim/doc/images/demoMenuNoo3DAnim.gif)
+
+Ce menu affiche des boutons 3D avec une animation sur focus pour le bouton sélectionné, les boutons du menu ayant chacun une couleur personnalisable.
+
+Il permet une configuration par un fichier Json et une navigation par Frame.
+
 ## 💥 Menu [Animation](./menuAnimation) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu Animation](./menuAnimation/doc/images/menuAnimation.png)
