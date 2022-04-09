@@ -1,7 +1,7 @@
 # Menu noo3DAnim avec fichier de configuration JSon et gestion de navigation par Frame
 ![Menu noo3DAnim](./doc/images/demoMenuNoo3DAnim.gif)
 
-Ce menu affiche le logo 3D avec une animation sur focus pour le bouton sélectionné, les boutons du menu ayant chacun une couleur personnalisable.
+Ce menu affiche des boutons 3D avec une animation sur focus pour le bouton sélectionné, les boutons du menu ayant chacun une couleur personnalisable.
 
 La personnalisation est effectuée depuis un fichier de configuration JSON (**html/data/menusNoodom/menuNoo3DAnim/json/perso.json**).
 
