@@ -1,0 +1,242 @@
+<!-- @noodom / Menu menuNoo3DAnim (gestion par Json et Frame)
+	- inspiré par https://www.codingnepalweb.com/css3-3d-layered-hover-effect/
+	- ajout de la gestion des boutons par un paramétrage JSon
+	- ajout de la navigation par frame à l'aide de htmlDisplay
+
+- Installation du menu : https://github.com/noodom/jeedom_menus/tree/master/menuNoo3DAnim/README.md
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
+-->
+
+
+<div id="cssDiv">
+</div>
+
+<script>
+    var menuName = "menuNoo3DAnim";
+    var cssPath = 'data/menusNoodom/' + menuName + '/css/perso.css';
+    var reloadActiveButton = false;
+</script>
+
+<nav id="menuNoo3DAnim">
+    <!-- Génération dynamique du menu depuis le json de configuration -->
+</nav>
+
+<script id="menuNoo3DAnim-js">
+    function addCSSRule(sheet, selector, rules, index) {
+      if(sheet.insertRule) {
+        sheet.insertRule(selector + "{" + rules + "}", index);
+      }
+      else {
+        sheet.addRule(selector, rules, index);
+      }
+    }
+
+  	function insertDynamicCss(buttons) {
+      console.log("insertDynamicCss::begin CSS insertion");
+
+      let styleSheetLength = document.styleSheets.length;
+      for (let iSheet=0 ; iSheet<styleSheetLength ; iSheet++) {
+        if (document.styleSheets[iSheet].href != null && document.styleSheets[iSheet].href.includes(menuName)) {
+          console.log ('add specific menu rules');
+          var menuStyleSheet = document.styleSheets[iSheet];
+          // add rules
+          console.log("inserting CSS..");
+          let index = menuStyleSheet.cssRules.length;
+          let liLength = $('nav#menuNoo3DAnim ul.navul li').length;
+          
+          for (let iLi=0; iLi<liLength; iLi++) {
+            indLi = iLi + 1;
+            console.log("index=" + index + " :: iLi=" + iLi + " / indLi=" + indLi);
+            
+            addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(" + indLi + "), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(" + indLi + ")",
+                       "opacity: " + (indLi*0.2) + ((iLi!=0)?"; transform: translate(" + (iLi*5) + "px, -" + (iLi*5) + "px)":""), index);
+            index++;
+            addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(" + indLi + ") a .layer span,nav#menuNoo3DAnim ul.navul li:nth-child(" + indLi + ") a .text",
+                       "color: " + buttons[iLi].color + "; border-color: " + buttons[iLi].color + ";", index);
+            index++;
+            addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(" + indLi + ") a .layer span",
+                       "box-shadow: -1px 1px 3px " + buttons[iLi].color + ";", index);
+            index++;
+          }
+          
+          /*for (let iLi=0; iLi<liLength; iLi++) {
+            indLi = iLi + 1;
+          }
+          for (let iLi=0; iLi<liLength; iLi++) {
+            indLi = iLi + 1;
+          }*/
+          
+          /*
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(1), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(1)",
+                     "opacity: 0.2", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(2), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(2)",
+                     "opacity: 0.4; transform: translate(5px, -5px)", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(3), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(3)",
+                     "opacity: 0.6; transform: translate(10px, -10px", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(4), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(4)",
+                     "opacity: 0.8; transform: translate(15px, -15px);", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li a:hover .layer span:nth-child(5), nav#menuNoo3DAnim ul.navul li.active a .layer span:nth-child(5)",
+                     "opacity: 1; transform: translate(20px, -20px);", index);
+
+
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(1) a .layer span, nav#menuNoo3DAnim ul.navul li:nth-child(1) a .text",
+                     "color: #4267B2; border-color: #4267B2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(2) a .layer span, nav#menuNoo3DAnim ul.navul li:nth-child(2) a .text",
+                     "color: #1DA1F2; border-color: #1DA1F2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(3) a .layer span, nav#menuNoo3DAnim ul.navul li:nth-child(3) a .text",
+                     "color: #E1306C; border-color: #E1306C;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(4) a .layer span, nav#menuNoo3DAnim ul.navul li:nth-child(4) a .text",
+                     "color: #2867B2; border-color: #2867B2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:nth-child(5) a .layer span, nav#menuNoo3DAnim ul.navul li:nth-child(5) a .text",
+                     "color: #ff0000; border-color: #ff0000;", index);
+
+
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(1) a .layer span, nav#menuNoo3DAnim ul.navul li.active a:nth-child(1) .layer span",
+                     "box-shadow: -1px 1px 3px #4267B2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(2) a .layer span, nav#menuNoo3DAnim ul.navul li.active a:nth-child(2) .layer span",
+                     "box-shadow: -1px 1px 3px #1DA1F2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(3) a .layer span, nav#menuNoo3DAnim ul.navul li.active a:nth-child(3) .layer span",
+                     "box-shadow: -1px 1px 3px #E1306C;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(4) a .layer span, nav#menuNoo3DAnim ul.navul li.active a:nth-child(4) .layer span",
+                     "box-shadow: -1px 1px 3px #2867B2;", index);
+          addCSSRule(menuStyleSheet, "nav#menuNoo3DAnim ul.navul li:hover:nth-child(5) a .layer span, nav#menuNoo3DAnim ul.navul li.active a:nth-child(5) .layer span",
+                     "box-shadow: -1px 1px 3px #ff0000;", index);
+          */
+        }
+      }
+  	}
+    
+  	$(document).ready(function () {
+        console.log("on ready");
+      	let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+        // display loading message
+        var menuNoo3DAnim = $('#menuNoo3DAnim');
+        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+        menuNoo3DAnim.append('<div id="msg">Chargement du menu..</div>');
+
+        // load Json configuration file (perso.json)
+        // uses cache
+        //$.getJSON(jsonPath, function (data) {
+        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+        console.log("get json : " + jsonPath);
+      	$.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+            let navSubmenu = $('#navul');
+            let buttons = data.buttons.map(function (button) {
+                return '<li class="' + button.label + '" id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + '>'
+                       + '<a href="#">'
+                       + '   <div class="layer">'
+                       + '      <span></span>'
+                       + '      <span></span>'
+                       + '      <span></span>'
+                       + '      <span></span>'
+                       + '      <span class="' + button.icon + '"></span>'
+                       + '   </div>'
+                       + '   <div class="text">'
+                       + '      ' + button.label
+                       + '   </div>'
+                       + '</a>'
+                       + '</li>';
+            });
+          
+            menuNoo3DAnim.empty();
+            let menuList = $('<ul class="navul icons" />').html(buttons);
+            menuNoo3DAnim.append(menuList);
+
+            if (link_id == "") {
+                // set focus on first button 
+                //$('#menuNoo3DAnim.icons')[0].click();
+              	$('.navul li')[0].click()
+            }
+            else {
+                // goto linkId
+                gotoPlan(link_id);
+            }
+
+            // get menu parameters
+            if (data.parameters) {
+
+                // CSS choice
+                //let cssFile = cssPath;
+                //let cssFile = data.parameters.css_file ? data.parameters.css_file : "style.css";
+                //cssPath = 'data/menusNoodom/' + menuName + '/css/' + cssFile;
+
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+                let menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
+                let menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "100px";
+                $(htmlDisplayId)[0].style.width = menuWidth;
+                $(htmlDisplayId)[0].style.height = menuHeight;
+
+                $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+                $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+
+                if (data.parameters.cursor_color) {
+                    document.documentElement.style.setProperty('--cursor-color', data.parameters.cursor_color);
+                }
+                if (data.parameters.ul_color) {
+                    document.documentElement.style.setProperty('--ul-color', data.parameters.ul_color);
+                }
+                if (data.parameters.cursor_default_color) {
+                    document.documentElement.style.setProperty('--cursor-default-color', data.parameters.cursor_default_color);
+                }
+                if (data.parameters.background_color) {
+                    document.documentElement.style.setProperty('--background-color', data.parameters.background_color);
+                }
+                document.documentElement.style.setProperty('--menu-height', menuHeight);
+            }
+
+            // CSS loading
+          	console.log("CSS loading " + cssPath);
+            let forceRefreshCss = true;
+            let link = document.createElement("link");
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("type", "text/css");
+            let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
+            link.setAttribute("href", hrefAttribute);
+          	link.setAttribute("title", menuName);
+            document.getElementById('cssDiv').appendChild(link);
+          
+          	setTimeout(insertDynamicCss, 1000, data.buttons);
+          	//insertDynamicCss();
+        });
+    });
+
+    // create url destination
+    function getUrlDestination(urlParam) {
+        if (isNaN(urlParam)) {
+            return urlParam;
+        } else {
+            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+        }
+    }
+
+    // menu redirection
+    function gotoPlan(id) {
+        let urlDestination = getUrlDestination(id);
+        // get frame in htmlDisplay equipment
+        let frameDestination = document.getElementById('menuFrame');
+
+        if (frameDestination == null) {
+            // Error : no content frame
+            console.log("ERREUR : Frame de contenu non créée");
+        }
+        else {
+            // display focus
+            $('.navul li').removeClass('active');
+            $('.navul li a').removeClass('active-text');
+            if (!isNaN(id)) {
+                $('#' + id).addClass('active');
+                $('#' + id + ' a').addClass('active-text');
+            }
+            // fill content frame
+            if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
+                frameDestination.src = urlDestination;
+            }
+        }
+    }
+
+  //# sourceURL=menuNoo3DAnim.js
+</script>

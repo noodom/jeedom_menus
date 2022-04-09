@@ -1,0 +1,50 @@
+{
+  "buttons": [
+    {
+      "label": "Accueil",
+      "link": "88",
+      "icon": "fas fa-home",
+      "color": "#4267B2"
+    },
+    {
+      "label": "Lumières",
+      "link": "89",
+      "icon": "fa fa-lightbulb",
+      "color": "#1DA1F2"
+    },
+    {
+      "label": "Energie",
+      "link": "90",
+      "icon": "fa fa-plug",
+      "color": "#E1306C"
+    },
+    {
+      "label": "Chauffage",
+      "link": "91",
+      "icon": "fa fa-thermometer-half",
+      "color": "#2867B2"
+    },
+    {
+      "label": "Caméras",
+      "link": "92",
+      "icon": "fa fa-video",
+      "color": "#ff0000"
+    }
+  ],
+  "parameters": {
+    "menu_x": "0px",
+    "menu_y": "0px",
+    "menu_width": "1280px",
+    "menu_height": "120px",
+
+    "content_x": "0px",
+    "content_y": "0px",
+    "content_width": "1280px",
+    "content_height": "1000px",
+
+    "background_color": "black",
+
+    "css_loading_timeout": "100",
+    "reload_active_button": "0"
+  }
+}
