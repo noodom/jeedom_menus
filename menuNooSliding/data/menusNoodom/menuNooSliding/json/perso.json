@@ -36,12 +36,6 @@
         "content_x":"0px",
         "content_y":"0px",
         "content_width":"1280px",
-        "content_height":"1200px",      
-      
-      	"_cursor_color": "#9b59b6",
-    	"_ul_color": "#ecf0f1",
-    	"_cursor_default_color": "#darkgray",
-      	"_background_color": "#2c3e50",
-        "_css_loading_timeout" : "1000"
+        "content_height":"1200px",            
     }
 }
