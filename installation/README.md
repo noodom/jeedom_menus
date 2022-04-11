@@ -33,7 +33,7 @@ Il faut alors suivre les étapes suivantes :
   - Le nouveau scénario créé contient le contenu du template chargé
   - Dans le contenu du scénario, préciser le nom du menu à installer au niveau du tag "`menuName`" 
 
-    (valeurs possibles actuellement : **menuJsonFsb33Frame**, **menuAnimation**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuFloattingDraggable**, **menuHoverShow**, **menuInTheAir**)
+    (valeurs possibles actuellement : **menuJsonFsb33Frame**, **menuNooSliding**, **menuNoo3DAnim**, **menuAnimation**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuFloattingDraggable**, **menuHoverShow**, **menuInTheAir**)
   - Exécuter le scénario
 
 
