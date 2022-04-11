@@ -81,11 +81,11 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         
 	cursor_color : affiche l'onglet 'Couleurs basiques' (par défaut '#96c927')
    	
-     cursor_default_color : couleur des éléments non sélectionnés du menu (par défaut 'dimgray')
+	cursor_default_color : couleur des éléments non sélectionnés du menu (par défaut 'dimgray')
         
-     background_color : couleur de fond du menu (par défaut 'black')
+	background_color : couleur de fond du menu (par défaut 'black')
 
-     css_loading_timeout : temps d'attente en ms avant chargement des paramètres du menu (à augmenter si les paramètres des boutons ne sont pas pris en compte au chargement du menu)
+	css_loading_timeout : temps d'attente en ms avant chargement des paramètres du menu (à augmenter si les paramètres des boutons ne sont pas pris en compte au chargement du menu)
 
 	reload_active_button : 1 pour forcer le rechargement du contenu d'un bouton déjà sélectionné, 0 pour ne pas recharger le contenu
 
