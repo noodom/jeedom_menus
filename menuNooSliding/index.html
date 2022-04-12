@@ -3,8 +3,8 @@
 	- ajout de la gestion des boutons par un paramétrage JSon
 	- ajout de la navigation par frame à l'aide de htmlDisplay
 
-- Installation du menu : https://github.com/noodom/jeedom_menus/tree/master/menuNooSliding/README.md
-- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
+  - Installation du menu : https://github.com/noodom/jeedom_menus/tree/master/menuNooSliding/README.md
+  - Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 -->
 
 
@@ -12,173 +12,173 @@
 </div>
 
 <script>
-    var menuName = "menuNooSliding";
-    var cssPath = 'data/menusNoodom/' + menuName + '/css/perso.css';
-    var reloadActiveButton = false;
-  	var cssLoadingTimeout = 1000;
+  var menuName = "menuNooSliding";
+  var cssPath = 'data/menusNoodom/' + menuName + '/css/perso.css';
+  var reloadActiveButton = false;
+  var cssLoadingTimeout = 1000;
 </script>
 
 <nav id="menuNooSliding">
-    <!-- Génération dynamique du menu depuis le json de configuration -->
+  <!-- Génération dynamique du menu depuis le json de configuration -->
 </nav>
 
 <script id="menuNooSliding-js">
-  
-    function addCSSRule(sheet, selector, rules, index) {
-      if(sheet.insertRule) {
-        sheet.insertRule(selector + "{" + rules + "}", index);
+
+  function addCSSRule(sheet, selector, rules, index) {
+    if (sheet.insertRule) {
+      sheet.insertRule(selector + "{" + rules + "}", index);
+    }
+    else {
+      sheet.addRule(selector, rules, index);
+    }
+  }
+
+  function insertDynamicCss() {
+    let styleSheetLength = document.styleSheets.length;
+    for (let iSheet = 0; iSheet < styleSheetLength; iSheet++) {
+      if (document.styleSheets[iSheet].href != null && document.styleSheets[iSheet].href.includes(menuName)) {
+        var menuStyleSheet = document.styleSheets[iSheet];
+        // add rules
+        let index = menuStyleSheet.cssRules.length;
+        let liLength = $('nav#menuNooSliding ul.navul li').length;
+
+        for (let iLi = 0; iLi < liLength; iLi++) {
+          addCSSRule(menuStyleSheet, "nav#menuNooSliding ul li:nth-child(" + (iLi + 1) + "):hover ~ .current",
+            "left: calc((var(--menu-width) / " + liLength + ") / 4 + (var(--menu-width) / " + liLength + " * (" + (iLi + 1) + " - 1)))");
+        }
+        for (let iLi = 0; iLi < liLength; iLi++) {
+          addCSSRule(menuStyleSheet, "nav#menuNooSliding ul li:nth-child(" + (iLi + 1) + ").active ~ .current",
+            "left: calc((var(--menu-width) / " + liLength + ") / 4 + (var(--menu-width) / " + liLength + " * (" + (iLi + 1) + " - 1)))");
+        }
+      }
+    }
+  }
+
+  $(document).ready(function () {
+    let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+    // display loading message
+    var menuNooSliding = $('#menuNooSliding');
+    let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+    menuNooSliding.append('<div id="msg">Chargement du menu..</div>');
+
+    // load Json configuration file (perso.json)
+    // uses cache
+    //$.getJSON(jsonPath, function (data) {
+    // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+    $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+      let navSubmenu = $('#navul');
+      let buttons = data.buttons.map(function (button) {
+        return '<li class="' + button.label + '" id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + '>'
+          + '<a href="#">'
+          + '<i class="' + button.icon + '"></i>'
+          + '<span>' + button.label + '</span></a>'
+          + '</li>';
+      });
+
+      let endButtons = '<div class="current">'
+        + '<div class="top"></div>'
+        + '<div class="bottom"></div>'
+        + '</div>';
+
+      menuNooSliding.empty();
+      let menuList = $('<ul class="navul" />').html(buttons);
+      menuList.append(endButtons);
+      menuNooSliding.append(menuList);
+
+      if (link_id == "") {
+        // set focus on first button 
+        $('.navul li')[0].click();
       }
       else {
-        sheet.addRule(selector, rules, index);
+        // goto linkId
+        gotoPlan(link_id);
       }
-    }
-  	
-  	function insertDynamicCss() {     
-      let styleSheetLength = document.styleSheets.length;
-      for (let iSheet=0 ; iSheet<styleSheetLength ; iSheet++) {
-        if (document.styleSheets[iSheet].href != null && document.styleSheets[iSheet].href.includes(menuName)) {
-          var menuStyleSheet = document.styleSheets[iSheet];
-          // add rules
-          let index = menuStyleSheet.cssRules.length;
-          let liLength = $('nav#menuNooSliding ul.navul li').length;
-          
-          for (let iLi=0; iLi<liLength; iLi++) {           
-            addCSSRule(menuStyleSheet, "nav#menuNooSliding ul li:nth-child(" + (iLi+1) + "):hover ~ .current",
-            	"left: calc((var(--menu-width) / " + liLength + ") / 4 + (var(--menu-width) / " + liLength + " * ("+ (iLi+1) + " - 1)))");
-          }
-          for (let iLi=0; iLi<liLength; iLi++) {           
-            addCSSRule(menuStyleSheet, "nav#menuNooSliding ul li:nth-child(" + (iLi+1) + ").active ~ .current",
-            	"left: calc((var(--menu-width) / " + liLength + ") / 4 + (var(--menu-width) / " + liLength + " * (" + (iLi+1) + " - 1)))");
-          }
+
+      // get menu parameters
+      let menuWidth = "1000px";
+      let menuHeight = "120px";
+      if (data.parameters) {
+        let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+        $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+        $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+        menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "800px";
+        menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "120px";
+        $(htmlDisplayId)[0].style.width = data.parameters.content_width ? data.parameters.content_width : "1280px";//menuWidth; // same width as content frame for menu frame (to center menu)
+        $(htmlDisplayId)[0].style.height = parseInt(menuHeight.replace("px", "")) + 28 + "px";
+
+        $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+        $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+        $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+        $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+
+        if (data.parameters.cursor_color) {
+          $('nav#menuNooSliding').style().setProperty('--cursor-color', data.parameters.cursor_color);
         }
+        if (data.parameters.cursor_default_color) {
+          $('nav#menuNooSliding').style().setProperty('--cursor-default-color', data.parameters.cursor_default_color);
+        }
+        if (data.parameters.background_color) {
+          $('nav#menuNooSliding').style().setProperty('--background-color', data.parameters.background_color);
+        }
+        if (data.parameters.css_loading_timeout) {
+          cssLoadingTimeout = data.parameters.css_loading_timeout;
+        }
+        if (data.parameters.reload_active_button) {
+          reloadActiveButton = data.parameters.reload_active_button;
+        }
+
+        $('nav#menuNooSliding').style().setProperty('--menu-width', menuWidth);
+        $('nav#menuNooSliding').style().setProperty('--menu-height', menuHeight);
+        $('nav#menuNooSliding').style().setProperty('--buttons-length', data.buttons.length);
       }
-  	}
-  
-    $(document).ready(function () {
-      	let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
-        // display loading message
-        var menuNooSliding = $('#menuNooSliding');
-        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
-        menuNooSliding.append('<div id="msg">Chargement du menu..</div>');
 
-        // load Json configuration file (perso.json)
-        // uses cache
-        //$.getJSON(jsonPath, function (data) {
-        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
-      	$.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
-            let navSubmenu = $('#navul');
-            let buttons = data.buttons.map(function (button) {
-                return '<li class="' + button.label + '" id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + '>'
-                    + '<a href="#">'
-                    + '<i class="' + button.icon + '"></i>'
-                    + '<span>' + button.label + '</span></a>'
-                    + '</li>';
-            });
+      // CSS loading
+      console.log("CSS loading " + cssPath);
+      let forceRefreshCss = true;
+      let link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.setAttribute("type", "text/css");
+      let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
+      link.setAttribute("href", hrefAttribute);
+      document.getElementById('cssDiv').appendChild(link);
 
-          	let endButtons = '<div class="current">'
-          					+ '<div class="top"></div>'
-                        	+ '<div class="bottom"></div>'
-  							+ '</div>';
-          
-            menuNooSliding.empty();
-            let menuList = $('<ul class="navul" />').html(buttons);
-          	menuList.append(endButtons);
-            menuNooSliding.append(menuList);
-
-            if (link_id == "") {
-                // set focus on first button 
-                $('.navul li')[0].click();
-            }
-            else {
-                // goto linkId
-                gotoPlan(link_id);
-            }
-          
-            // get menu parameters
-            let menuWidth = "1000px";
-          	let menuHeight = "120px";
-          	if (data.parameters) {
-                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
-                $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-                $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
-                menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "800px";
-                menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "120px";
-                $(htmlDisplayId)[0].style.width = data.parameters.content_width ? data.parameters.content_width : "1280px";//menuWidth; // same width as content frame for menu frame (to center menu)
-                $(htmlDisplayId)[0].style.height = parseInt(menuHeight.replace("px", "")) + 28 + "px";
-
-                $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
-                $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
-                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
-
-                if (data.parameters.cursor_color) {
-                    $('nav#menuNooSliding').style().setProperty('--cursor-color', data.parameters.cursor_color);
-                }
-                if (data.parameters.cursor_default_color) {
-                  	$('nav#menuNooSliding').style().setProperty('--cursor-default-color', data.parameters.cursor_default_color);
-                }
-                if (data.parameters.background_color) {
-                    $('nav#menuNooSliding').style().setProperty('--background-color', data.parameters.background_color);
-                }
-                if (data.parameters.css_loading_timeout) {
-                    cssLoadingTimeout = data.parameters.css_loading_timeout;
-                }
-                if (data.parameters.reload_active_button) {
-                    reloadActiveButton = data.parameters.reload_active_button;
-                }
-
-                $('nav#menuNooSliding').style().setProperty('--menu-width', menuWidth);
-              	$('nav#menuNooSliding').style().setProperty('--menu-height', menuHeight);
-              	$('nav#menuNooSliding').style().setProperty('--buttons-length', data.buttons.length);
-            }
-
-            // CSS loading
-          	console.log("CSS loading " + cssPath);
-            let forceRefreshCss = true;
-            let link = document.createElement("link");
-            link.setAttribute("rel", "stylesheet");
-            link.setAttribute("type", "text/css");
-            let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
-            link.setAttribute("href", hrefAttribute);
-            document.getElementById('cssDiv').appendChild(link);
-          
-          	setTimeout(insertDynamicCss, cssLoadingTimeout);
-        });
+      setTimeout(insertDynamicCss, cssLoadingTimeout);
     });
+  });
 
-    // create url destination
-    function getUrlDestination(urlParam) {
-        if (isNaN(urlParam)) {
-            return urlParam;
-        } else {
-            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
-        }
+  // create url destination
+  function getUrlDestination(urlParam) {
+    if (isNaN(urlParam)) {
+      return urlParam;
+    } else {
+      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
     }
+  }
 
-    // menu redirection
-    function gotoPlan(id) {
-        let urlDestination = getUrlDestination(id);
-        // get frame in htmlDisplay equipment
-        let frameDestination = document.getElementById('menuFrame');
+  // menu redirection
+  function gotoPlan(id) {
+    let urlDestination = getUrlDestination(id);
+    // get frame in htmlDisplay equipment
+    let frameDestination = document.getElementById('menuFrame');
 
-        if (frameDestination == null) {
-            // Error : no content frame
-            console.log("ERREUR : Frame de contenu non créée");
-        }
-        else {
-            // display focus
-            $('.navul li').removeClass('active');
-            $('.navul li a').removeClass('active-text');
-            if (!isNaN(id)) {
-                $('#' + id).addClass('active');
-                $('#' + id + ' a').addClass('active-text');
-            }
-            // fill content frame
-            if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
-                frameDestination.src = urlDestination;
-            }
-        }
+    if (frameDestination == null) {
+      // Error : no content frame
+      console.log("ERREUR : Frame de contenu non créée");
     }
+    else {
+      // display focus
+      $('.navul li').removeClass('active');
+      $('.navul li a').removeClass('active-text');
+      if (!isNaN(id)) {
+        $('#' + id).addClass('active');
+        $('#' + id + ' a').addClass('active-text');
+      }
+      // fill content frame
+      if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
+        frameDestination.src = urlDestination;
+      }
+    }
+  }
 
   //# sourceURL=menuNooSliding.js
 </script>
