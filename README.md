@@ -34,6 +34,14 @@ Ce menu affiche des boutons 3D avec une animation sur focus pour le bouton séle
 
 Il permet une configuration par un fichier Json et une navigation par Frame.
 
+## 💥 Menu [Sliding](./menuNooSliding) avec fichier de configuration JSon et navigation par Frame
+
+![Menu nooSliding](./menuNooSliding/doc/images/demoMenuNooSliding.gif)
+
+Ce menu encadre le bouton sélectionné et suit la souris avec une encoche autour du bouton courant.
+
+Il permet une configuration par un fichier Json et une navigation par Frame.
+
 ## 💥 Menu [Animation](./menuAnimation) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu Animation](./menuAnimation/doc/images/menuAnimation.png)
