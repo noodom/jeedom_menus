@@ -1,12 +1,12 @@
 # Menu menuNavButton avec fichier de configuration JSon et gestion de navigation par Frame
 
-![Menu Nav Button](./menuNavButton/doc/images/style-menu.png)
+![Menu Nav Button](./doc/images/style-menu.png)
 
-![Menu Nav Button](./menuNavButton/doc/images/style-push-menu.png)
+![Menu Nav Button](./doc/images/style-push-menu.png)
 
-![Menu Nav Button](./menuNavButton/doc/images/style-ios-menu.png)
+![Menu Nav Button](./doc/images/style-ios-menu.png)
 
-![Menu Nav Button](./menuNavButton/doc/images/style-img-menu.png)
+![Menu Nav Button](./doc/images/style-img-menu.png)
 
 Ce menu permet de créer différents types de menus en sélectionnant un des css à disposition et en le personnalisant à l'aide du paramétrage JSon et une navigation par Frame avec :
 - ajout de la gestion des boutons par un paramétrage JSon
