@@ -48,8 +48,8 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 #### Paramétrage du menu (modification du fichier **/html/data/menusNoodom/menuJsonFsb33Frame/json/perso.json** et SEULEMENT ce fichier)
    - buttons : liste des boutons du menu
-   - modifier les valeurs **link** (lien vers l'id d'un design) et **icon** (image du bouton) pour personnaliser les boutons du menu
-   	- parameters
+		- modifier les valeurs **link** (lien vers l'id d'un design) et **icon** (image du bouton) pour personnaliser les boutons du menu
+   - parameters
 		- menu_x : position x du menu (par défaut "0px")
 		- menu_y : position y du menu (par défaut "0px")
 		- menu_width : largeur du menu (par défaut "1280px")
@@ -58,6 +58,8 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 		- content_y : position y du contenu du menu (par défaut "0px")
 		- content_width : largeur du contenu du menu (par défaut "1280px")
 		- content_height : hauteur du contenu du menu (par défaut "1000px")
+
+>**Note** : Le paramètre **icon** d'un bouton peut être au format image (ex : "icon": "data/menusNoodom/menuJsonFsb33Frame/img/icon_home.png"), mais aussi au format font-awesome (ex: "icon" : "fa fa-4x fa-home")
 
 >Pour information, les avantages de la gestion de la navigation du menu par frame :
 >	- Le code du menu est présent dans un seul Design : plus simple en cas de modifications nécessaires (un seul Design à modifier), pas de recopie nécessaire, pas d'oublis de modifications sur différents écrans
