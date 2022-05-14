@@ -25,7 +25,23 @@
     // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
     $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
       let buttons = data.buttons.map(function (button) {
-        return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+        let imgType = button.icon.toLowerCase().endsWith('.jpg') || button.icon.toLowerCase().endsWith('.jpeg') || button.icon.toLowerCase().endsWith('.png') || button.icon.toLowerCase().endsWith('.gif');
+        let buttonCode = '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+          + '<li class="monmenu">'
+          + '<div class="imagette">';
+        if (imgType) {
+          buttonCode += '<img src="' + button.icon + '" height=50px width=50px>';
+        }
+        else {
+          buttonCode += '<i class="' + button.icon + '"></i>';
+        }
+
+        buttonCode += '</div></br>'
+          + '</li>'
+          + '</a>';
+        
+        return buttonCode;
+	return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
           + '<li class="monmenu">'
           + '<div class="imagette"><img src="' + button.icon + '" height=50px width=50px></div></br>'
           + '</li>'
