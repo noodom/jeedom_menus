@@ -13,20 +13,31 @@
 </div>
 
 <script id="menuFSB33-js">
+  
   $(document).ready(function () {
     let jsonPath = 'data/menusNoodom/menuJsonFsb33Frame/json/perso.json';
     let menuTop = $('.menu_top');
     let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+
     menuTop.append('Chargement du menu..');
 
-    // load Json configuration file (perso.json)
+    // load Json configuration file
     // uses cache
     //$.getJSON(jsonPath, function (data) {
     // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
-    $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+    $.getJSON(jsonPath + '?v=' + (new Date()).getMinutes(), function (data) {
+  	  let urlIdCpt = 0;
       let buttons = data.buttons.map(function (button) {
         let imgType = button.icon.toLowerCase().endsWith('.jpg') || button.icon.toLowerCase().endsWith('.jpeg') || button.icon.toLowerCase().endsWith('.png') || button.icon.toLowerCase().endsWith('.gif');
-        let buttonCode = '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+        let idParam = button.link;
+        if (isNaN(idParam)) {
+            // url format
+            idParam = "url" + urlIdCpt;
+            urlIdCpt++;
+        }
+        let fullscreenParam = ((button.fullscreen == undefined && button.top != 1) || button.fullscreen == 1)?1:0;
+        let topParam = (button.top == 1)?1:0;
+        let buttonCode = '<a id="id' + idParam + '" onClick="gotoPlan(this.id, \'' + button.link + '\', ' + fullscreenParam + ', ' + topParam + ')">'
           + '<li class="monmenu">'
           + '<div class="imagette">';
         if (imgType) {
@@ -75,40 +86,50 @@
       else {
         if (link_id == "") {
           // frame navigation : set focus on first button 
-          $('#' + data.buttons[0].link + ' li').click();
+          let id = isNaN(data.buttons[0].link)?'url0':data.buttons[0].link;
+          $('#id' +  id + ' li').click();
         }
         else {
           // frame navigation : goto design id (url parameter link_id)
-          gotoPlan(link_id);
+          if ($('#id' +  link_id + ' li').length == 0) {
+            gotoPlan(link_id, link_id, 1, 0);
+          }
+          else {
+            $('#id' +  link_id + ' li').click();
+          }
         }
       }
     });
   });
-
+  
   // create url destination
-  function getUrlDestination(urlParam) {
+  function getUrlDestination(urlParam, fullscreen) {
     if (isNaN(urlParam)) {
-      return urlParam;
+      let paramSeparator = (urlParam.includes('?'))?'&':'?';
+      let fullscreenParam = (fullscreen==1)?(paramSeparator + 'fullscreen=1'):'';
+      return urlParam + fullscreenParam;
     } else {
-      return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+      let fullscreenParam = (fullscreen==1)?('&fullscreen=1'):'';
+      return 'index.php?v=d&p=plan&plan_id=' + urlParam + fullscreenParam;
     }
   }
 
   // menu redirection
-  function gotoPlan(id) {
-    let urlDestination = getUrlDestination(id);
+  function gotoPlan(id, link, fullscreen, top) {
+    let urlDestination = getUrlDestination(link, fullscreen);
     // get frame in htmlDisplay equipment
     let frameDestination = document.getElementById('menuFrame');
 
-    if (frameDestination == null) {
-      // no frame : page redirection
-      planHeader_id = id;
-      displayPlan();
+    if (frameDestination == null || top == 1) {
+      // no frame or top destination : page redirection
+      window.location = urlDestination;
     }
     else {
       // display focus
       $('.monmenu').removeClass('selected');
-      $('#' + id + ' li').addClass('selected');
+      if (!isNaN(id) && $('#id' + id + ' li').length != 0) {
+	      $('#id' + id + ' li').addClass('selected');
+      }
 
       // frame redirection
       if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
