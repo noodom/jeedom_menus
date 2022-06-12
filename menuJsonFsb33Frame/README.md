@@ -25,6 +25,8 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
         - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
    - Editer le fichier **/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Pour chaque bouton du menu, mettre le lien vers un design (**link**) et le lien vers son image (**icon**)
+        - (Optionnel) Pour chaque bouton du menu, préciser le mode plein écran du contenu (**fullscreen**), utile pour les écrans de Jeedom (designs, panels, ..) : 0=menu Jeedom visible, 1=menu Jeedom caché (par défaut 1 si top=0)
+        - (Optionnel) Pour chaque bouton du menu, préciser le mode d'ouverture du lien (**top**) : 0=ouverture dans la frame de contenu, 1=ouverture en remplacement de la page du menu, 2=ouverture dans une nouvelle fenêtre
    - Adapter si nécessaire les paramètres du menu et de la frame pour son affichage : voir détail plus bas
    - (Optionnel) Vérifier que le fichier **/json/perso.json** modifié est correct :
         - Copier son contenu ici : https://jsonlint.com/
