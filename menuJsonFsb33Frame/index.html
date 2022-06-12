@@ -29,15 +29,18 @@
   	  let urlIdCpt = 0;
       let buttons = data.buttons.map(function (button) {
         let imgType = button.icon.toLowerCase().endsWith('.jpg') || button.icon.toLowerCase().endsWith('.jpeg') || button.icon.toLowerCase().endsWith('.png') || button.icon.toLowerCase().endsWith('.gif');
-        let idParam = button.link;
-        if (isNaN(idParam)) {
+        let idParam = '';
+        if (isNaN(button.link)) {
             // url format
-            idParam = "url" + urlIdCpt;
+            idParam = 'url' + urlIdCpt;
             urlIdCpt++;
         }
-        let fullscreenParam = ((button.fullscreen == undefined && button.top != 1) || button.fullscreen == 1)?1:0;
-        let topParam = (button.top == 1)?1:0;
-        let buttonCode = '<a id="id' + idParam + '" onClick="gotoPlan(this.id, \'' + button.link + '\', ' + fullscreenParam + ', ' + topParam + ')">'
+        else {
+          idParam = 'id' + button.link;
+        }
+        let fullscreenParam = ((button.fullscreen == undefined && button.top != 1 && button.top != 2) || button.fullscreen == 1)?1:0;
+        let topParam = (button.top == 1 || button.top == 2)?button.top:0;
+        let buttonCode = '<a id="' + idParam + '" onClick="gotoPlan(this.id, \'' + button.link + '\', ' + fullscreenParam + ', ' + topParam + ')">'
           + '<li class="monmenu">'
           + '<div class="imagette">';
         if (imgType) {
@@ -81,7 +84,7 @@
       if (frameDestination == null) {
         // no frame navigation : focus on button with url parameter plan_id as id
         let planID = '#' + (location.search.split('plan_id' + '=')[1] || '').split('&')[0];
-        $(planID + ' li').addClass('selected'); // selected = classe CSS sur élément actif
+        $(planID + ' li').addClass('selected');
       }
       else {
         if (link_id == "") {
@@ -123,6 +126,9 @@
     if (frameDestination == null || top == 1) {
       // no frame or top destination : page redirection
       window.location = urlDestination;
+    }
+    else if (top == 2) {
+      window.open(urlDestination, '_blank');
     }
     else {
       // display focus
