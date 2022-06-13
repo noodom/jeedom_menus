@@ -6,7 +6,7 @@ Cette installation permet de créer les différents menus automatiquement à par
 
 1. Créer un nouveau scénario
 2. Ajouter une action tag menuName nomDuMenu
-3. Ajouter un bloc-code et copier le code ![Capture du scénario](./nooMenusAutomaticInstallation.php)
+3. Ajouter un bloc-code et copier le code ![ici](./nooMenusAutomaticInstallation.php)
 4. Exécuter le scénario
 5. Le menu est généré automatiquement : 
    - il est visible dans la liste des designs
