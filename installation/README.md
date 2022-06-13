@@ -1,4 +1,23 @@
-#Initialisation d'un menu noodom pour Jeedom
+# Installation automatique d'un menu noodom (nouvelle installation)
+
+Cette installation permet de créer les différents menus automatiquement à partir du scénario suivant.
+
+![captureScenarioInstallationAutomatique](./doc/images/nooMenusAutomaticInstallation.png)
+
+1. Créer un nouveau scénario
+2. Ajouter une action tag menuName nomDuMenu
+3. Ajouter un bloc-code et copier le code ![Capture du scénario](./nooMenusAutomaticInstallation.php)
+4. Exécuter le scénario
+5. Le menu est généré automatiquement : 
+   - il est visible dans la liste des designs
+   - il est accessible directement dans la liste des message (lien du design et des htmlDisplays du menu et du contenu disponible dans le message)
+
+:warning: Menus compatibles :
+- L'installation est possible pour les menus suivants : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding.
+- menuAnimation : il faut modifier manuellement les position et taille des htmlDisplays du menu et du contenu (Depuis le design : 'Edition', 'Configurer le design', 'Composants'->'Configuration' puis 'Sauvegarder')
+- En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
+
+#Initialisation d'un menu noodom pour Jeedom (Ancienne installation)
 
 :warning: Cette installation est nécessaire pour une compatibilité avec les nouvelles sécurités de Jeedom (et donc pour des menus compatibles Jeedom 4.2)
 
