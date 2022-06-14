@@ -4,13 +4,18 @@ Cette installation permet de créer les différents menus automatiquement à par
 
 ![captureScenarioInstallationAutomatique](./doc/images/nooMenusAutomaticInstallation.png)
 
-1. Créer un nouveau scénario
-2. Ajouter une action tag menuName nomDuMenu
-3. Ajouter un bloc-code et copier le code ![ici](./nooMenusAutomaticInstallation.php)
-4. Exécuter le scénario
-5. Le menu est généré automatiquement : 
+1️⃣ 1. Créer un nouveau scénario
+
+2️⃣ Ajouter une action tag menuName nomDuMenu
+
+3️⃣ Ajouter un bloc-code et copier le code ![ici](./nooMenusAutomaticInstallation.php)
+
+4️⃣ Exécuter le scénario
+
+5️⃣ Le menu est généré automatiquement : 
+
    - il est visible dans la liste des designs
-   - il est accessible directement dans la liste des message (lien du design et des htmlDisplays du menu et du contenu disponible dans le message)
+   - il est accessible directement dans la liste des messages (lien du design et des htmlDisplays du menu et du contenu disponible dans le message)
 
 :warning: Menus compatibles :
 - L'installation est possible pour les menus suivants : **menuJsonFsb33Frame**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuNavButton**, **menuNoo3DAnim**, **menuNooSliding**.
@@ -28,8 +33,8 @@ Pour cela, il suffit d'exécuter le scénario [nooMenusFilesDownload](nooMenusFi
 
 Il faut alors suivre les étapes suivantes :
 
-1. Télécharger le template du scénario disponible ici : [nooMenusFilesDownload](nooMenusFilesDownload.json)
-2. Charger le scénario depuis Jeedom à partir du fichier de template du scénario
+1️⃣ Télécharger le template du scénario disponible ici : [nooMenusFilesDownload](nooMenusFilesDownload.json)
+2️⃣ Charger le scénario depuis Jeedom à partir du fichier de template du scénario
 
   - Sélectionner le menu `Outils` / `Scénarios`
   - Sélectionner `Ajouter` pour créer un nouveau scénario, lui donner un nom
@@ -41,14 +46,14 @@ Il faut alors suivre les étapes suivantes :
 
     ![load template](./doc/images/templateLoad.png)
 
-3. Appliquer le template chargé au scénario en cours de création
+3️⃣ Appliquer le template chargé au scénario en cours de création
 
   - Sélectionner le template présent dans la liste des templates
   - Sélectionner le bouton "`Appliquer`" pour charger le template dans le scénario en cours de création
 
     ![apply template](./doc/images/templateApply.png)
 
-4. Exécution du scénario
+4️⃣ Exécution du scénario
   - Le nouveau scénario créé contient le contenu du template chargé
   - Dans le contenu du scénario, préciser le nom du menu à installer au niveau du tag "`menuName`" 
 
