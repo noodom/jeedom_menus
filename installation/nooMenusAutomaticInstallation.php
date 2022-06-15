@@ -7,9 +7,8 @@
  	- Create menu design (insert menu htmlDisplay and content htmlDisplay)
 
 Menu list : 
-- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding
-- menus to adapt : menuAnimation (manually modify htmlDisplay width and height)
-- menu KO : menuFloattingDraggable, menuHoverShow, menuInTheAir
+- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding, menuAnimation
+- menus KO : menuFloattingDraggable, menuHoverShow, menuInTheAir
 
 Menu installation details :
 	- https://github.com/noodom/jeedom_menus/blob/master/installation/nooMenusAutomaticInstallation.php
