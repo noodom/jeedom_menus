@@ -12,10 +12,9 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Récupérer le template de scénario [nooMenusFilesDownload](../nooMenusFilesDownload.json) ( Tuto détaillé [ici](../installation/README.md) )
-        - Installer le scénario à partir du template
-        - Préciser la valeur menuAnimation pour le tag menuName en début de scénario
-        - Exécuter le scénario => Les fichiers du scénario sont bien recopiés
+   - Créer le scénario d'installation automatique d'un menu noodom (disponible [ici](../installation/README.md))
+   - Préciser le nom du menu **menuAnimation** dans le tag **menuName** du scénario
+   - Exécuter le scénario => Le design du menu est créé automatiquement
    - Editer le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** à l'aide de l'éditeur de fichier :
         - Pour chaque bouton du menu, mettre le libellé du bouton (**label**), le lien vers un design (**link**) et sa couleur (**color**)
    - (Optionnel) Vérifier que le fichier **/html/data/menusNoodom/menuAnimation/json/perso.json** modifié est correct :
