@@ -19,7 +19,7 @@ Cette installation permet de créer les différents menus automatiquement à par
 
 :warning: Menus compatibles :
 - L'installation est possible pour les menus suivants : **menuJsonFsb33Frame**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuNavButton**, **menuNoo3DAnim**, **menuNooSliding**, **menuAnimation**, **menuInTheAir**.
-- Si le menu n'est pas transparent, il faut effectuer les actions suivantes depuis le design du menu : Clic droit, Sélectionner 'Edition', Clic droit, 'Configurer le design', puis sélectionner 'Composants', 'Configuration' du menu (2ème ligne) et 'Sauvegarder'.
+- Si le menu n'est pas transparent, il faut effectuer les actions suivantes depuis le design du menu : Clic droit, Sélectionner `Edition`, Clic droit, `Configurer le design`, puis sélectionner `Composants`, `Configuration` du menu (2ème ligne) et `Sauvegarder`.
 - En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
 
 # Initialisation d'un menu noodom pour Jeedom (Ancienne installation)
@@ -51,13 +51,13 @@ Il faut alors suivre les étapes suivantes :
 3️⃣ Appliquer le template chargé au scénario en cours de création
 
   - Sélectionner le template présent dans la liste des templates
-  - Sélectionner le bouton "`Appliquer`" pour charger le template dans le scénario en cours de création
+  - Sélectionner le bouton `Appliquer` pour charger le template dans le scénario en cours de création
 
     ![apply template](./doc/images/templateApply.png)
 
 4️⃣ Exécution du scénario
   - Le nouveau scénario créé contient le contenu du template chargé
-  - Dans le contenu du scénario, préciser le nom du menu à installer au niveau du tag "`menuName`" 
+  - Dans le contenu du scénario, préciser le nom du menu à installer au niveau du tag `menuName`
 
     (valeurs possibles actuellement : **menuJsonFsb33Frame**, **menuNooSliding**, **menuNoo3DAnim**, **menuAnimation**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuFloattingDraggable**, **menuHoverShow**, **menuInTheAir**)
   - Exécuter le scénario
