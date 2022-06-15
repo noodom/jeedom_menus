@@ -32,17 +32,21 @@
 
             if (data.parameters) {
                 // menu parameters
-                let htmlDisplayId = '[data-eqlogic_id="' + data.parameters.menu_id + '"]';
-                $(htmlDisplayId)[0].style.top = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-                $(htmlDisplayId)[0].style.left = data.parameters.menu_y ? data.parameters.menu_y : "0px";
-                $(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "322px";
-                $(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "350px";
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                if ($(htmlDisplayId).length != 0) {
+                	$(htmlDisplayId)[0].style.top = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                	$(htmlDisplayId)[0].style.left = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+                	$(htmlDisplayId)[0].style.width = data.parameters.menu_width ? data.parameters.menu_width : "322px";
+                	$(htmlDisplayId)[0].style.height = data.parameters.menu_height ? data.parameters.menu_height : "350px";
+                }
 
                 // frame parameters
-                $("#menuFrame").offsetParent().style().top = data.parameters.content_x ? data.parameters.content_x : "0px";
-                $("#menuFrame").offsetParent().style().left = data.parameters.content_y ? data.parameters.content_y : "0px";
-                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+                if ($("#menuFrame").length != 0) {
+                	$("#menuFrame").offsetParent().style().top = data.parameters.content_x ? data.parameters.content_x : "0px";
+                	$("#menuFrame").offsetParent().style().left = data.parameters.content_y ? data.parameters.content_y : "0px";
+                	$("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                	$("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+                }
             }
 
             let frameDestination = document.getElementById('menuFrame');
