@@ -18,7 +18,7 @@ Cette installation permet de créer les différents menus automatiquement à par
    - il est accessible directement dans la liste des messages (lien du design et des htmlDisplays du menu et du contenu disponible dans le message)
 
 :warning: Menus compatibles :
-- L'installation est possible pour les menus suivants : **menuJsonFsb33Frame**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuNavButton**, **menuNoo3DAnim**, **menuNooSliding**, **menuAnimation**.
+- L'installation est possible pour les menus suivants : **menuJsonFsb33Frame**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuNavButton**, **menuNoo3DAnim**, **menuNooSliding**, **menuAnimation**, **menuInTheAir**.
 - En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
 
 # Initialisation d'un menu noodom pour Jeedom (Ancienne installation)
