@@ -15,13 +15,16 @@ Cette installation permet de créer les différents menus automatiquement à par
 5️⃣ Le menu est généré automatiquement : 
 
    - il est visible dans la liste des designs
-   - il est accessible directement dans la liste des messages (lien du design et des htmlDisplays du menu et du contenu disponible dans le message)
+   - il est accessible directement dans la liste des messages (liens du design et des htmlDisplays du menu et du contenu disponibles dans le message JEedom créé à la génération)
 
 :warning: Menus compatibles :
 - L'installation est possible pour les menus suivants : **menuJsonFsb33Frame**, **menuNooNeumorphism**, **menuVerticalTom**, **menuMobileSubMenuFrame**, **menuNavButton**, **menuNoo3DAnim**, **menuNooSliding**, **menuAnimation**, **menuInTheAir**.
+- Si le menu n'est pas transparent, il faut effectuer les actions suivantes depuis le design du menu : Clic droit, Sélectionner 'Edition', Clic droit, 'Configurer le design', puis sélectionner 'Composants', 'Configuration' du menu (2ème ligne) et 'Sauvegarder'.
 - En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
 
 # Initialisation d'un menu noodom pour Jeedom (Ancienne installation)
+
+:warning: Avec la nouvelle installation automatique proposée ci-dessus, cette méthode n'est plus nécessaire.
 
 :warning: Cette installation est nécessaire pour une compatibilité avec les nouvelles sécurités de Jeedom (et donc pour des menus compatibles Jeedom 4.2)
 
