@@ -18,8 +18,8 @@ Cliquez ici pour la vidéo de présentation :
 ### Avant d'inclure le menu, il faut commencer par les actions suivantes
 
    - Créer le scénario d'installation automatique d'un menu noodom (disponible [ici](../installation/README.md))
-   - Préciser le nom du menu **menuMobileSubMenuFrame** dans le tag **menuName** du scénario
-   - Exécuter le scénario => Le design du menu est créé automatiquement
+      - Préciser le nom du menu **menuMobileSubMenuFrame** dans le tag **menuName** du scénario
+      - Exécuter le scénario => Le design du menu est créé automatiquement
    - Editer le fichier **/html/data/menusNoodom/menuMobileSubMenuFrame/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Suivre les indications détaillées sur le paramétrage du paragraphe **Paramétrage du menu**
    - Vérifier que le fichier **/json/perso.json** modifié est correct :
