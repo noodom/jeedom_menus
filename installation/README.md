@@ -1,7 +1,7 @@
 Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus proposés ![ici](https://github.com/noodom/jeedom_menus/)
 (Définition des méthodes dans l'ordre de préconisation)
 
-1. Méthode de création automatique du menu nécessaire pour générer automatiquement des scénarios
+1. Méthode de création automatique du menu nécessaire pour générer automatiquement des scénarios (**Préconisée**)
 2. Méthode de création manuelle du scénario pour générer automatiquement des scénarios
 3. Méthode d'installation manuelle d'un menu noodom
 
@@ -18,7 +18,14 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 
 ![scénario de paramétrage de génération de menus](./doc/images/nooMenusAutomaticInstallationsParams.png)
 
-- Renseigner les tags **menuName** (nom du menu à générer), **menuDesignWidth** (largeur du design), **menuDesignHeight** (hauteur du design), **designPrefixName** (préfixe du nom de menu : pour générer plusieurs menus identiques), **htmldisplayParent** (Définition de l'objet parent du design) selon le menu à générer et exécuter à nouveau le scénario : le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
+- Renseigner les tags **menuName** (nom du menu à générer), **menuDesignWidth** (largeur du design), **menuDesignHeight** (hauteur du design), **designPrefixName** (préfixe du nom de menu : pour générer plusieurs menus identiques), **htmldisplayParent** (Définition de l'objet parent du design) selon le menu à générer et exécuter à nouveau le scénario
+
+-  Le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
+
+>**Note** :
+> - les tags **menuDesignWidth** et **menuDesignHeight** corerspondent au design du menu comprenant les 2 htmlDisplay nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
+> - le tag **designPrefixName** est facultatif : utile pour générer un même menu avec des configurations différentes (pour diférentes plateformes par exemple)
+> le tag **htmldisplayParent** détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
 
 # Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
