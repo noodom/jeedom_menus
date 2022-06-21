@@ -31,7 +31,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 > - le tag `htmldisplayParent` détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
 > - Pour générer un nouveau menu, seules les étapes 4️⃣ et 5️⃣ sont nécessaires (les 3 premières étapes sont seulement utiles pour générer le scénario de génération de menus ou de mise à jour de ce scénario)
 
-# Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
+# Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement (première méthode préconisée)
 
 Cette installation permet de créer les différents menus automatiquement à partir du scénario suivant.
 
@@ -55,7 +55,7 @@ Cette installation permet de créer les différents menus automatiquement à par
 - Si le menu n'est pas transparent, il faut effectuer les actions suivantes depuis le design du menu : Clic droit, Sélectionner `Edition`, Clic droit, `Configurer le design`, puis sélectionner `Composants`, `Configuration` du menu (2ème ligne) et `Sauvegarder`.
 - En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
 
-# Installation manuelle d'un menu noodom
+# Installation manuelle d'un menu noodom (première méthode préconisée)
 
 :warning: Avec la nouvelle installation automatique proposée ci-dessus, cette méthode n'est plus nécessaire.
 
