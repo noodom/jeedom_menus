@@ -18,10 +18,10 @@ Cliquez ici pour la vidéo de présentation :
 
 ## Installation du menu
 
-### Avant d'inclure le menu, il faut commencer par les actions suivantes
+▶️ Avant d'inclure le menu, il faut commencer par les actions suivantes
 
-   - Créer le scénario d'installation automatique d'un menu noodom (disponible [ici](../installation/README.md))
-   - Préciser le nom du menu **menuInTheAir** dans le tag **menuName** du scénario
+   - Créer le scénario d'installation automatique d'un menu noodom, si premier menu généré (disponible [ici](../installation/README.md))
+   - Préciser le nom du menu **menuInTheAir** dans le tag **menuName** du scénario (Détail des autres tags dans la procédure pour les autres tags)
    - Exécuter le scénario => Le design du menu est créé automatiquement
    - Editer le fichier **/json/perso.json** à l'aide de l'éditeur de fichier (plugin jeeExplorer ou menu Réglages/Système/Editeur de fichiers à partir de Jeedom 4.2) :
         - Pour chaque bouton du menu, mettre le libellé (**label**), le lien vers un design (**link**) et le lien vers son image (**icon**)
@@ -31,22 +31,14 @@ Cliquez ici pour la vidéo de présentation :
         - Cliquer sur **'Validate JSON'**
         - Le résultat sous Results doit être vert avec le message **'Valid JSON'**
 
-#### Création du menu
+▶️ Création du menu
 
-   - Créer un équipement htmlDisplay **'Menu'** (depuis le plugin htmlDisplay) et copier le contenu de **index.html** dans l'onglet Dashboard
-   - Créer un équipement htmlDisplay **'Contenu'** (depuis le plugin htmlDisplay) et copier le code de **menuFrame.html** dans l'onglet Dashboard (ne pas modifier 'menuFrame' pour un bon fonctionnement) :
-      - Pour ces 2 équipements, cocher **'Activer'** et **'Visible'** puis **'Sauvegarder'**
-   - Créer un Design de la largeur et de la hauteur de l'écran final (ordinateur, mobile, tablette, ..)
    - Créer un Design pour chaque lien des boutons du menu si pas encore existants (Prévoir de respecter la taille du Design en fonction de l'affichage final dans la frame)
       - Ces menus ne contiennent pas le menu mais seulement les éléments de Jeedom à visualiser pour cet écran
       - Préciser ces liens dans le fichier de configuration **/json/perso.json** pour la navigation du menu si nécessaire
-   - Ajouter EN PREMIER l'équipement htmlDisplay **'Contenu'** dans ce même Design
-   - Ajouter EN SECOND l'équipement htmlDisplay **'Menu'** dans ce Design (menu clic-droit, sélectionner "ajouter équipement" et sélectionner le htmlDisplay 'Menu')
-      - Adapter son z-index (clic droit, Paramètres d'affichage, profondeur : mettre niveau 3)
-      - Cocher 'transparent' pour la couleur de fond (clic droit, Paramètres d'affichage, Couleur de fond : Transparent)
    - (Indépendant du menu) Ajouter les équipements à afficher dans chacun des Designs liés aux boutons (lumières, portes, fenêtres, volets, etc..)
 
-#### Paramétrage du menu (modification du fichier /html/data/menusNoodom/menuInTheAir/json/perso.json et SEULEMENT ce fichier)
+▶️ Paramétrage du menu (modification du fichier /html/data/menusNoodom/menuInTheAir/json/perso.json et SEULEMENT ce fichier)
    - buttons : liste des boutons du menu
       - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et icon (image du bouton) pour personnaliser les boutons du menu
    - parameters
