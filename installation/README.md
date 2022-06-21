@@ -7,25 +7,27 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 
 # Installation automatique d'un menu noodom à l'aide d'un scénario créé automatiquement
 
-- Créer un scénario
-- Ajouter un bloc-code avec le contenu suivant, sauvegarder le scénario et l'exécuter :
+1️⃣ Créer un scénario
+
+2️⃣ Ajouter un bloc-code avec le contenu suivant, sauvegarder le scénario et l'exécuter :
 
 `eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));`
 
 ![scénario de création de génération automatique de menus](./doc/images/automaticMenuInstallationCreation.png)
 
-- Rafraichir le scénario et on retrouve le scénario de génération automatique dans ce même scénario
+3️⃣ Rafraichir le scénario et on retrouve le scénario de génération automatique dans ce même scénario
 
 ![scénario de paramétrage de génération de menus](./doc/images/nooMenusAutomaticInstallationsParams.png)
 
-- Renseigner les tags `menuName` (nom du menu à générer), `menuDesignWidth` (largeur du design), `menuDesignHeight` (hauteur du design), `designPrefixName` (préfixe du nom de menu : pour générer plusieurs menus identiques), `htmldisplayParent` (Définition de l'objet parent du design) selon le menu à générer et exécuter à nouveau le scénario
+4️⃣ Renseigner les tags `menuName` (nom du menu à générer), `menuDesignWidth` (largeur du design), `menuDesignHeight` (hauteur du design), `designPrefixName` (préfixe du nom de menu : pour générer plusieurs menus identiques), `htmldisplayParent` (Définition de l'objet parent du design) selon le menu à générer et exécuter à nouveau le scénario
 
--  Le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
+5️⃣ Le menu précisé est automatiquement généré dans la liste des designs Jeedom !
 
 >**Note** :
 > - les tags `menuDesignWidth` et `menuDesignHeight` corerspondent au design du menu comprenant les 2 htmlDisplay (Menu et Contenu) nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
 > - le tag `designPrefixName` est facultatif : utile pour générer un même menu avec des configurations différentes (pour diférentes plateformes par exemple)
 > - le tag `htmldisplayParent` détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
+> - Pour générer un nouveau scénario, seules les étapes 4️⃣ et 5️⃣ sont nécessaires (les 3 premières étapes sont seulement utiles pour générer le scénario de génération de menus ou de mise à jour de ce scénario)
 
 # Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
@@ -33,7 +35,7 @@ Cette installation permet de créer les différents menus automatiquement à par
 
 ![captureScenarioInstallationAutomatique](./doc/images/nooMenusAutomaticInstallation.png)
 
-1️⃣ 1. Créer un nouveau scénario
+1️⃣ Créer un nouveau scénario
 
 2️⃣ Ajouter une action tag menuName nomDuMenu
 
