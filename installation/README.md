@@ -24,7 +24,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 5️⃣ Le menu précisé est automatiquement généré dans la liste des designs Jeedom !
 
 >**Note** :
-> - les tags `menuDesignWidth` et `menuDesignHeight` corerspondent au design du menu comprenant les 2 htmlDisplay (Menu et Contenu) nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
+> - les tags `menuDesignWidth` et `menuDesignHeight` correspondent au design du menu comprenant les 2 htmlDisplay (Menu et Contenu) nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
 > - le tag `designPrefixName` est facultatif : utile pour générer un même menu avec des configurations différentes (pour diférentes plateformes par exemple)
 > - le tag `htmldisplayParent` détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
 > - Pour générer un nouveau scénario, seules les étapes 4️⃣ et 5️⃣ sont nécessaires (les 3 premières étapes sont seulement utiles pour générer le scénario de génération de menus ou de mise à jour de ce scénario)
