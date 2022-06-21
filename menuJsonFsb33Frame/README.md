@@ -64,15 +64,6 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
 >
 >Seul le fichier **/json/perso.json** est à adapter à son menu
 
->### Création d'un équipement du plugin Html Display pour ajout dans un Design
->
->   - Depuis le plugin HTML Display, créer un nouvel équipement
->   - Recopier le contenu du fichier index.html dans cet équipement et sauvegarder
->   - Depuis un design, passer en mode édition (Clic droit, puis sélectionner 'Edition')
->   - Clic droit, puis sélectionner **'Ajouter équipement'**
->   - Sélectionner l'équipement HTML Display créé précédemment
->   - Redimensionner cet équipement
-
 >**Note** : On aura au final l'arborescence suivante (A vérifier avec l'éditeur de fichier) :
 >
 >- /html
