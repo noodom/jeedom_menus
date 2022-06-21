@@ -10,7 +10,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 - Créer un scénario
 - Ajouter un bloc-code avec le contenu suivant, sauvegarder le scénario et l'exécuter :
 
-**eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));**
+`eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));`
 
 ![scénario de création de génération automatique de menus](./doc/images/automaticMenuInstallationCreation.png)
 
