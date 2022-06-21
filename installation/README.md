@@ -13,6 +13,8 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 
 `eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));`
 
+(code disponible ![ici]([[https://github.com/noodom/jeedom_widgets/](https://github.com/noodom/jeedom_scenarios/blob/main/installations/widgetInstallationCreation.php](https://github.com/noodom/jeedom_scenarios/blob/main/installations/menuInstallationCreation.php))))
+
 ![scénario de création de génération automatique de menus](./doc/images/automaticMenuInstallationCreation.png)
 
 3️⃣ Rafraichir le scénario et on retrouve le scénario de génération automatique dans ce même scénario
@@ -27,7 +29,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 > - les tags `menuDesignWidth` et `menuDesignHeight` correspondent au design du menu comprenant les 2 htmlDisplay (Menu et Contenu) nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
 > - le tag `designPrefixName` est facultatif : utile pour générer un même menu avec des configurations différentes (pour diférentes plateformes par exemple)
 > - le tag `htmldisplayParent` détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
-> - Pour générer un nouveau scénario, seules les étapes 4️⃣ et 5️⃣ sont nécessaires (les 3 premières étapes sont seulement utiles pour générer le scénario de génération de menus ou de mise à jour de ce scénario)
+> - Pour générer un nouveau menu, seules les étapes 4️⃣ et 5️⃣ sont nécessaires (les 3 premières étapes sont seulement utiles pour générer le scénario de génération de menus ou de mise à jour de ce scénario)
 
 # Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
