@@ -25,7 +25,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 >**Note** :
 > - les tags **menuDesignWidth** et **menuDesignHeight** corerspondent au design du menu comprenant les 2 htmlDisplay nécessaires à son utilisation (ils faut donc veiller à respecter la correspondance de ces tailles avec le paramétrage du menu défini dans le fichier de configuration du menu (perso.json)
 > - le tag **designPrefixName** est facultatif : utile pour générer un même menu avec des configurations différentes (pour diférentes plateformes par exemple)
-> le tag **htmldisplayParent** détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
+> - le tag **htmldisplayParent** détermine l'objet parent des htmlDisplay ("Aucun" si non défini).
 
 # Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
