@@ -1,4 +1,23 @@
-# Installation automatique d'un menu noodom (nouvelle installation)
+Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus proposés ![ici](https://github.com/noodom/jeedom_menus/)
+(Définition des méthodes dans l'ordre de préconisation)
+
+1. Méthode de création automatique du menu nécessaire pour générer automatiquement des scénarios
+2. Méthode de création manuelle du scénario pour générer automatiquement des scénarios
+3. Méthode d'installation manuelle d'un menu noodom
+
+# Installation automatique d'un menu noodom à l'aide d'un scénario créé automatiquement
+
+- Créer un scénario
+- Ajouter un bloc-code avec le contenu suivant, sauvegarder le scénario et l'exécuter :
+
+**eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));**
+
+![scénario de création de génération automatique de menus](./doc/images/automaticMenuInstallationCreation.png)
+
+- Rafraichir le scénario et on retrouve le scénario de génération automatique dans ce même scénario
+- Renseigner le tag menuName selon le menu à générer et exécuter à nouveau le scénario : le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
+
+# Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
 Cette installation permet de créer les différents menus automatiquement à partir du scénario suivant.
 
@@ -22,7 +41,7 @@ Cette installation permet de créer les différents menus automatiquement à par
 - Si le menu n'est pas transparent, il faut effectuer les actions suivantes depuis le design du menu : Clic droit, Sélectionner `Edition`, Clic droit, `Configurer le design`, puis sélectionner `Composants`, `Configuration` du menu (2ème ligne) et `Sauvegarder`.
 - En cas de problème d'affichage après génération (chargement, problème de CSS), rafraichir la page du design
 
-# Initialisation d'un menu noodom pour Jeedom (Ancienne installation)
+# Installation manuelle d'un menu noodom
 
 :warning: Avec la nouvelle installation automatique proposée ci-dessus, cette méthode n'est plus nécessaire.
 
