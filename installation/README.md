@@ -15,7 +15,10 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 ![scénario de création de génération automatique de menus](./doc/images/automaticMenuInstallationCreation.png)
 
 - Rafraichir le scénario et on retrouve le scénario de génération automatique dans ce même scénario
-- Renseigner le tag menuName selon le menu à générer et exécuter à nouveau le scénario : le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
+
+![scénario de paramétrage de génération de menus](./doc/images/nooMenusAutomaticInstallationsParams.png)
+
+- Renseigner les tags **menuName** (nom du menu à générer), **menuDesignWidth** (largeur du design), **menuDesignHeight** (hauteur du design), **designPrefixName** (préfixe du nom de menu : pour générer plusieurs menus identiques), **htmldisplayParent** (Définition de l'objet parent du design) selon le menu à générer et exécuter à nouveau le scénario : le scénario précisé est automatiquement généré dans la liste des designs Jeedom !
 
 # Installation automatique d'un menu noodom  à l'aide d'un scénario créé manuellement
 
