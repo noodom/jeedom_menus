@@ -16,7 +16,7 @@ After installation :
 	- Menu htmlDisplay not transparent : From design screen, edit design ('Edition'), configure design ('Configurer le design'), configure menu htmlDisplay ('Composants'->'Configuration') and save menu htmlDisplay ('Sauvegarder)
 	- Problem with design display (loading, css at first launch) : refresh design
 
-- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com¤cy_code=EUR&source=url 
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?currency_code=EUR&cmd=_donations&business=noodom.fr%40gmail.com&source=url
 
 */
 
