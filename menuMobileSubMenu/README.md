@@ -3,7 +3,7 @@
 
 Ce menu affiche un menu en bas d'écran pour mobile.
 Il affiche un bouton "Menu" au centre et 2 boutons de liens vers des designs à gauche et à droite de ce bouton.
-La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant l'affichage de nouveaux designs.
+La sélection du bouton Menu affiche une nouvelle ligne de boutons permettant l'affichage de nouveaux designs.
 
 >**Note** : Pour information, il est conseillé d'utiliser l'évolution de ce menu qui ajoute la navigation par frame à l'aide de htmlDisplay :
 > https://github.com/noodom/jeedom_menus/tree/master/menuMobileSubMenuFrame

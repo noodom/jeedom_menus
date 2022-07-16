@@ -96,6 +96,10 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 				let listButtons = buttons.join(' ');
 				let menuList = $('<ul class="ul-menu"/>').html(listButtons);
 				navSubmenu.append(menuList);
+				// css delay
+				for (let bton=0 ; bton<buttons.length ; bton++) {
+					$('#submenu>ul.ul-menu>li:nth-child(' + (bton+1) + ')').css('--nth-child', 1 + bton*0.2)
+				}
 			}
 
 			if (data.parameters) {
