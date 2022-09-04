@@ -26,6 +26,21 @@ $menuName = $tags['#menuName#'];
 
 $scenario->setLog('## Noodom menu automatic installation : ' . $menuName . ' ##');
 
+// Check HTML Display plugin presence
+$htmldisplayPluginInstalled = true;
+try {
+  	$htmldisplayPlugin = plugin::byId('htmldisplay');
+}
+catch (Exception $e) {
+  	$scenario->setLog("Error : please, install HTML Display plugin");
+	$htmldisplayPluginInstalled = false;
+}
+
+// Plugin HTML Display not installed : menu automatic installation stopped
+if (!$htmldisplayPluginInstalled) {
+  return;
+}
+
 $menuHd = null;
 $contentHd = null;
 $menuDesign = null;
