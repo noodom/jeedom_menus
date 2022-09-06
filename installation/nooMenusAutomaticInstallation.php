@@ -7,7 +7,7 @@
  	- Create menu design (insert menu htmlDisplay and content htmlDisplay)
 
 Menu list : 
-- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding, menuAnimation, menuInTheAir
+- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding, menuAnimation, menuInTheAir, menuNoo3DRound
 - menus KO : menuFloattingDraggable, menuHoverShow
 
 Menu installation details :
