@@ -1,0 +1,56 @@
+{
+    "buttons": [
+        {
+            "label": "Accueil",
+            "link": "88",
+            "icon": "fas fa-home"
+        },
+        {
+            "label": "Lumières",
+            "link": "89",
+            "icon": "fa fa-lightbulb"
+        },
+        {
+            "label": "Energie",
+            "link": "90",
+            "icon": "fa fa-plug"
+        },
+        {
+            "label": "Chauffage",
+            "link": "91",
+            "icon": "fa fa-thermometer-half"
+        },
+        {
+            "label": "Caméras",
+            "link": "92",
+            "icon": "fa fa-video"
+        },
+        {
+            "label": "Agenda",
+            "link": "93",
+            "icon": "fa fa-calendar"
+        },
+        {
+            "label": "Météo",
+            "link": "94",
+            "icon": "fa fa-sun"
+        }
+    ],
+    "parameters": {
+
+        "menu_x":"0px",
+        "menu_y":"0px",
+      	"menu_width":"100%",
+        "menu_height":"140px",
+
+        "content_x":"0px",
+        "content_y":"0px",
+        "content_width":"1280px",
+        "content_height":"1200px",      
+      
+      	"border_active_color": "#96c927",
+    	"point_active_color": "#96c927",
+      	"item_active_color": "#fff",
+      	"item_color": "#aaa"
+    }
+}
