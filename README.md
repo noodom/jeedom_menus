@@ -60,6 +60,10 @@ Il permet une configuration par un fichier Json et une navigation par Frame.
 
 Ce menu affiche un menu vertical s'ouvrant de bas en haut. Il offre le choix par paramétrage de se refermer automatiquement après sélection d'un bouton. 
 
+## :boom: Menu [menuNoo3DRound](./menuNoo3DRound) avec fichier de configuration JSon et navigation par Frame
+![Menu menuNoo3DRound](./menuNoo3DRound/doc/images/demoMenuNoo3DRound.gif)
+
+Ce menu affiche le logo en 3D du bouton sélectionné et affiche son nom en relief. 
 
 ## :boom: Menu [MobileSubMenuFrame](./menuMobileSubMenuFrame) avec fichier de configuration JSon et navigation par Frame
 ![Menu MobileSubMenuFrame](./menuMobileSubMenu/doc/images/menuOuvert.png)
