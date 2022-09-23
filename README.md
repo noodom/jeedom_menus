@@ -76,6 +76,14 @@ La sélection du bouton Menu affiche une nouvelle ligne de 5 boutons permettant 
 
 Ce menu reprend le menu MobileSubMenu en ajoutant une navigation par Frame.
 
+## :boom: Menu [NooMobileFlip](./menuNooMobileFlip) avec fichier de configuration JSon et navigation par Frame
+![Menu NooMobileFlip](./menuNooMobileFlip/doc/images/demoMenuNooMobileFlip.gif)
+
+Ce menu affiche un menu en bas d'écran pour mobile. 
+
+Il s'affiche sur sélection du bouton Hamburger, s'ouvre par le bas en décalant le contenu vers le haut.
+La gestion de son paramétrage est assurée par fichier JSon et sa navigation par frame.
+
 ## :boom: Menu [Floating Draggable](./menuFloattingDraggable) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu Floating Draggable](./menuFloattingDraggable/doc/images/menuFloattingDraggableOn.png)
