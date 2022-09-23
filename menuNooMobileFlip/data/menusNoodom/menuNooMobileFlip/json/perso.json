@@ -1,0 +1,95 @@
+{
+    "buttons": [
+        {
+            "label": "Accueil",
+            "link": "88",
+            "icon": "fas fa-2x fa-home"
+        },
+        {
+            "label": "Lumières",
+            "link": "89",
+            "icon": "fa fa-2x fa-lightbulb"
+        },
+        {
+            "label": "Energie",
+            "link": "90",
+            "icon": "fa fa-2x fa-plug"
+        },
+        {
+            "label": "Chauffage",
+            "link": "91",
+            "icon": "fa fa-2x fa-thermometer-half"
+        },
+        {
+            "label": "Caméras",
+            "link": "92",
+            "icon": "fa fa-2x fa-video"
+        },
+        {
+            "label": "Sécurité",
+            "link": "88",
+            "icon": "fas fa-2x fa-eye"
+        },
+        {
+            "label": "Jardin",
+            "link": "89",
+            "icon": "fa fa-2x fa-pen"
+        },
+      
+              {
+            "label": "Volets",
+            "link": "90",
+            "icon": "fa fa-2x fa-signal"
+        },
+        {
+            "label": "Cuisine",
+            "link": "91",
+            "icon": "fa fa-2x fa-water"
+        },
+        {
+            "label": "Salon",
+            "link": "92",
+            "icon": "fa fa-2x fa-icons"
+        },
+        {
+            "label": "Chambre",
+            "link": "88",
+            "icon": "fas fa-2x fa-globe"
+        },
+        {
+            "label": "Bureau",
+            "link": "89",
+            "icon": "fa fa-2x fa-envelope"
+        },
+        {
+            "label": "Etage",
+            "link": "88",
+            "icon": "fas fa-2x fa-phone"
+        },
+        {
+            "label": "Garage",
+            "link": "89",
+            "icon": "fa fa-2x fa-cloud"
+        }
+    ],
+    "parameters": {
+      	"css_file":"perso.css",
+
+      	"menu_width":"580px",
+        "menu_height":"1000px",
+      
+        "button_color1": "rgb(150, 201, 39)",
+        "button_color2": "rgb(150, 201, 39)",
+        "button_color3": "gray",
+        "menu_background": "#000",
+        "button_width": "20%",
+        "button_logo_color": "white",
+        "button_title_color": "white",
+        "button_active_logo_color": "rgb(47, 47, 47)",
+        "button_active_title_color": "rgb(47, 47, 47)",
+        "menu_button_background": "#282828",
+        "menu_open_hamburger": "#fff",
+        "menu_close_cross": "rgb(150, 201, 39)",
+        "rotation_angle": "-45deg"
+    }
+}

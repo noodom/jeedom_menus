@@ -1,0 +1,157 @@
+:root {
+    --button-color1: rgb(150, 201, 39);
+    --button-color2: rgb(150, 201, 39);
+    --button-color3: gray;
+  	--menu-background: #000;
+  	--button-width: 20%;
+	--button-logo-color: white;
+  	--button-title-color: white;
+	--button-active-logo-color: rgb(47, 47, 47);
+  	--button-active-title-color: rgb(47, 47, 47);
+  	--menu-button-background: #282828;
+  	--menu-open-hamburger: #fff;
+  	--menu-close-cross: rgb(150, 201, 39);
+  	--rotation-angle: -45deg;
+}
+
+.phone-frame {
+  width: 250px;
+  height: 480px;
+}
+.phone-screen {
+  align-items: center;
+  background-color: var(--menu-background);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  perspective: 460px;
+  position: relative;
+  width: 100%;
+}
+.imageContainer {
+  overflow: hidden;
+  transform-origin: 100% 0;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  height: 100%;
+}
+.active .imageContainer {
+  transform: rotateX(var(--rotation-angle));
+}
+.image {
+  left: -76%;
+  position: relative;
+  width: 250%;
+}
+.active .overlay {
+  opacity: 1;
+}
+.button-menu {
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button-menu1 {
+  bottom: 25px;
+  cursor: pointer;
+  fill: none;
+  height: 34px;
+  padding: 5px;
+  -webkit-tap-highlight-color: transparent;
+  width: 34px;
+}
+.bg {
+  fill: var(--menu-button-background);
+}
+.button-menu1:active .bg {
+  fill: #555;
+}
+.line {
+  stroke: var(--menu-open-hamburger);
+  stroke-width: 2;
+  transition: stroke 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: 50%;
+}
+.active .line1 {
+  stroke: var(--menu-close-cross);
+  transform: translateX(-2.5px) translateY(3px) rotate(45deg);
+}
+.active .line2 {
+  stroke: var(--menu-close-cross);
+  transform: scale(0);
+}
+.active .line3 {
+  stroke: var(--menu-close-cross);
+  transform: translateX(-2.5px) translateY(-3px) rotate(-45deg);
+}
+.active .button-menu {
+  transform: translateY(-180px);
+}
+.menu {
+  background: linear-gradient(var(--button-color1), transparent),    
+    linear-gradient(to top left, var(--button-color1), transparent),    
+    linear-gradient(to top right, var(--button-color3), transparent);
+  background-blend-mode: screen;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  height: 192px;
+  position: absolute;
+  transform: translateY(192px);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+.option {
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  width: var(--button-width);
+}
+.option:active::after {
+  background-color: #000;
+  content: " ";
+  opacity: 0.25;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.active .menu {
+  transform: translateY(0);
+}
+
+.label {
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding-top: 10px;
+}
+
+#menu a {
+    display: inline-block;
+    color: var(--cursor-default-color) !important;
+    text-decoration: none;
+    font-size: 30px;
+    transition: all 0.1s;
+}
+
+
+.option .fa, .option .fas, .option .fab {
+  color: var(--button-logo-color);
+}
+.option .label {
+  color: var(--button-title-color);
+}
+.option.active .fa,.option.active .fas, .option.active .fab {
+  color: var(--button-active-logo-color);
+}
+.option.active .label {
+  color: var(--button-active-title-color);
+}

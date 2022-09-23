@@ -1,0 +1,165 @@
+<!-- @noodom / Menu menuNooMobileFlip : menu mobile avec ouverture du menu par le bas avec gestion des boutons par fichier JSon et navigation par frame
+	- ajout de la gestion des boutons par un paramétrage JSon
+	- ajout de la navigation par frame à l'aide de htmlDisplay
+- Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuNooMobileFlip/README.md
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
+-->
+
+<div id="cssDiv">
+</div>
+
+<script>
+    var menuName = "menuNooMobileFlip";
+    var cssPath = 'data/menusNoodom/' + menuName + '/css/perso.css';
+    var reloadActiveButton = false;
+</script>
+
+<div class="phone-frame">
+    <div class="phone-screen">
+      <div class="imageContainer">
+        <iframe id="menuFrame" style="height:100%;width:100%;overflow:hidden" scrolling="no"></iframe>
+      </div>
+      <svg class="button-menu button-menu1" height="24" width="24" onclick="document.querySelector('.phone-screen').classList.toggle('active')">
+        <circle class="bg" r="12" cx="12" cy="12" />
+        <path class="line line1" d="M 6,8 H 18" />
+        <path class="line line2" d="M 6,12 H 18" />
+        <path class="line line3" d="M 6,16 H 18" />
+      </svg>
+      <div id="menuNooMobileFlip" class="menu" onclick="document.querySelector('.phone-screen').classList.remove('active')">
+      </div>
+    </div>
+  </div>
+
+<script id="menuNooMobileFlip-js">
+  	$(document).ready(function () {
+      	let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+        // display loading message
+        var menuNooMobileFlip = $('#menuNooMobileFlip');
+        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+        menuNooMobileFlip.append('<div id="msg">Chargement du menu..</div>');
+
+        // load Json configuration file (perso.json)
+        // uses cache
+        //$.getJSON(jsonPath, function (data) {
+        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+        $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+          	let buttons = data.buttons.map(function (button) {
+                return '<div id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + ' class="option">'
+          			+ '		<i class="' + button.icon + '"></i>'
+          			+ '		<div class="label">' + button.label + '</div>'
+					+ '</div>';
+            });
+
+            menuNooMobileFlip.empty();
+            menuNooMobileFlip.append(buttons.join(''));
+
+            if (link_id == "") {
+                // set focus on first button 
+                $('.option')[0].click()
+            }
+            else {
+                // goto linkId
+                gotoPlan(link_id);
+            }
+
+            // get menu parameters
+            if (data.parameters) {
+
+                // CSS choice
+                let cssFile = data.parameters.css_file ? data.parameters.css_file : "perso.css";
+                cssPath = 'data/menusNoodom/' + menuName + '/css/' + cssFile;
+
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                let menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
+                let menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "100px";
+                $(htmlDisplayId)[0].style.width = menuWidth;
+                $(htmlDisplayId)[0].style.height = menuHeight;
+              	$(".phone-frame").css('width', menuWidth);
+              	$(".phone-frame").css('height', menuHeight);          
+
+              	if (data.parameters.button_color1) {
+                    document.documentElement.style.setProperty('--button-color1', data.parameters.button_color1);
+                }
+                if (data.parameters.button_color2) {
+                    document.documentElement.style.setProperty('--button-color2', data.parameters.button_color2);
+                }
+                if (data.parameters.button_color3) {
+                    document.documentElement.style.setProperty('--button-color3', data.parameters.button_color3);
+                }
+                if (data.parameters.menu_background) {
+                    document.documentElement.style.setProperty('--menu-background', data.parameters.menu_background);
+                }
+                if (data.parameters.button_width) {
+                    document.documentElement.style.setProperty('--button-width', data.parameters.button_width);
+                }
+                if (data.parameters.button_logo_color) {
+                    document.documentElement.style.setProperty('--button-logo-color', data.parameters.button_logo_color);
+                }
+                if (data.parameters.button_title_color) {
+                    document.documentElement.style.setProperty('--button-title-color', data.parameters.button_title_color);
+                }
+                if (data.parameters.button_active_logo_color) {
+                    document.documentElement.style.setProperty('--button-active-logo-color', data.parameters.button_active_logo_color);
+                }
+                if (data.parameters.button_active_title_color) {
+                    document.documentElement.style.setProperty('--button-active-title-color', data.parameters.button_active_title_color);
+                }
+                if (data.parameters.menu_button_background) {
+                    document.documentElement.style.setProperty('--menu-button-background', data.parameters.menu_button_background);
+                }
+                if (data.parameters.menu_open_hamburger) {
+                    document.documentElement.style.setProperty('--menu-open-hamburger', data.parameters.menu_open_hamburger);
+                }
+                if (data.parameters.menu_close_cross) {
+                    document.documentElement.style.setProperty('--menu-close-cross', data.parameters.menu_close_cross);
+                }
+                if (data.parameters.rotation_angle) {
+                    document.documentElement.style.setProperty('--rotation-angle', data.parameters.rotation_angle);
+                }
+            }
+
+            // CSS loading
+          	let forceRefreshCss = true;
+            let link = document.createElement("link");
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("type", "text/css");
+            let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
+            link.setAttribute("href", hrefAttribute);
+            document.getElementById('cssDiv').appendChild(link);
+        });
+    });
+
+    // create url destination
+    function getUrlDestination(urlParam) {
+        if (isNaN(urlParam)) {
+            return urlParam;
+        } else {
+            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+        }
+    }
+
+    // menu redirection
+    function gotoPlan(id) {
+        let urlDestination = getUrlDestination(id);
+        // get frame in htmlDisplay equipment
+        let frameDestination = document.getElementById('menuFrame');
+
+        if (frameDestination == null) {
+            // Error : no content frame
+            console.log("ERREUR : Frame de contenu non créée");
+        }
+        else {
+            // display focus
+            $('.option').removeClass('active');
+            if (!isNaN(id)) {
+                $('#' + id).addClass('active');
+            }
+            // fill content frame
+            if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
+                frameDestination.src = urlDestination;
+            }
+        }
+    }
+
+  //# sourceURL=menuNooMobileFlip.js
+</script>
