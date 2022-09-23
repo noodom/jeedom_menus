@@ -121,3 +121,6 @@ Pour information, les avantages de la gestion de la navigation du menu par frame
 >            - /css/perso.css : le css du menu (Modification non nécessaire)
 >            - /json/perso.json : le json de personnalisation du menu (A personnaliser)
 
+Exemple de configuration personalisée à l'aide du fichier perso.json :
+
+![Menu personnalisé nooMobileFlip](./doc/images/customMenu.png)
