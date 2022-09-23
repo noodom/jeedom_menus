@@ -17,7 +17,7 @@
 <div class="phone-frame">
     <div class="phone-screen">
       <div class="imageContainer">
-        <iframe id="menuFrame" style="height:100%;width:100%;overflow:hidden" scrolling="no"></iframe>
+        <iframe id="menuFrameInside" style="height:100%;width:100%;overflow:hidden" scrolling="no"></iframe>
       </div>
       <svg class="button-menu button-menu1" height="24" width="24" onclick="document.querySelector('.phone-screen').classList.toggle('active')">
         <circle class="bg" r="12" cx="12" cy="12" />
@@ -142,7 +142,7 @@
     function gotoPlan(id) {
         let urlDestination = getUrlDestination(id);
         // get frame in htmlDisplay equipment
-        let frameDestination = document.getElementById('menuFrame');
+        let frameDestination = document.getElementById('menuFrameInside');
 
         if (frameDestination == null) {
             // Error : no content frame
