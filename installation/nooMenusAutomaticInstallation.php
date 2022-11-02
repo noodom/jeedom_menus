@@ -33,7 +33,7 @@ try {
 }
 catch (Exception $e) {
   	$scenario->setLog("Error : please, install HTML Display plugin");
-	message::add('Génération de menu Noodom', 'Merci d\'installer le plugin HTML Display pour utiliser les menus noodom');
+	message::add('Génération de menu Noodom', 'Merci d\'installer le plugin HTML Display pour utiliser les menus Noodom');
 	$htmldisplayPluginInstalled = false;
 }
 
