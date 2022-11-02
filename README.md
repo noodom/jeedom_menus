@@ -8,6 +8,10 @@ Ce menu reprend le menu F$B33 en ajoutant la gestion des boutons par un paramét
 ⚠️ Version du menu non maintenue : privilégier la version ci-dessous avec gestion par Frame
 -->
 
+## :boom: [Installation automatique](./installation) d'un menu noodom à l'aide d'un scénario créé automatiquement
+
+Cette installation permet de créer les différents menus ci-dessous automatiquement à partir d'un simple scénario.
+
 ## :boom: Menu [F$B33](./menuJsonFsb33Frame) avec fichier de configuration JSon et navigation par Frame
 
 ![Menu jsonFsb33Frame](./menuJsonFsb33Frame/doc/images/menuJsonFsb33Frame.png)
