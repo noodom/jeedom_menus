@@ -95,7 +95,7 @@
         else {
           // frame navigation : goto design id (url parameter link_id)
           if ($('#id' +  link_id + ' li').length == 0) {
-            gotoPlan(link_id, link_id, 1, 0);
+            gotoPlan('id' +  link_id, link_id, 1, 0);
           }
           else {
             $('#id' +  link_id + ' li').click();
@@ -133,8 +133,8 @@
     else {
       // display focus
       $('.monmenu').removeClass('selected');
-      if (!isNaN(id) && $('#id' + id + ' li').length != 0) {
-	      $('#id' + id + ' li').addClass('selected');
+      if ($('#' + id + ' li').length != 0) {
+        $('#' + id + ' li').addClass('selected');
       }
 
       // frame redirection
