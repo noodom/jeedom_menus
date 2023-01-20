@@ -1,0 +1,42 @@
+{
+  "buttons": [
+    {
+      "link": "50",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_home.png"
+    },
+    {
+      "link": "51",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_light.png"
+    },
+    {
+      "link": "52",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_chauffage.png"
+    },
+    {
+      "link": "53",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_carte.png"
+    },
+    {
+      "link": "54",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_camera.png"
+    },
+    {
+      "link": "55",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_volets.png"
+    },
+    {
+      "link": "56",
+      "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_consommation.png"
+    }
+  ],
+  "parameters": {
+    "menu_x": "0px",
+    "menu_y": "0px",
+    "menu_width": "1280px",
+    "menu_height": "70px",
+    "content_x": "0px",
+    "content_y": "0px",
+    "content_width": "1280px",
+    "content_height": "1000px"
+  }
+}
