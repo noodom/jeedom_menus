@@ -1,30 +1,37 @@
 {
   "buttons": [
     {
+      "label": "Titre 1",
       "link": "50",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_home.png"
     },
     {
+      "label": "Titre 2",
       "link": "51",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_light.png"
     },
     {
+      "label": "Titre 3",
       "link": "52",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_chauffage.png"
     },
     {
+      "label": "Titre 4",
       "link": "53",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_carte.png"
     },
     {
+      "label": "Titre 5",
       "link": "54",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_camera.png"
     },
     {
+      "label": "Titre 6",
       "link": "55",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_volets.png"
     },
     {
+      "label": "Titre 7",
       "link": "56",
       "icon": "data/menusNoodom/menuJsonFsb33FrameBeta/img/icon_consommation.png"
     }
@@ -33,7 +40,7 @@
     "menu_x": "0px",
     "menu_y": "0px",
     "menu_width": "1280px",
-    "menu_height": "70px",
+    "menu_height": "80px",
     "content_x": "0px",
     "content_y": "0px",
     "content_width": "1280px",
