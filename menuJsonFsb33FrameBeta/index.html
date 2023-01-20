@@ -1,13 +1,13 @@
-<!-- @noodom / Menu menuJsonFsb33Frame : menu F$B33 avec gestion des boutons par fichier JSon et navigation par frame
+<!-- @noodom / Menu menuJsonFsb33FrameBeta : menu F$B33 avec gestion des boutons par fichier JSon et navigation par frame
 	- reprise du menu F$B33 simplifié par @salvialf
 	- ajout de la gestion des boutons par un paramétrage JSon
 	- ajout de la navigation par frame à l'aide de htmlDisplay
-- Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuJsonFsb33Frame/README.md
+- Installation du menu : https://github.com/noodom/jeedom_menus/blob/master/menuJsonFsb33FrameBeta/README.md
 - Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
 -->
 
 <link
-  href="data/menusNoodom/menuJsonFsb33Frame/css/perso.css"
+  href="data/menusNoodom/menuJsonFsb33FrameBeta/css/perso.css"
   rel="stylesheet"
   type="text/css"
 />
@@ -16,7 +16,7 @@
 
 <script id="menuFSB33-js">
   $(document).ready(function () {
-    let jsonPath = "data/menusNoodom/menuJsonFsb33Frame/json/perso.json";
+    let jsonPath = "data/menusNoodom/menuJsonFsb33FrameBeta/json/perso.json";
     let menuTop = $(".menu_top");
     let link_id = (location.search.split("link_id" + "=")[1] || "").split(
       "&"
