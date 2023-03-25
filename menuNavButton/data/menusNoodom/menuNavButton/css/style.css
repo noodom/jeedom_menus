@@ -2,6 +2,7 @@
     --cursor-color: #96c927;
     --cursor-color-shadow: white;
     --cursor-default-color: lightgray;
+    --background-active-link: linear-gradient(180deg, #555, #2C2C2C);
     --background-default-link: #151515;
     --menu-height:100px;
 }
@@ -79,7 +80,7 @@
 #menuNavButton li.active {
     border-top: 1px solid rgba(255, 255, 255, 1);
     border-bottom: 1px solid #252525;
-    background: linear-gradient(#555, #2C2C2C) !important;
+    background: var(--background-active-link) !important;
     box-shadow: 0 -3px 0 rgba(255, 255, 255, 1),
         1px 1px 10px black inset,
         0 1px 0 rgba(255, 255, 255, 0.4);
