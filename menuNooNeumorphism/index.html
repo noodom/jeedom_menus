@@ -40,7 +40,7 @@
         $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
             let navSubmenu = $('#navul');
             let buttons = data.buttons.map(function (button) {
-                return '<li data-placement="bottom" id="' + button.link + '" title="' + button.label + '"'
+                return '<li data-placement="bottom" id="' + button.link + '" title="' + button.label + '" class="text-center d-flex justify-content-center"'
                     + ' onClick="gotoPlan(' + button.link + ')"' + '>'
                     + '<i class="' + button.icon + '"></i>'
                     + '</li>';
