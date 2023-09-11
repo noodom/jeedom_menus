@@ -22,6 +22,8 @@
     var initCloseMenu = true;
     // auto reduce menu after button selection
     var autoReduceMenu = true;
+    // content opacity with oened menu
+    var openedMenuOpacity = "20%";
 
     $(document).ready(function () {
         let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
@@ -55,6 +57,8 @@
                 initCloseMenu = data.parameters.init_close_menu ? (data.parameters.init_close_menu == "1" || data.parameters.init_close_menu == "true") : true;
                 // reduce menu after selection
                 autoReduceMenu = data.parameters.auto_reduce_menu ? (data.parameters.auto_reduce_menu == "1" || data.parameters.auto_reduce_menu == "true") : true;
+                // content opacity with opened menu
+                openedMenuOpacity = (autoReduceMenu) ? (data.parameters.opened_menu_opacity ? data.parameters.opened_menu_opacity : "20%") : "100%";
 
                 // menu parameters
                 let htmlDisplayId = '[data-eqlogic_id="#id#"]';
@@ -72,6 +76,7 @@
 
             // open/close menu at init
             document.getElementById('menu-open').checked = !initCloseMenu;
+            $("#menuFrame").offsetParent().style().opacity = (initCloseMenu)?"100%":openedMenuOpacity;
             // set focus on first button 
             document.getElementsByClassName('menu-item')[0].click()
         });
@@ -107,10 +112,17 @@
         // auto reduce menu
         if (autoReduceMenu) {
             document.getElementById('menu-open').checked = false;
+            $("#menuFrame").offsetParent().style().opacity = "100%";
         }
     }
 
-	//# sourceURL=menuVerticalTom.js
+    // content opacity management
+    let menuOpen = document.getElementById('menu-open');
+    menuOpen.addEventListener('change', function() {
+      $("#menuFrame").offsetParent().style().opacity = (this.checked)?openedMenuOpacity:"100%";
+    });
+
+    //# sourceURL=menuVerticalTom.js
 </script>
 
 <!-- filters -->
