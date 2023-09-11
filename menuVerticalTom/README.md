@@ -37,6 +37,10 @@ Il y a la possibilité de naviguer à l'aide d'une frame, permettant de ne pas d
    - buttons : liste des boutons du menu
       - modifier les valeurs label (Libellé du bouton), link (lien vers l'id d'un design) et color (couleur du bouton) pour personnaliser les boutons du menu
    - parameters
+      - init_close_menu" : menu fermé au lancement du menu (par défaut "1")
+      - auto_reduce_menu" : menu se ferme sur sélection d'un bouton (par défaut "1")
+      - opened_menu_opacity" : (par défaut "20%")
+
       - menu_x : position x du menu (par défaut "0px")
       - menu_y : position y du menu (par défaut "280px")
       - menu_width : largeur du menu (par défaut "100px")
