@@ -7,7 +7,7 @@
  	- Create menu design (insert menu htmlDisplay and content htmlDisplay)
 
 Menu list : 
-- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding, menuAnimation, menuInTheAir, menuNoo3DRound
+- menus OK : menuJsonFsb33Frame, menuNooNeumorphism, menuVerticalTom, menuVerticalTomOneFrame, menuMobileSubMenuFrame, menuNavButton, menuNoo3DAnim, menuNooSliding, menuAnimation, menuInTheAir, menuNoo3DRound
 - menus KO : menuFloattingDraggable, menuHoverShow
 
 Menu installation details :
@@ -24,7 +24,7 @@ $tags = $scenario->getTags();
 (!isset($tags['#menuName#'])) ? $tags['#menuName#'] = 'menuJsonFsb33Frame' : null;
 $menuName = $tags['#menuName#']; 
 
-$scenario->setLog('## Noodom menu automatic installation : ' . $menuName . ' ##');
+$scenario->setLog('## Noodom menu automatic installation V2 : ' . $menuName . ' ##');
 
 // Check HTML Display plugin presence
 $htmldisplayPluginInstalled = true;
@@ -48,7 +48,7 @@ $menuDesign = null;
 
 $menuHdName = 'noodom_menu_';
 $contentHdName = 'noodom_content';
-$designName = 'noodom_';
+$designName = isset($tags['#designPrefixName#']) ? $tags['#designPrefixName#'] : 'noodom_'; 
 
 $defaultMenuWidth = 1280;
 $defaultMenuHeight = 1000;
@@ -128,6 +128,16 @@ if (is_dir($destinationDir)) {
 $scenario->setLog('** Create menu and content htmldisplays');
 $newMenuHdName = $menuHdName . $menuName;
 $newContentHdName = $contentHdName;
+
+// Check if content HD needed
+$originUrl = $originMenuDir . '/' .$originContentFilename;
+$contentHdNeeded = true;
+$scenario->setLog('- check content HD file existence : ' . $originUrl);
+if (strpos(get_headers($originUrl)[0], "200 OK") === false) {
+  $scenario->setLog('- no content HD dashboard needed');
+  $contentHdNeeded = false;
+}
+
 $eqLogics = eqLogic::byType('htmldisplay');
 foreach ($eqLogics as $eqLogic) {
   // Menu htmlDisplay
@@ -154,7 +164,7 @@ if ($menuHdFound == false) {
   $menuHd->save();
   $scenario->setLog('- Menu HD not found : create HD ' . $newMenuHdName . '(id:' . $menuHd->getId() . ')');
 }
-if ($contentHdFound == false) {
+if ($contentHdFound == false && $contentHdNeeded == true) {
   $contentHd = new htmldisplay();
   $contentHd->setName($newContentHdName);
   $contentHd->setEqType_name("htmldisplay");
@@ -164,7 +174,7 @@ if ($contentHdFound == false) {
   $scenario->setLog('- Content HD not found : create HD ' . $newContentHdName . '(id:' . $contentHd->getId() . ')');
 }
 
-if (is_object($menuHd) &&  is_object($contentHd)) {
+if (is_object($menuHd)) {
   // save menu HD dashboard
   $originUrl = $originMenuDir . '/' .$originMenuFilename;
   $scenario->setLog('- Save menu HD dashboard from ' . $originUrl);
@@ -190,30 +200,38 @@ if (is_object($menuHd) &&  is_object($contentHd)) {
       chmod($path, 0770);
     }
   }
+}
 
+if (is_object($contentHd) && $contentHdNeeded == true) {
   // save content HD dashboard
   $originUrl = $originMenuDir . '/' .$originContentFilename;
-  $scenario->setLog('- Save content HD dashboard from ' . $originUrl);
-
-  $filecontent = file_get_contents($originUrl);
-  $path = $htmldisplayDatapathDir;
-  if(!file_exists($path)){
-    mkdir($path);
-  }
-  $path .= '/'.$contentHd->getId();
-  if(!file_exists($path)){
-    mkdir($path);
-  }
-  if (!file_exists($path)) {
-    $scenario->setLog('Unable to create folder ' . $path);
+  $scenario->setLog('- check content HD file existence : ' . $originUrl);
+  if (strpos(get_headers($originUrl)[0], "200 OK") === false) {
+    $scenario->setLog('- no content HD dashboard needed');
   }
   else {
-    if (!is_writable($path)) {
-      $scenario->setLog('Unable to write in folder ' . $path);
+    $scenario->setLog('- Save content HD dashboard from ' . $originUrl);
+
+    $filecontent = file_get_contents($originUrl);
+    $path = $htmldisplayDatapathDir;
+    if(!file_exists($path)){
+      mkdir($path);
+    }
+    $path .= '/'.$contentHd->getId();
+    if(!file_exists($path)){
+      mkdir($path);
+    }
+    if (!file_exists($path)) {
+      $scenario->setLog('Unable to create folder ' . $path);
     }
     else {
-      file_put_contents($path.'/dashboard.html', $filecontent);
-      chmod($path, 0770);
+      if (!is_writable($path)) {
+        $scenario->setLog('Unable to write in folder ' . $path);
+      }
+      else {
+        file_put_contents($path.'/dashboard.html', $filecontent);
+        chmod($path, 0770);
+      }
     }
   }
 }
@@ -233,35 +251,45 @@ foreach ($planHeaders as $planHeader) {
     }
 }
 
+(!isset($tags['#menuDesignWidth#'])) ? $tags['#menuDesignWidth#'] = $defaultMenuWidth : null;
+(!isset($tags['#menuDesignHeight#'])) ? $tags['#menuDesignHeight#'] = $defaultMenuHeight : null;
 if ($designFound == false) {
   // create menu design
   $scenario->setLog('- Create design ' . $newDesignName);
   $menuDesign = new planHeader();
   $menuDesign->setName($newDesignName);
   $menuDesign->setId('');
-  $menuDesign->setConfiguration('desktopSizeX', $defaultMenuWidth);
-  $menuDesign->setConfiguration('desktopSizeY', $defaultMenuHeight);
-  $menuDesign->save();
+  //$menuDesign->setConfiguration('desktopSizeX', $defaultMenuWidth);
+  //$menuDesign->setConfiguration('desktopSizeY', $defaultMenuHeight);
+  //$menuDesign->save();
 }
+
+$menuDesign->setConfiguration('desktopSizeX', $defaultMenuWidth);
+$menuDesign->setConfiguration('desktopSizeY', $defaultMenuHeight);
+$menuDesign->save();
 
 $menuPlans = plan::byPlanHeaderId($menuDesign->getId());
 foreach ($menuPlans as $menuPlan) {
-  if (($menuPlan->getLink_id() != $menuHd->getId()) && ($menuPlan->getLink_id() != $contentHd->getId())) {
+  $isMenuHd = is_object($menuHd) && $menuPlan->getLink_id() == $menuHd->getId();
+  $isContentHd = is_object($contentHd) && $menuPlan->getLink_id() == $contentHd->getId();
+  if (!$isMenuHd && !$isContentHd) {
     $scenario->setLog('- Remove htmldisplay(s) (id:' . $menuPlan->getLink_id() . ') from design ' . $newDesignName . ' (id:' . $menuDesign->getId() . ')');
   	$menuPlan->remove();
   }
 }
-$menuPlan = plan::byLinkTypeLinkIdPlanHeaderId('eqLogic', $contentHd->getId(), $menuDesign->getId());
-//if(count($menuPlan) == 0 || !is_object($menuPlan->getLink())) {
-if ($menuPlan == null) {
-  $scenario->setLog('- add content htmldisplay (id:' . $contentHd->getId() . ')');
-  $menuPlan = new plan();
-  $menuPlan->setId('');
-  $menuPlan->setLink_type('eqLogic');
-  $menuPlan->setLink_id($contentHd->getId());
-  $menuPlan->setPlanHeader_id($menuDesign->getId());
-  $menuPlan->setCss('z-index', 1000);
-  $menuPlan->save();
+if ($contentHdNeeded) {
+	$menuPlan = plan::byLinkTypeLinkIdPlanHeaderId('eqLogic', $contentHd->getId(), $menuDesign->getId());
+	//if(count($menuPlan) == 0 || !is_object($menuPlan->getLink())) {
+	if ($menuPlan == null) {
+	  $scenario->setLog('- add content htmldisplay (id:' . $contentHd->getId() . ')');
+	  $menuPlan = new plan();
+	  $menuPlan->setId('');
+	  $menuPlan->setLink_type('eqLogic');
+	  $menuPlan->setLink_id($contentHd->getId());
+	  $menuPlan->setPlanHeader_id($menuDesign->getId());
+	  $menuPlan->setCss('z-index', 1000);
+	  $menuPlan->save();
+  }
 }
 $menuPlan = plan::byLinkTypeLinkIdPlanHeaderId('eqLogic', $menuHd->getId(), $menuDesign->getId());
 //if(count($menuPlan) == 0 || !is_object($menuPlan->getLink())) {
