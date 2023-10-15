@@ -3,47 +3,47 @@
         {
             "label": "Home",
             "link": "50",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_home.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_home.png"
         },
         {
             "label": "Chauffage",
             "link": "51",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_chauffage.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_chauffage.png"
         },
         {
             "label": "Volets",
             "link": "52",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_volets.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_volets.png"
         },
         {
             "label": "Sécurité",
             "link": "53",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_securite.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_securite.png"
         },
         {
             "label": "Extérieur",
             "link": "54",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_exterieur.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_exterieur.png"
         },
         {
             "label": "Son & Multimédia",
             "link": "55",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_music.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_music.png"
         },
         {
             "label": "Energie",
             "link": "56",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_energie.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_energie.png"
         },
         {
             "label": "Agenda",
             "link": "57",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_agenda.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_agenda.png"
         },
         {
             "label": "Réseau",
             "link": "58",
-            "icon": "/data/menusNoodom/menuVerticalTom/img/icon_reseau.png"
+            "icon": "/data/menusNoodom/menuVerticalTomOneFrame/img/icon_reseau.png"
         }
     ],
 	"parameters": {
