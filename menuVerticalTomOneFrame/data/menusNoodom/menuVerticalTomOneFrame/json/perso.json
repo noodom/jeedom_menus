@@ -59,6 +59,11 @@
             "content_x": "0px",
             "content_y": "0px",
             "content_width": "1280px",
-            "content_height": "1000px"
- 	}
+            "content_height": "1000px",
+            
+            "page_x": "0px",
+            "page_y": "0px",
+            "page_width": "1280px",
+            "page_height": "1000px"
+         }
 }

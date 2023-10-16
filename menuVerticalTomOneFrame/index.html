@@ -66,7 +66,20 @@
                 // content opacity with opened menu
                 openedMenuOpacity = (autoReduceMenu) ? (data.parameters.opened_menu_opacity ? data.parameters.opened_menu_opacity : "20%") : "100%";
                 
-                // frame parameters
+                 // page parameters
+                 let pageId = $('[data-eqlogic_id="#id#"]')[0];
+
+                let pageLeft = data.parameters.page_x ? data.parameters.page_x : "0px";
+                let pageTop = data.parameters.page_y ? data.parameters.page_y : "0px";
+                let pageWidth = data.parameters.page_width ? data.parameters.page_width : "1280px";
+                let pageHeight = data.parameters.page_height ? data.parameters.page_height : "1000px";
+
+                pageId.style.left = pageLeft;
+                pageId.style.top = pageTop;
+                pageId.style.width = pageWidth;
+                pageId.style.height = pageHeight;
+
+                // content parameters
                 let htmlDisplayId = $('#menuFrameInside')[0];
               
               	let contentLeft = data.parameters.content_x ? data.parameters.content_x : "0px";
