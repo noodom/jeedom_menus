@@ -10,8 +10,8 @@
 <link href="data/menusNoodom/menuVerticalTomOneFrame/css/perso.css" rel="stylesheet" type="text/css">
 
 <!-- content frame -->
-<div class="imageContainer" style="width:100%;height:100%">
-  <iframe id="menuFrameInside" style="height:100%;width:100%;overflow:hidden;border:none" scrolling="no"></iframe>
+<div class="imageContainer" style="background-color:transparent;width:100%;height:100%">
+  <iframe id="menuFrameInside" style="position:relative;height:100%;width:100%;overflow:hidden;border:none" scrolling="no"></iframe>
 </div>
 
 <nav class="menu-goo">
@@ -67,25 +67,18 @@
                 openedMenuOpacity = (autoReduceMenu) ? (data.parameters.opened_menu_opacity ? data.parameters.opened_menu_opacity : "20%") : "100%";
                 
                 // frame parameters
-                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                let htmlDisplayId = $('#menuFrameInside')[0];
               
               	let contentLeft = data.parameters.content_x ? data.parameters.content_x : "0px";
                 let contentTop = data.parameters.content_y ? data.parameters.content_y : "0px";
               	let contentWidth = data.parameters.content_width ? data.parameters.content_width : "1280px";
                 let contentHeight = data.parameters.content_height ? data.parameters.content_height : "1000px";
                 
-              	$(htmlDisplayId)[0].style.left = contentLeft;
-                $(htmlDisplayId)[0].style.top = contentTop;
-                $(htmlDisplayId)[0].style.width = contentWidth;
-                $(htmlDisplayId)[0].style.height = contentHeight;
-              	
-                /*
-                document.getElementsByClassName('imageContainer')[0].style.left = contentLeft;
-              	document.getElementsByClassName('imageContainer')[0].style.top = contentTop;
-                document.getElementsByClassName('imageContainer')[0].style.width = contentWidth;
-                document.getElementsByClassName('imageContainer')[0].style.height = contentHeight;
-                */
-            
+                htmlDisplayId.style.left = contentLeft;
+                htmlDisplayId.style.top = contentTop;
+                htmlDisplayId.style.width = contentWidth;
+                htmlDisplayId.style.height = contentHeight;
+              	            
                 // menu parameters
               	let menuLeft = data.parameters.menu_x ? data.parameters.menu_x : "0px";
                 let menuTop = data.parameters.menu_y ? data.parameters.menu_y : "0px";
