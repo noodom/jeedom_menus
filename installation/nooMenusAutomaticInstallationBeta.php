@@ -1,4 +1,4 @@
-/* @noodom / Automatic menu creation
+/* @noodom / Automatic menu creation (beta version)
 	- tag menuName : name of the menu to install (folders from https://github.com/noodom/jeedom_menus)
 	
     - Download file /data/menusNoodom/.htAccess
