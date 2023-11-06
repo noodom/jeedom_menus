@@ -189,6 +189,7 @@ if (is_object($menuHd) &&  is_object($contentHd)) {
         $scenario->setLog('- Create specific configuration files for ' . $suffixName);
         $scenario->setLog('- Modify perso.css and perso.json links for ' . $suffixName);
         $filecontent = str_replace ('data/menusNoodom/' . $menuName, 'data/menusNoodom/' . $menuName . $suffixName, $filecontent);
+        $filecontent = str_replace ('menuName = "' . $menuName . '"', 'menuName = "' . $menuName . $suffixName . '"', $filecontent);
       }
       file_put_contents($path.'/dashboard.html', $filecontent);
       chmod($path, 0770);
