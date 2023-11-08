@@ -37,8 +37,8 @@
         // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
         $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
             let buttons = data.buttons.map(function (button) {
-                return '<li id="' + button.link + '" class="element"><i class="opa ' + button
-                    .icon + '"></i> ' + button.label + '</li>';
+                return '<li id="' + button.link + '" data-destination="' + button.destination + '" class="element"><i class="opa ' 
+                    + button.icon + '"></i> ' + button.label + '</li>';
             });
 
             let menuTop = $('.menu');
@@ -83,7 +83,7 @@
             $(".menu > li").click(function () {
                 $(".dropdownMenu > p").html($(this).html());
                 $(".menu").removeClass("showMenu");
-                gotoPlan(this.id);
+                gotoPlan(this.id, this.getAttribute("data-destination"));
             });
         });
     });
@@ -98,12 +98,16 @@
     }
 
     // menu redirection
-    function gotoPlan(id) {
+    function gotoPlan(id, destination) {
         let urlDestination = getUrlDestination(id);
         // get frame in htmlDisplay equipment
         let frameDestination = document.getElementById('menuFrame');
 
-        if (frameDestination !== null) {
+        if (frameDestination == null || destination == 1) {
+          window.location = urlDestination;
+        } else if (destination == 2) {
+          window.open(urlDestination, "_blank");
+        } else {
             // display focus
             $('.monmenu').removeClass('selected');
             $('#' + id + ' li').addClass('selected');
