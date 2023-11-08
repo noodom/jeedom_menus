@@ -50,6 +50,10 @@
             }
 
             if (data.parameters) {
+              	// menu title
+              	if (data.parameters.title) {
+                  $(".accueil")[0].innerHTML = data.parameters.title;
+                }
                 // menu parameters
                 let htmlDisplayId = '[data-eqlogic_id="#id#"]';
                 if ($(htmlDisplayId).length != 0) {
