@@ -4,7 +4,7 @@
     --cursor-default-color: lightgray;
     --background-active-link: #202020;
     --background-default-link: #151515;
-    --menu-height:100px;
+    --menu-height: 100px;
 }
 
 * {
@@ -111,4 +111,17 @@
     margin-top: 6px;
     color: var(--cursor-color) !important;
     text-shadow: 0 0 15px var(--cursor-color-shadow) !important;
+}
+
+.badge {
+    background-color: var(--background-default-link);
+    color: var(--cursor-default-color);
+    /* background-color: var(--background-active-link); */
+    /* color: var(--cursor-color); */
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+	position: absolute;
+  	bottom: 20px;
+  	right: 10px;
 }

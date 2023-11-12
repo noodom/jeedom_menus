@@ -4,7 +4,10 @@
     --cursor-default-color: lightgray;
     --background-active-link: #202020;
     --background-default-link: #151515;
-    --menu-height:100px;
+    --menu-x: 0px;
+    --menu-y: 0px;
+    --menu-width: 100%;
+    --menu-height: 100px;
 }
 
 * {
@@ -109,4 +112,17 @@
     margin-top: 10px;
     color: var(--cursor-color) !important;
     text-shadow: 0 0 15px var(--cursor-color-shadow) !important;
+}
+
+.badge {
+    background-color: var(--background-default-link);
+    color: var(--cursor-default-color);
+    /* background-color: var(--background-active-link); */
+    /* color: var(--cursor-color); */
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+	position: absolute;
+  	top: 10px;
+  	right: 10px;
 }

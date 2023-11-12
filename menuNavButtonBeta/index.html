@@ -1,4 +1,4 @@
-<!-- @noodom / Menu menuNavButton (gestion par Json et Frame)
+<!-- @noodom / Menu menuNavButtonBeta (gestion par Json et Frame)
 	- inspiré par https://codepen.io/AlbertFeynman/pen/mjXeMV
 	- ajout de la gestion des boutons par un paramétrage JSon
 	- ajout de la navigation par frame à l'aide de htmlDisplay
@@ -41,7 +41,7 @@
 
 <script id="menuNavButton-js">
     $(document).ready(function () {
-        let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+      	let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
         // display loading message
         var menuNavButton = $('#menuNavButton');
         let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
@@ -81,18 +81,28 @@
                 let cssFile = data.parameters.css_file ? data.parameters.css_file : "style.css";
                 cssPath = 'data/menusNoodom/' + menuName + '/css/' + cssFile;
 
-                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
-                $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
-                $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+              	let menuX = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                let menuY = data.parameters.menu_y ? data.parameters.menu_y : "0px";
                 let menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
                 let menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "100px";
-                $(htmlDisplayId)[0].style.width = menuWidth;
-                $(htmlDisplayId)[0].style.height = menuHeight;
 
-                $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
-                $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
-                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
-                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+              	let contentX = data.parameters.content_x ? data.parameters.content_x : "0px";
+                let contentY = data.parameters.content_y ? data.parameters.content_y : "0px";
+                let contentWidth = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                let contentHeight = data.parameters.content_height ? data.parameters.content_height : "100px";
+              
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                $(htmlDisplayId)[0].style.left = contentX;
+                $(htmlDisplayId)[0].style.top = menuY;
+                document.documentElement.style.setProperty('--menu-x', menuX);
+
+              	$(htmlDisplayId)[0].style.width = contentWidth;
+                $(htmlDisplayId)[0].style.height = contentHeight;
+
+                $("#menuFrame").offsetParent().style().left = contentX;
+                $("#menuFrame").offsetParent().style().top = contentY;
+                $("#menuFrame").offsetParent().style().width = contentWidth;
+                $("#menuFrame").offsetParent().style().height = contentHeight;
 
                 if (data.parameters.cursor_color) {
                     document.documentElement.style.setProperty('--cursor-color', data.parameters.cursor_color);
@@ -120,6 +130,16 @@
                 }
 
                 document.documentElement.style.setProperty('--menu-height', menuHeight);
+              
+                if (data.parameters.badge_cmd_id) {
+                    jeedom.cmd.execute({
+                      id: data.parameters.badge_cmd_id,
+                      notify: false,
+                      success: function(val) {
+                        menuNavButton.append('<div class="badge">' + val  + (data.parameters.badge_unit ? data.parameters.badge_unit : "") + '</div>');              
+                      }
+                    })
+                }
             }
 
             // CSS loading
@@ -167,5 +187,5 @@
         }
     }
 
-  //# sourceURL=menuNavButton.js
+  //# sourceURL=menuNavButtonBeta.js
 </script>
