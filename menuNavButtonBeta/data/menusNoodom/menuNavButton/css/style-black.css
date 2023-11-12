@@ -1,0 +1,97 @@
+:root {
+    --cursor-color: #96c927;
+    --cursor-color-shadow: white;
+    --cursor-default-color: lightgray;
+    --background-active-link: #202020;
+    --menu-height:100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#menuNavButton {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--menu-height) !important;
+    border-radius: 45px;
+    z-index: 50;
+}
+
+#menuNavButton ul {
+    list-style: none;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#menuNavButton li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    height: calc(var(--menu-height) - 10px) !important;
+    width: 95px;
+    border: 4px ridge rgba(80, 80, 80, 1);
+    background: -webkit-gradient(linear, left top, left bottom,
+            color-stop(0%, #ccc6c3),
+            color-stop(24%, #828c95),
+            color-stop(41%, #000000),
+            color-stop(100%, #7f7f7f));
+    transition: all 0.5s;
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-bottom: 0.5rem solid;
+    border-top: 0.5rem solid gray;
+}
+
+#menuNavButton li:nth-of-type(1) {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+#menuNavButton li:last-of-type {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+#menuNavButton li:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--cursor-color-shadow) !important;
+}
+
+#menuNavButton a {
+    display: inline-block;
+    color: var(--cursor-default-color) !important;
+    text-decoration: none;
+    font-size: 40px;
+    transition: all 0.5s;
+}
+
+#menuNavButton li.active {
+    background: var(--background-active-link) !important;
+    border-top: none;
+    border-bottom: none;
+    background: linear-gradient(#555, #2C2C2C);
+    box-shadow: 1px 1px 10px black inset,
+        0 1px 0 rgba(255, 255, 255, 0.4)
+}
+
+#menuNavButton .active-text {
+    margin-top: 10px;
+    color: var(--cursor-color) !important;
+    text-shadow: 0 0 15px var(--cursor-color-shadow) !important;
+}
+
+#menuNavButton a:hover {
+    color: #FFFBF0;
+    text-shadow: 0 0 15px var(--cursor-color-shadow) !important;
+}

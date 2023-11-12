@@ -1,0 +1,97 @@
+:root {
+    --cursor-color: #96c927;
+    --cursor-color-shadow: white;
+    --cursor-default-color: lightgray;
+    --background-active-link: linear-gradient(180deg, #555, #2C2C2C);
+    --background-default-link: #151515;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#menuNavButton {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    border-radius: 0px;
+    background: transparency;
+
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+#menuNavButton ul {
+    list-style: none;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-inline-start: 0px;
+    width: 100px;
+}
+
+#menuNavButton li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    height: 70px;
+    width: 80px;
+    background: var(--background-default-link) !important;
+
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1),
+        -3px 0 0 rgba(255, 255, 255, 1),
+        0 -4px 0 rgba(80, 80, 80, 1);
+    transition: all 0.2s;
+}
+
+#menuNavButton li:nth-of-type(1) {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+#menuNavButton li:last-of-type {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+#menuNavButton li:hover {
+
+    cursor: pointer;
+    text-shadow: 0 0 35px red;
+
+}
+
+#menuNavButton a {
+    display: inline-block;
+    color: var(--cursor-default-color) !important;
+    text-decoration: none;
+    font-size: 30px;
+    transition: all 0.1s;
+}
+
+#menuNavButton li.active {
+    border-left: 1px solid rgba(255, 255, 255, 1);
+    border-right: 1px solid #252525;
+    background: var(--background-active-link) !important;
+    box-shadow: -3px 0 0 rgba(255, 255, 255, 1),
+        1px 1px 10px black inset,
+        1px 0 0 rgba(255, 255, 255, 0.4);
+
+}
+
+#menuNavButton .active-text {
+    margin-left: 10px;
+    color: var(--cursor-color) !important;
+    text-shadow: 0 0 65px var(--cursor-color-shadow) !important;
+}

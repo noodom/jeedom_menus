@@ -1,0 +1,171 @@
+<!-- @noodom / Menu menuNavButton (gestion par Json et Frame)
+	- inspiré par https://codepen.io/AlbertFeynman/pen/mjXeMV
+	- ajout de la gestion des boutons par un paramétrage JSon
+	- ajout de la navigation par frame à l'aide de htmlDisplay
+
+- Installation du menu : https://github.com/noodom/jeedom_menus/tree/master/menuNavButton/README.md
+- Pensez au café pour les nuits blanches de codage ;) https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=noodom.fr%40gmail.com&currency_code=EUR&source=url 
+-->
+
+<!--
+    manuNavButton : menu for Jeedom designs managed with json configuration file and frame navigation
+    Copyright (C) 2023  @noodom
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; see the file COPYING. If not, write to the
+    Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+-->
+
+<div id="cssDiv">
+</div>
+
+<script>
+    var menuName = "menuNavButton";
+    var cssPath = 'data/menusNoodom/' + menuName + '/css/style.css';
+    var reloadActiveButton = false;
+</script>
+
+<nav id="menuNavButton">
+    <!-- Génération dynamique du menu depuis le json de configuration -->
+</nav>
+
+<script id="menuNavButton-js">
+    $(document).ready(function () {
+        let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+        // display loading message
+        var menuNavButton = $('#menuNavButton');
+        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
+        menuNavButton.append('<div id="msg">Chargement du menu..</div>');
+
+        // load Json configuration file (perso.json)
+        // uses cache
+        //$.getJSON(jsonPath, function (data) {
+        // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
+        $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
+            let navSubmenu = $('#navul');
+            let buttons = data.buttons.map(function (button) {
+                return '<li id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + '>'
+                    + '<a href="#">'
+                    + '<i class="' + button.icon + '" aria-hidden="true"></i>'
+                    + '</a>'
+                    + '</li>';
+            });
+
+            menuNavButton.empty();
+            let menuList = $('<ul class="navul" />').html(buttons);
+            menuNavButton.append(menuList);
+
+            if (link_id == "") {
+                // set focus on first button 
+                $('.navul li')[0].click()
+            }
+            else {
+                // goto linkId
+                gotoPlan(link_id);
+            }
+
+            // get menu parameters
+            if (data.parameters) {
+
+                // CSS choice
+                let cssFile = data.parameters.css_file ? data.parameters.css_file : "style.css";
+                cssPath = 'data/menusNoodom/' + menuName + '/css/' + cssFile;
+
+                let htmlDisplayId = '[data-eqlogic_id="#id#"]';
+                $(htmlDisplayId)[0].style.left = data.parameters.menu_x ? data.parameters.menu_x : "0px";
+                $(htmlDisplayId)[0].style.top = data.parameters.menu_y ? data.parameters.menu_y : "0px";
+                let menuWidth = data.parameters.menu_width ? data.parameters.menu_width : "1280px";
+                let menuHeight = data.parameters.menu_height ? data.parameters.menu_height : "100px";
+                $(htmlDisplayId)[0].style.width = menuWidth;
+                $(htmlDisplayId)[0].style.height = menuHeight;
+
+                $("#menuFrame").offsetParent().style().left = data.parameters.content_x ? data.parameters.content_x : "0px";
+                $("#menuFrame").offsetParent().style().top = data.parameters.content_y ? data.parameters.content_y : "0px";
+                $("#menuFrame").offsetParent().style().width = data.parameters.content_width ? data.parameters.content_width : "1280px";
+                $("#menuFrame").offsetParent().style().height = data.parameters.content_height ? data.parameters.content_height : "1000px";
+
+                if (data.parameters.cursor_color) {
+                    document.documentElement.style.setProperty('--cursor-color', data.parameters.cursor_color);
+                }
+                if (data.parameters.cursor_color_shadow) {
+                    document.documentElement.style.setProperty('--cursor-color-shadow', data.parameters.cursor_color_shadow);
+                }
+                if (data.parameters.cursor_default_color) {
+                    document.documentElement.style.setProperty('--cursor-default-color', data.parameters.cursor_default_color);
+                }
+                if (data.parameters.border_menu) {
+                    document.documentElement.style.setProperty('--border-menu', data.parameters.border_menu);
+                }
+                if (data.parameters.background_active_link) {
+                    document.documentElement.style.setProperty('--background-active-link', data.parameters.background_active_link);
+                }
+                if (data.parameters.background_default_link) {
+                    document.documentElement.style.setProperty('--background-default-link', data.parameters.background_default_link);
+                }
+                if (data.parameters.image_path_inactive) {
+                    document.documentElement.style.setProperty('--image-path-inactive', data.parameters.image_path_inactive);
+                }
+                if (data.parameters.image_path_active) {
+                    document.documentElement.style.setProperty('--image-path-active', data.parameters.image_path_active);
+                }
+
+                document.documentElement.style.setProperty('--menu-height', menuHeight);
+            }
+
+            // CSS loading
+            let forceRefreshCss = true;
+            let link = document.createElement("link");
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("type", "text/css");
+            let hrefAttribute = cssPath + ((forceRefreshCss == true) ? ('?v=' + Date.now()) : '');
+            link.setAttribute("href", hrefAttribute);
+            document.getElementById('cssDiv').appendChild(link);
+        });
+    });
+
+    // create url destination
+    function getUrlDestination(urlParam) {
+        if (isNaN(urlParam)) {
+            return urlParam;
+        } else {
+            return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+        }
+    }
+
+    // menu redirection
+    function gotoPlan(id) {
+        let urlDestination = getUrlDestination(id);
+        // get frame in htmlDisplay equipment
+        let frameDestination = document.getElementById('menuFrame');
+
+        if (frameDestination == null) {
+            // Error : no content frame
+            console.log("ERREUR : Frame de contenu non créée");
+        }
+        else {
+            // display focus
+            $('.navul li').removeClass('active');
+            $('.navul li a').removeClass('active-text');
+            if (!isNaN(id)) {
+                $('#' + id).addClass('active');
+                $('#' + id + ' a').addClass('active-text');
+            }
+            // fill content frame
+            if ((frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) || reloadActiveButton) {
+                frameDestination.src = urlDestination;
+            }
+        }
+    }
+
+  //# sourceURL=menuNavButton.js
+</script>
