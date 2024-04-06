@@ -63,7 +63,7 @@
         // force reload at loading : Date()).getTime(), every minute : Date()).getMinutes(), every hour : Date()).getHours(), every day : Date()).getDay(), ..
         $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
           	let buttons = data.buttons.map(function (button) {
-                return '<div id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + ' class="option">'
+                return '<div id="' + button.link + '" onClick="gotoPlan(' + button.link + ');return false;"' + ' class="option">'
           			+ '		<i class="' + button.icon + '"></i>'
           			+ '		<div class="label">' + button.label + '</div>'
 					+ '</div>';

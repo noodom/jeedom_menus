@@ -59,7 +59,7 @@
         }
         let fullscreenParam = ((button.fullscreen == undefined && button.top != 1 && button.top != 2) || button.fullscreen == 1)?1:0;
         let topParam = (button.top == 1 || button.top == 2)?button.top:0;
-        let buttonCode = '<a id="' + idParam + '" onClick="gotoPlan(this.id, \'' + button.link + '\', ' + fullscreenParam + ', ' + topParam + ')">'
+        let buttonCode = '<a id="' + idParam + '" onClick="gotoPlan(this.id, \'' + button.link + '\', ' + fullscreenParam + ', ' + topParam + ');return false;">'
           + '<li class="monmenu">'
           + '<div class="imagette">';
         if (imgType) {

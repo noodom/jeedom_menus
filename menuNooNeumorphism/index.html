@@ -60,7 +60,7 @@
             let navSubmenu = $('#navul');
             let buttons = data.buttons.map(function (button) {
                 return '<li data-placement="bottom" id="' + button.link + '" title="' + button.label + '" class="text-center d-flex justify-content-center"'
-                    + ' onClick="gotoPlan(' + button.link + ')"' + '>'
+                    + ' onClick="gotoPlan(' + button.link + ');return false;"' + '>'
                     + '<i class="' + button.icon + '"></i>'
                     + '</li>';
             });

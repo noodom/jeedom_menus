@@ -57,7 +57,7 @@
                     alertMsg("!!! Attention, corrigez le lien " + button.link + " du bouton " + button.label + " qui pointe vers le menu principal (boucle sans fin)");
                 }
                 else {
-                    return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
+                    return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id);return false;">'
                         + '<div>'
                         + '<i class="' + button.icon + '"></i>'
                         + '<span>'

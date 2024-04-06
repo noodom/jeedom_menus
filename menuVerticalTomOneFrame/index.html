@@ -64,7 +64,7 @@
             // get buttons parameters
             let buttons = data.buttons.map(function (button) {
                 return '<a href="#" class="menu-item" id="' + button.link + '"'
-                    + ' onClick="gotoPlan(this.id)">'
+                    + ' onClick="gotoPlan(this.id);return false;">'
                     + '<div class="imagette">'
                     + '<img src="' + button.icon + '" alt="' + button.label + '" height=50px width=50px margin-bottom=8px>'
                     + '</div>';

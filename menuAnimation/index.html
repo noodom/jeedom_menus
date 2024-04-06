@@ -29,7 +29,7 @@
         return '<a href="#" id="' + button.link + '"'
           + ' class="nav-item-animation'
           + '" active-color="' + button.color + '"'
-          + ' onClick="buttonFocus(this)"'
+          + ' onClick="buttonFocus(this);return false;"'
           + '>'
           + button.label
           + '</a>';

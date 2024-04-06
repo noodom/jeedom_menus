@@ -61,6 +61,7 @@
 				this.$element.on("click", function () {
 					clearTimeout(timeOut);
 					gotoPlan(link);
+					return false;
 				});
 			}
 			this.$element.on("mousemove", function () {

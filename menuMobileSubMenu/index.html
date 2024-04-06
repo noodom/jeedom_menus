@@ -52,7 +52,7 @@ Liste des icônes font-awesome pour l'affichage des boutons :
 		  // head
 		  let navSubmenu = $('#submenu');
 		  let buttons = data.buttons.map(function (button) {
-				return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id)">'
+				return '<li class="" id="' + button.link + '" onClick="gotoPlan(this.id);return false;">'
 						+ '<div>'
 							+ '<i class="' + button.icon + '"></i>'
 							+ '<span>'

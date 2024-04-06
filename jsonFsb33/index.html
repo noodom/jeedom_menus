@@ -21,7 +21,7 @@
 
         $.getJSON('data/menusNoodom/json/perso.json' + '?v=' + (new Date()).getTime(), function (data) {
             let buttons = data.buttons.map(function (button) {
-                return '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+                return '<a id="' + button.link + '" onClick="gotoPlan(this.id);return false;">'
                         + '<li class="monmenu">'
                             + '<div class="imagette"><img src="' + button.icon + '" height=50px width=50px></div></br>'
                         + '</li>'

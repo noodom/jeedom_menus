@@ -34,7 +34,7 @@
           // head
 		  let buttons = data.buttons.map(function (button) {
 				return '<li>'
-							+ '<a id="' + button.link + '" onClick="gotoPlan(this.id)">'
+							+ '<a id="' + button.link + '" onClick="gotoPlan(this.id);return false;">'
 								+ '<i class="' + button.icon + '"></i>'
 								+ '<span class="nav-text">'
 									+ button.label

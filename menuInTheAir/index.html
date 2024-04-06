@@ -88,6 +88,7 @@
                 $(".dropdownMenu > p").html($(this).html());
                 $(".menu").removeClass("showMenu");
                 gotoPlan(this.id, this.getAttribute("data-destination"));
+                return false;
             });
         });
     });
