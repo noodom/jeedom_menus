@@ -48,6 +48,7 @@
         let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
         // display loading message
         let menuGoo = $('.menu-goo');
+        let link_id = (location.search.split('link_id' + '=')[1] || '').split('&')[0];
 
         // load Json configuration file (perso.json)
         // uses cache
@@ -96,8 +97,14 @@
             // open/close menu at init
             document.getElementById('menu-open').checked = !initCloseMenu;
             $("#menuFrame").offsetParent().style().opacity = (initCloseMenu)?"100%":openedMenuOpacity;
-            // set focus on first button 
-            document.getElementsByClassName('menu-item')[0].click()
+            if (link_id == "") {
+                // set focus on first button 
+              	document.getElementsByClassName('menu-item')[0].click();
+            }
+            else {
+                // goto linkId
+                gotoPlan(link_id);
+            }
         });
     });
 
