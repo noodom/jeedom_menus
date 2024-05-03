@@ -13,7 +13,7 @@ Vous trouverez ci-dessous 3 méthodes pour installer mes différents menus propo
 
 `eval(file_get_contents('https://raw.githubusercontent.com/noodom/jeedom_scenarios/main/installations/menuInstallation.php'));`
 
-(code disponible ![ici](https://github.com/noodom/jeedom_scenarios/blob/main/installations/menuInstallationCreationBeta.php))
+(code disponible ![ici](https://github.com/noodom/jeedom_scenarios/blob/main/installations/menuInstallationCreation.php))
 
 (version beta disponible ![ici](https://github.com/noodom/jeedom_scenarios/blob/main/installations/menuInstallationCreationBeta.php))
 
