@@ -247,15 +247,10 @@ if ($designFound == false) {
   $menuDesign = new planHeader();
   $menuDesign->setName($newDesignName);
   $menuDesign->setId('');
-  //$menuDesign->setConfiguration('desktopSizeX', $defaultMenuWidth);
-  //$menuDesign->setConfiguration('desktopSizeY', $defaultMenuHeight);
-  //$menuDesign->save();
 }
-//else {
-  $menuDesign->setConfiguration('desktopSizeX', $defaultMenuWidth);
-  $menuDesign->setConfiguration('desktopSizeY', $defaultMenuHeight);
-  $menuDesign->save();
-//}
+$menuDesign->setConfiguration('desktopSizeX', $tags['#menuDesignWidth#']);
+$menuDesign->setConfiguration('desktopSizeY', $tags['#menuDesignHeight#']);
+$menuDesign->save();
 
 $menuPlans = plan::byPlanHeaderId($menuDesign->getId());
 foreach ($menuPlans as $menuPlan) {
