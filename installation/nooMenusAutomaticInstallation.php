@@ -300,6 +300,7 @@ if ($menuPlan == null) {
   $menuPlan->setDisplay('background-transparent', 1);
   $menuPlan->setDisplay('background-defaut', 0);
   $menuPlan->setCss('z-index', 1002);
+  $menuPlan->setCss('background-color', '#000000');
   $menuPlan->save();
 }
 

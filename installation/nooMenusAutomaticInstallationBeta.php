@@ -282,15 +282,8 @@ if ($menuPlan == null) {
   $menuPlan->setPlanHeader_id($menuDesign->getId());
   $menuPlan->setDisplay('background-transparent', 1);
   $menuPlan->setDisplay('background-defaut', 0);
-  /*if($eqLogic->getDisplay('background-color-defaultplan') != 1){
-          $plan->setDisplay('background-defaut',0);
-          $plan->setCss('background-color',$eqLogic->getDisplay('background-colorplan'));
-          $plan->setDisplay('background-transparent',$eqLogic->getDisplay('background-color-transparentplan'));
-  }*/
   $menuPlan->setCss('z-index', 1003);
-  //$menuPlan->setCss('background-color', 'transparent !important');
-  //$menuPlan->setCss('background-color', 'red !important');
-  //$('.eqLogic-widget[data-eqLogic_id="1485"]').attr('style', 'background-color: transparent !important');
+  $menuPlan->setCss('background-color', '#000000');
   $menuPlan->save();
 }
 
