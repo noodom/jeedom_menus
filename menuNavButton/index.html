@@ -54,9 +54,22 @@
         $.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
             let navSubmenu = $('#navul');
             let buttons = data.buttons.map(function (button) {
+                let imgType =
+                  button.icon.toLowerCase().endsWith(".jpg") ||
+                  button.icon.toLowerCase().endsWith(".jpeg") ||
+                  button.icon.toLowerCase().endsWith(".png") ||
+                  button.icon.toLowerCase().endsWith(".gif");
+                let buttonImg = '';
+                if (imgType) {
+                    buttonImg =
+                    '<img src="' + button.icon + '" height=50px width=50px>';
+                } else {
+                    buttonImg = '<i class="' + button.icon + '" aria-hidden="true"></i>';
+                }
+
                 return '<li id="' + button.link + '" onClick="gotoPlan(' + button.link + ');return false;"' + '>'
                     + '<a href="#">'
-                    + '<i class="' + button.icon + '" aria-hidden="true"></i>'
+                    + buttonImg
                     + '</a>'
                     + '</li>';
             });
