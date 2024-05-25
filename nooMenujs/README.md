@@ -1,1 +1,1 @@
-Menu nooMenujs : menu récursif basé sur le menu mmenujs avec fichier de configuration JSon et gestion de navigation par frame
+Menu nooMenujs : menu récursif basé sur le menu mmenujs (https://mmenujs.com/) avec fichier de configuration JSon et gestion de navigation par frame
