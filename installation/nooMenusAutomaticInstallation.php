@@ -288,8 +288,9 @@ if ($menuPlan == null) {
 }
 
 $scenario->setLog('==> Access to the menu ' . $menuName . ' : design id=' . $menuDesign->getId());
-$msg = 'Menu généré :: #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuName . '&l' . 't;/a&g' . 't;# :' 
-  . ' Design #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuDesign->getName() . ' (id : ' . $menuDesign->getId() . ')&l' . 't;/a&g' . 't;# ' 
+$msg = 'Menu généré :: #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuName . $suffixName . '&l' . 't;/a&g' . 't;# :' 
+  .' Configuration du menu : #&l' . 't;a href="/data/menusNoodom/' . $menuName . $suffixName . '/json/perso.json" target="_blank"&g' . 't;' . $menuName . $suffixName . '/json/perso.json&l' . 't;/a&g' . 't;# ' 
+  . '/ Design #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuDesign->getName() . ' (id : ' . $menuDesign->getId() . ')&l' . 't;/a&g' . 't;# ' 
   .'/ htmlDisplay du menu : #&l' . 't;a href="/index.php?v=d&m=htmldisplay&p=htmldisplay&id=' . $menuHd->getId() . '#dashboardtab" target="_blank"&g' . 't;' . $menuHd->getName() . ' (id : ' . $menuHd->getId() . ')&l' . 't;/a&g' . 't;# ' 
   . '/ htmlDisplay du contenu : #&l' . 't;a href="/index.php?v=d&m=htmldisplay&p=htmldisplay&id=' . $contentHd->getId() . '#dashboardtab" target="_blank"&g' . 't;' . $contentHd->getName() . ' (id : ' . $contentHd->getId() . ')&l' . 't;/a&g' . 't;#';
 // PR : desktop/modal/message.display.php : $trs .= '<td class="message_action">' . html_entity_decode($message->getAction()) . '</td>';
