@@ -1,0 +1,322 @@
+<!--
+    nooMenujs : recursive menu based on mmenujs for Jeedom designs managed with json configuration file and frame navigation
+    Copyright (C) 2023  @noodom
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; see the file COPYING. If not, write to the
+    Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="@noodom, inspiration https://mmenujs.com/" />
+		<meta name="viewport" content="width=device-width minimum-scale=1.0 maximum-scale=1.0 user-scalable=no" />
+
+		<title>nooMenujs (version full)</title>
+
+		<link rel="stylesheet" href="data/menusNoodom/nooMenujs/css/perso.css" />
+		<link rel="stylesheet" href="data/menusNoodom/nooMenujs/dist/mmenu.css" />
+		
+      	<!--style>
+          .mm-menu {
+            --mm-color-background: #96c927 !important;
+            --mm-color-text: dimgrey !important;
+          }   
+          .mm-navbar {
+            --mm-color-background: grey !important;
+            --mm-color-text-dimmed: #b1f028 !important;
+            --mm-color-icon: orange !important;
+          }
+          .mm-navbar_tabs span {
+            color:white;
+          }
+          .mm-menu a{
+            color:black !important;
+          }
+          .mm-panel {
+            --mm-color-background: lightgrey !important;
+            --mm-color-text: green !important;
+            --mm-color-icon: blue !important;
+          }
+          .mm-listitem:after {
+            content: none;
+          }
+        </style-->
+      
+		<!-- mmenu scripts -->
+		<script src="data/menusNoodom/nooMenujs/dist/mmenu.polyfills.js"></script>
+		<script src="data/menusNoodom/nooMenujs/dist/mmenu.js"></script>
+        <script language="Javascript">
+          
+          	var mm = null;
+            // Valeurs par défaut (valeurs utilisées si non précisées dans le fichier de configuration perso.json)
+            var defaultFrameWidth = 1280;
+            var defaultFramHeight = 1000;
+          	var navbarsContent = [];
+          	var ongletContent = [];
+          	var topLinks = [];
+          	var bottomLinks = [];
+          	var bottomLogos = [];
+          
+            function getUrlDestination(urlParam) {
+                if (isNaN(urlParam)) {
+                    return urlParam;
+                }
+                else {
+                    return 'index.php?v=d&p=plan&plan_id=' + urlParam + '&fullscreen=1';
+                }
+            }
+
+            // Affichage du plan idPlan ou d'une url externe
+            function gotoPlan(idPlan) {
+              	let urlDestination = getUrlDestination(idPlan);
+              	let frameDestination = document.getElementById('menuFrameContent');
+
+                if (isNaN(idPlan)) {
+                    // url externe
+                    window.open(urlDestination,'_blank');
+                }
+                else {
+                    if (frameDestination === null) {
+                        // pas de frame
+                        if (window.location.href.split('?')[1] != urlDestination.split('?')[1]) {
+                            window.location.href = urlDestination;
+                        }
+                    }
+                    else {
+                        // gestion de la navigation par frame
+                        if (frameDestination.src.split('?')[1] != urlDestination.split('?')[1]) {
+                            frameDestination.src = urlDestination;
+                        }
+                    }
+                }
+
+                // ferme le menu après sélection d'un item
+                mm.API.close();
+            }
+
+              
+            // construction d'un item du menu avec sous-menu
+            function createPage(ul_div_main, pageData) {
+              let li_menu = document.createElement("li");
+              let span_li = document.createElement("span");
+              span_li.innerText = pageData["label"];
+
+              // creation sous-menu
+              let fils_menu = document.createElement("ul");
+
+              for (let i = 0; i < pageData["page"].length; i++) {
+                if (typeof(pageData["page"][i]["page"]) === "undefined") {
+                  // menu sans sous-menu
+                  createItem(fils_menu,pageData["page"][i]);
+                }
+                else {
+                  // menu avec sous-menu
+                  createPage(fils_menu,pageData["page"][i]);
+                }
+              }
+
+              li_menu.appendChild(span_li);
+              li_menu.appendChild(fils_menu);
+              ul_div_main.appendChild(li_menu);
+            }
+
+            // construction d'un item du menu sans sous-menu
+            function createItem(ul_div_main, itemData) {
+              let item = document.createElement("li");
+              let item_a = document.createElement("a");
+              let link = itemData["link"];
+              item_a.setAttribute("onclick", "gotoPlan('" + itemData["link"] + "')");
+              item_a.text = itemData["label"]
+              item.append(item_a);
+              ul_div_main.appendChild(item);
+            }
+
+            function createThemeMenujs(json_theme_mmenu){
+              // creation de la frame
+              let menu_id = document.getElementById('content');
+
+              // iframe pour afficher la page courante
+              let menu_f = document.createElement("div");
+              menu_f.className = "menuf";
+              let menu_iframe = document.createElement("iframe");
+              menu_iframe.id = "menuFrameContent";
+              menu_iframe.width = (json_theme_mmenu.frameWidth !== undefined)?json_theme_mmenu.frameWidth:defaultFrameWidth;
+              menu_iframe.height = (json_theme_mmenu.frameHeight !== undefined)?json_theme_mmenu.frameHeight:defaultFramHeight;
+              menu_iframe.frameBorder = "0";
+              menu_iframe.scrolling = "no";
+              menu_iframe.src = "";
+
+              menu_f.appendChild(menu_iframe);
+              menu_id.appendChild(menu_f);
+
+              // creation du menu
+              // création des onglets dynamiques
+              const menuContainer = document.getElementById('menu');
+              if (json_theme_mmenu.menu !== undefined) {
+                json_theme_mmenu.menu.forEach((onglet, index) => {
+                  const panel = document.createElement('div');
+                  panel.id = `panel-onglet${index + 1}`;
+
+                  const ul_div_main = document.createElement("ul");
+
+                  onglet.pages.forEach(page => {
+                    if (typeof page.page === "undefined") {
+                      // Menu sans sous-menu
+                      createItem(ul_div_main, page);
+                    } else {
+                      // Menu avec sous-menu
+                      createPage(ul_div_main, page);
+                    }
+                  });
+
+                  panel.appendChild(ul_div_main);
+                  menuContainer.appendChild(panel);
+
+                  const ongletHtml = `<a href="#panel-onglet${index + 1}"><i class="${onglet.icon}"></i> <span>${onglet.label}</span></a>`;
+                  ongletContent.push(ongletHtml);
+                });
+              }
+              else {
+                console.error("'menu' n'est pas défini dans le fichier perso.json");
+              }
+
+
+              document.getElementById('title').innerHTML = (json_theme_mmenu.title !== undefined)?json_theme_mmenu.title:'Jeedom';
+
+              if (json_theme_mmenu.topLinks !== undefined) {
+                json_theme_mmenu.topLinks.forEach((link, index) => {
+                  const linkHtml = `<a onclick="gotoPlan('${link.link}')"> <span class="${link.icon}"></span></a>`;
+                  topLinks.push(linkHtml);
+                });
+              }
+
+              if (json_theme_mmenu.bottomLinks !== undefined) {
+                json_theme_mmenu.bottomLinks.forEach((link, index) => {
+                  const linkHtml = `<a onclick="gotoPlan('${link.link}')"> <span class="${link.icon}"></span></a>`;
+                  bottomLinks.push(linkHtml);
+                });
+              }
+
+              if (json_theme_mmenu.bottomLogos !== undefined) {
+                json_theme_mmenu.bottomLogos.forEach((logo, index) => {
+                  const logoHtml = `<a onclick="gotoPlan('${logo.link}')"><img src="${logo.icon}"></a>`;
+                  bottomLogos.push(logoHtml);
+                });
+              }
+
+              if (json_theme_mmenu.filter === undefined || json_theme_mmenu.filter === 'true') {
+                navbarsContent.push('searchfield');
+              }
+            }
+
+            function createContentMenujs(json_theme_mmenu) {
+
+              const slidingSubmenus = json_theme_mmenu.slidingSubmenus === undefined || json_theme_mmenu.slidingSubmenus === 'true';
+              const visibleParent = json_theme_mmenu.visibleParent !== undefined && json_theme_mmenu.visibleParent === 'true';
+              const theme = (json_theme_mmenu.theme !== undefined)?json_theme_mmenu.theme:'theme-dark';
+
+              mm = new Mmenu(
+                document.querySelector('#menu'),
+                {
+                  //options
+                  slidingSubmenus: slidingSubmenus,
+                  extensions: [theme],
+                  setSelected: true,
+                  searchfield : {
+                    placeholder: 'Filtre des menus'
+                  },
+                  iconbar: {
+                    use: true,
+                    top: topLinks,
+                    bottom: bottomLinks
+                  },
+                  sidebar: {
+                    collapsed: {
+                      use: false,
+                      hideNavbar: true
+                    },
+                    expanded: {
+                      use: false
+                    }
+                  },
+                  iconPanels: {
+                    add: visibleParent,
+                    visible: 1
+                  },
+                  navbars: [
+                    {
+                      content: navbarsContent
+                    }, {
+                      type: 'tabs',
+                      content: ongletContent
+                    }, {
+                      content: [ 'prev', 'breadcrumbs', 'close' ]
+                    }, {
+                      position: 'bottom',
+                      content: bottomLogos
+                    }
+                  ]
+                }, {
+                  // configuration
+                  searchfield: {
+                    clear: true
+                  },
+                  navbars: {
+                    breadcrumbs: {
+                      removeFirst: false
+                    }
+                  }
+                }
+              );
+            }
+
+            async function fetchMenuData() {
+              try {
+                const menuName = 'nooMenujs';
+                let jsonPath = 'data/menusNoodom/' + menuName + '/json/perso.json';
+                const response = await fetch(jsonPath);
+                const json_theme_mmenu = await response.json();
+                createThemeMenujs(json_theme_mmenu);
+                createContentMenujs(json_theme_mmenu);
+              } catch (error) {
+                console.error('Erreur lors du chargement du menu', error);
+              }
+            }
+
+            $(document).ready(function () {
+              fetchMenuData();
+            });
+
+            document.addEventListener( 'click', function( evnt ) {
+              var anchor = evnt.target.closest( 'a[href^="#/"]' );
+              if ( anchor ) {
+                evnt.preventDefault();
+              }
+            });
+        </script>
+	</head>
+	<body>
+		<div id="page">
+			<div class="header">
+              <a href="#menu"><span></span></a>
+              <span id="title">Jeedom</span>
+			</div>
+			<div class="content" id="content" style="padding:0px">
+			</div>
+			<div id="menu">
+          	</div>
+		</div>
+	</body>
+</html>

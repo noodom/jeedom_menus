@@ -1,0 +1,80 @@
+:root {
+  --mm-sidebar-expanded-size: 100px;
+}
+.mm-menu {
+  --mm-listitem-size: 50px;
+  --mm-navbar-size: 50px;
+}
+
+.mm-navbar img {
+    max-height: 40px;
+}
+
+.mm-navbar_tabs span {
+  display: inline-block;
+  margin-left: 8px;
+}
+@media (max-width: 450px) {
+  .mm-navbar_tabs span {
+    display: none;
+  }
+}
+
+nav:not(.mm-menu) {
+	display: none;
+}
+.header,
+.content,
+.footer {
+	text-align: center;
+}
+.header,
+.footer {
+	background: #96c927;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	line-height: 44px;
+
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 44px;
+	padding: 0 50px;
+}
+.header.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.footer.fixed {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.header a {
+	display: block;
+	width: 50px;
+	height: 18px;
+	padding: 11px;
+	margin: 2px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.header a:before,
+.header a:after {
+	content: '';
+	display: block;
+	background: #fff;
+	height: 2px;
+}
+.header a span {
+	background: #fff;
+	display: block;
+	height: 2px;
+	margin: 6px 0;
+}
+.content {
+	padding: 150px 50px 50px 50px;
+}

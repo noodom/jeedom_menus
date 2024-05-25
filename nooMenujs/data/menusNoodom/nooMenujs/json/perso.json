@@ -1,0 +1,194 @@
+{
+   "menu":[
+      {
+         "label":"Pièces",
+         "icon":"fa fa-bars",
+         "pages":[
+            {
+               "label":"Accueil",
+               "link":"386"
+            },
+            {
+               "label":"RDC",
+               "page":[
+                  {
+                     "label":"Cuisine",
+                     "link":"389"
+                  },
+                  {
+                     "label":"Salon",
+                     "link":"388"
+                  },
+                  {
+                     "label":"Séjour",
+                     "link":"386"
+                  },
+                  {
+                     "label":"Chambre",
+                     "page":[
+                        {
+                           "label":"Lumières",
+                           "link":"391"
+                        },
+                        {
+                           "label":"Médias",
+                           "link":"390"
+                        },
+                        {
+                           "label":"Chauffage",
+                           "link":"389"
+                        },
+                        {
+                           "label":"Monitoring",
+                           "link":"387"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "label":"Etage",
+               "page":[
+                  {
+                     "label":"Chambre 1",
+                     "link":"391"
+                  },
+                  {
+                     "label":"Chambre 2",
+                     "link":"390"
+                  },
+                  {
+                     "label":"Bureau",
+                     "link":"389"
+                  },
+                  {
+                     "label":"Salle de bain",
+                     "link":"387"
+                  }
+               ]
+            },
+            {
+               "label":"Garage",
+               "link":"388"
+            }
+         ]
+      },
+      {
+         "label":"Catégories",
+         "icon":"fas fa-clipboard-list",
+         "pages":[
+            {
+               "label":"Lumières",
+               "link":"387"
+            },
+            {
+               "label":"Ouvertures",
+               "link":"386"
+            },
+            {
+               "label":"Volets",
+               "link":"391"
+            },
+            {
+               "label":"Alarme",
+               "link":"390"
+            }
+         ]
+      },
+      {
+         "label":"Liens",
+         "icon":"fas fa-heart",
+         "pages":[
+            {
+               "label":"Forum Jeedom",
+               "link":"https://community.jeedom.com"
+            },
+            {
+               "label":"Blog",
+               "link":"https://community.jeedom.com/"
+            },
+            {
+               "label":"Discord",
+               "link":"https://community.jeedom.com/"
+            },
+            {
+               "label":"Jeedom",
+               "link":"https://www.jeedom.com/site/fr/"
+            },
+            {
+               "label":"Github Jeedom",
+               "link":"https://github.com/jeedom/core"
+            }
+         ]
+      }
+   ],
+   "topLinks":[
+      {
+         "icon":"fa fa-home",
+         "link":"386"
+      },
+      {
+         "icon":"fa fa-user",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-users",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-heartbeat",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-code-branch",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-wifi",
+         "link":"https://community.jeedom.com/"
+      }
+   ],
+   "bottomLinks":[
+      {
+         "icon":"fa fa-laptop",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-bell",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-code-branch",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-film",
+         "url":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-calendar",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"fa fa-music",
+         "link":"https://community.jeedom.com/"
+      }
+   ],
+   "title":"Mon Jeedom",
+   "bottomLogos":[
+      {
+         "icon":"data/menusNoodom/nooMenujs/images/jeedom.png",
+         "link":"https://community.jeedom.com/"
+      },
+      {
+         "icon":"data/menusNoodom/nooMenujs/images/jeemate.png",
+         "link":"https://jeemate.fr/fr/home"
+      }
+   ],
+   "frameWidth":"1280px",
+   "frameHeight":"1000px",
+   "slidingSubmenus":"false",
+   "visibleParent":"false",
+   "theme":"theme-dark",
+   "filter":"true"
+}
