@@ -187,7 +187,7 @@
    ],
    "frameWidth":"1280px",
    "frameHeight":"1000px",
-   "slidingSubmenus":"false",
+   "slidingSubmenus":"true",
    "visibleParent":"false",
    "theme":"theme-dark",
    "filter":"true"
