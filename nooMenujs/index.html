@@ -282,6 +282,14 @@
               );
             }
 
+            function menuAdaptations(json_theme_mmenu) {
+		let htmlDisplayId = '[data-eqlogic_id="#id#"]';       	
+                $(htmlDisplayId)[0].style.left = "0px";
+                $(htmlDisplayId)[0].style.top = "0px";
+                $(htmlDisplayId)[0].style.width = json_theme_mmenu.frameWidth ? json_theme_mmenu.frameWidth : "1280px";
+                $(htmlDisplayId)[0].style.height = json_theme_mmenu.frameHeight ? json_theme_mmenu.frameHeight : "1000px";
+            }
+
             async function fetchMenuData() {
               try {
                 const menuName = 'nooMenujs';
@@ -290,6 +298,7 @@
                 const json_theme_mmenu = await response.json();
                 createThemeMenujs(json_theme_mmenu);
                 createContentMenujs(json_theme_mmenu);
+		menuAdaptations(json_theme_mmenu)
               } catch (error) {
                 console.error('Erreur lors du chargement du menu', error);
               }
