@@ -286,8 +286,8 @@
 		let htmlDisplayId = '[data-eqlogic_id="#id#"]';       	
                 $(htmlDisplayId)[0].style.left = "0px";
                 $(htmlDisplayId)[0].style.top = "0px";
-                $(htmlDisplayId)[0].style.width = json_theme_mmenu.frameWidth ? json_theme_mmenu.frameWidth : "1280px";
-                $(htmlDisplayId)[0].style.height = json_theme_mmenu.frameHeight ? json_theme_mmenu.frameHeight : "1000px";
+                $(htmlDisplayId)[0].style.width = json_theme_mmenu.frameWidth ? json_theme_mmenu.frameWidth : defaultFrameWidth;
+                $(htmlDisplayId)[0].style.height = json_theme_mmenu.frameHeight ? json_theme_mmenu.frameHeight : defaultFramHeight;
             }
 
             async function fetchMenuData() {
