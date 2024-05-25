@@ -287,6 +287,19 @@ if ($menuPlan == null) {
   $menuPlan->save();
 }
 
+if (in_array($menuName, ['nooMenujs', 'nooMenujsBeta'])) {
+  $scenario->setLog('- specific adaptations for menu ' . $menuName);
+  $menuPlan = plan::byLinkTypeLinkIdPlanHeaderId('eqLogic', $contentHd->getId(), $menuDesign->getId());
+  $menuPlan->remove();
+  
+  $menuPlan = plan::byLinkTypeLinkIdPlanHeaderId('eqLogic', $menuHd->getId(), $menuDesign->getId());
+  $menuPlan->setPosition('top', 0);
+  $menuPlan->setPosition('left', 0);
+  $menuPlan->setDisplay('width', $tags['#menuDesignWidth#']);
+  $menuPlan->setDisplay('height', $tags['#menuDesignHeight#']);
+  $menuPlan->save();
+}
+
 $scenario->setLog('==> Access to the menu ' . $menuName . ' : design id=' . $menuDesign->getId());
 $msg = 'Menu généré :: #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuName . '&l' . 't;/a&g' . 't;# :' 
   . ' Design #&l' . 't;a href="/index.php?v=d&p=plan&plan_id=' . $menuDesign->getId() . '&fullscreen=1" target="_blank"&g' . 't;' . $menuDesign->getName() . ' (id : ' . $menuDesign->getId() . ')&l' . 't;/a&g' . 't;# ' 
