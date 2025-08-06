@@ -139,22 +139,32 @@
         console.log("get json : " + jsonPath);
       	$.getJSON(jsonPath + '?v=' + (new Date()).getTime(), function (data) {
             let navSubmenu = $('#navul');
-            let buttons = data.buttons.map(function (button) {
-                return '<li class="' + button.label + '" id="' + button.link + '" onClick="gotoPlan(' + button.link + ');return false;"' + '>'
-                       + '<a href="#">'
-                       + '   <div class="layer">'
-                       + '      <span></span>'
-                       + '      <span></span>'
-                       + '      <span></span>'
-                       + '      <span></span>'
-                       + '      <span class="' + button.icon + '"></span>'
-                       + '   </div>'
-                       + '   <div class="text">'
-                       + '      ' + button.label
-                       + '   </div>'
-                       + '</a>'
-                       + '</li>';
-            });
+            let imgType =
+              button.icon.toLowerCase().endsWith(".jpg") ||
+              button.icon.toLowerCase().endsWith(".jpeg") ||
+              button.icon.toLowerCase().endsWith(".png") ||
+              button.icon.toLowerCase().endsWith(".gif");
+            let buttonImg = '';
+            if (imgType) {
+                buttonImg = '      <span><img src="' + button.icon + '" height=50px width=50px></span>';
+            } else {
+                buttonImg = '      <span class="' + button.icon + '"></span>';
+            }
+            
+            return '<li class="' + button.label + '" id="' + button.link + '" onClick="gotoPlan(' + button.link + ')"' + '>'
+                    + '<a href="#">'
+                    + '   <div class="layer">'
+                    + '      <span></span>'
+                    + '      <span></span>'
+                    + '      <span></span>'
+                    + '      <span></span>'
+                    + buttonImg
+                    + '   </div>'
+                    + '   <div class="text">'
+                    + '      ' + button.label
+                    + '   </div>'
+                    + '</a>'
+                    + '</li>';
           
             menuNoo3DAnim.empty();
             let menuList = $('<ul class="navul icons" />').html(buttons);

@@ -59,7 +59,8 @@ nav#menuNoo3DAnim ul.navul a .layer span {
 
 nav#menuNoo3DAnim ul.navul a .layer span.fa,
 nav#menuNoo3DAnim ul.navul a .layer span.fas,
-nav#menuNoo3DAnim ul.navul a .layer span.fab {
+nav#menuNoo3DAnim ul.navul a .layer span.fab,
+nav#menuNoo3DAnim ul.navul a .layer span:has(img) {
   font-size: 30px;
   line-height: 55px;
   text-align: center;
