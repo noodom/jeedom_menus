@@ -143,7 +143,7 @@
     }
 
     // content opacity management
-    let menuOpen = document.getElementById('menu-open');
+    var menuOpen = document.getElementById('menu-open');
     menuOpen.addEventListener('change', function() {
       $("#menuFrame").offsetParent().style().opacity = (this.checked)?openedMenuOpacity:"100%";
     });
