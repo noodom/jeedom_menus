@@ -41,8 +41,22 @@
     var initCloseMenu = true;
     // auto reduce menu after button selection
     var autoReduceMenu = true;
-    // content opacity with oened menu
+    // content opacity with opened menu
     var openedMenuOpacity = "20%";
+
+    $(document).on('noo::gotoDesignWithParamsMenu', function (_e, payload) {
+      const data = payload?.[0] || payload || _e.originalEvent?.detail || {};
+      const link_id = data.link_id;
+      // si paramètres supplémentaires, remplacer la ligne précédente par la liste des paramètres à traiter : const { link_id, nom, mode } = data;
+      if (link_id) {
+        gotoPlan(link_id);
+      }
+
+      /* exemples de traitement de paramètres supplémentaires
+      if (nom) {
+        $('#menuTitle').text(nom);
+      }*/
+    });
 
     $(document).ready(function () {
         let jsonPath = 'data/menusNoodom/menuVerticalTom/json/perso.json';
