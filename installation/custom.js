@@ -14,7 +14,16 @@ $(document).on('noo::gotoDesignWithParams', function(_e, payload) {
     console.error('Erreur de décodage paramsEncoded', e); 
     return; 
   }
-  
+
+  // Vérification utilisateur
+  const target = params.username;
+  if (target) {
+    const authorizedUsers = Array.isArray(target) ? target : [target];
+    if (!user_login || !authorizedUsers.includes(user_login)) {
+      return;
+    }
+  }
+
   const design_id = params.design_id;
   
   const currentUrl = new URL(window.location.href);

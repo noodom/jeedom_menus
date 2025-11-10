@@ -9,14 +9,22 @@
 //        - design_id doit être précisé pour la prise en compte du paramètre force_redirection
 //        - link_id est optionnel : permet d'ouvrir directement un des liens du menu
 // - fullscreen : (optionnel) permet de forcer l'affichage plein écran du menu -> 0 : force l'affichage de menu Jeedom, 1 : force l'affichage plein écran du menu, pas de paramètre : conserve la valeur actuelle de la page Jeedom
+// - username : filtre sur les utilisateurs
+//        - filtre sur un seul utilisateur avec 'username' => 'admin' 
+//        - ou filtre sur plusieurs utilisateurs : 'username' => ['admin', 'noodom']
 
 $params = [
   'design_id' => 121,
   'link_id' => 53,
   'force_redirection' => 0,
-  'fullscreen' => 1
+  'fullscreen' => 1,
+  'username' => ['admin', 'noodom']
 ];
 
 // Envoi des paramètres de redirection pour un nooMenu
-$encoded = base64_encode(json_encode($params, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
-event::add('noo::gotoDesignWithParams', ['paramsEncoded' => $encoded]);
+try {
+    $encoded = base64_encode(json_encode($params, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+    event::add('noo::gotoDesignWithParams', ['paramsEncoded' => $encoded]);
+} catch (JsonException $e) {
+    $scenario->setLog('event noo::gotoDesignWithParams [Erreur JSON pour les paramètres] : ' . $e->getMessage());
+}
